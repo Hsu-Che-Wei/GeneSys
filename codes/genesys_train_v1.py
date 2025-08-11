@@ -59,7 +59,7 @@ class Root_Dataset_NoQC(Dataset):
         return len(self.features)
     def __getitem__(self, idx):
         idx = int(np.random.choice(range(10),1))
-        cell = np.array(pd.Series(0.0, index=np.arange(17513)))
+        cell = np.array(pd.Series(0.0, index=np.arange(self.features.shape[1])))
         cell = cell.astype(np.float32)
 
 
