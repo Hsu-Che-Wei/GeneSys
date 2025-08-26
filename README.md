@@ -45,6 +45,7 @@ The cell lineage table (.tsv) should include how each trajectory (row) is define
 Example toy data can be found in **toy_data** folder.
 
 ### 2. Train GeneSys
+There are options for the input data:
 
 #### Raw RNA counts
 Raw RNA counts will be log-normalized and scaled for training.
