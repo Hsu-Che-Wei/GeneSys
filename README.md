@@ -38,13 +38,22 @@ GeneSys requires these inputs to train:
 
 Example toy data can be found in **toy_data** folder.
 
-```
-
-```
-
 ### 2. Train GeneSys
 
-### 3. Evaluate trained GeneSys model
+```
+genesys --train matrix.mtx barcodes.tsv genes.tsv --anno annotations.tsv --bprint lineage.tsv  
+```
+The output includes the trained model (.pth) and the training log (.pdf)
+
+### 3. GeneSys-generated transcriptomes
+
+```
+genesys --generate trained_model.pth --anno annotations.tsv --bprint lineage.tsv --n_traj_to_generate = 2000  
+```
+The output includes the generated data in mtx and anndata format.
+
+
+
 
 
 
