@@ -32,7 +32,7 @@ GeneSys requires these inputs to train:
 
 **a. scRNA-seq data** : Filtered cell-by-gene matrix (.mtx), cell barcodes (.tsv), gene ids/ feature names (.tsv)
 
-**b. Cell annotations** : The annotation table (.tsv) should include two columns, one for the categorical labels (cell types, conditions ... etc), another for temporal steps (treatment time points, dev stages, time bins)
+**b. Cell annotations** : The annotation table (.tsv) should include three columns named 'barcode', 'label' and 'time'. 'barcode' for the cell barcodes in the scRNA-seq data, 'label' for the categorical labels (cell types, conditions ... etc), and 'time' for temporal steps (treatment time points, dev stages, time bins).
    
 **c. Cell lineage blueprint** : The cell lineage table (.tsv) should include how each trajectory (rows) is defined. How many trajectories are there? How many temporal steps are there? And how cells should be sampled based on the annotation table for each trajectory.    
 
