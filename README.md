@@ -24,8 +24,22 @@ The jupyter notebooks demonstrating how to prepare, train, and evaluate the Gene
 ## Tutorial
 
 ### 0. Install GeneSys
+```
+pip install genesys
+```
 
 ### 1. Prepare your inputs
+GeneSys requires these inputs to train:
+
+1. scRNA-seq data : Filtered cell-by-gene matrix (.mtx), cell barcodes (.tsv), gene ids/ feature names (.tsv)
+
+2. Cell annotations : The annotation table (.tsv) should include two columns, one for the categorical labels (cell types, conditions ... etc), another for temporal steps (treatment time points, dev stages, time bins)
+   
+3. Cell lineage blueprint : The cell lineage table (.tsv) should include how each trajectory (rows) is defined. How many trajectories are there? How many temporal steps are there? And how cells should be sampled based on the annotation table for each trajectory.    
+
+```
+
+```
 
 ### 2. Train GeneSys
 
