@@ -36,7 +36,7 @@ GeneSys requires these inputs to train:
    
 **c. Cell lineage blueprint** : The cell lineage table (.tsv) should include how each trajectory (row) is defined. How many trajectories (rows) are there? How many temporal steps (columns) are there? And how cells should be sampled based on the annotation table for each trajectory (biological knowledge or hypothesis).
 
-Example toy data can be found in toy_data folder.
+Example toy data can be found in **toy_data** folder.
 
 ```
 
