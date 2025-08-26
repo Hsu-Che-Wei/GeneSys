@@ -27,7 +27,7 @@ The jupyter notebooks demonstrating how to prepare, train, and evaluate the Gene
 pip install genesys
 ```
 
-### 1. Prepare your inputs
+### 1. Prepare your inputs (X)
 GeneSys requires these inputs to train:
 
 **a. scRNA-seq data** : 
@@ -59,7 +59,7 @@ genesys --train --custom matrix.mtx barcodes.tsv genes.tsv -anno annotations.tsv
 ```
 The output includes the trained model (.pth) and the training log (.pdf)
 
-### 3. GeneSys-generated transcriptomes
+### 3. GeneSys-generated transcriptomes (P)
 
 ```
 genesys --generate trained_model.pth -anno annotations.tsv -bprint lineage.tsv -n_traj_to_generate = 2000  
