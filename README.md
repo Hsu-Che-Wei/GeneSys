@@ -30,11 +30,17 @@ pip install genesys
 ### 1. Prepare your inputs
 GeneSys requires these inputs to train:
 
-**a. scRNA-seq data** : Filtered cell-by-gene matrix (.mtx), cell barcodes (.tsv), gene ids/ feature names (.tsv)
+**a. scRNA-seq data** : 
 
-**b. Cell annotations** : The annotation table (.tsv) should include three columns named 'barcode', 'label' and 'time'. 'barcode' for the cell barcodes in the scRNA-seq data, 'label' for the categorical labels (cell types, conditions ... etc), and 'time' for temporal steps (treatment time points, dev stages, time bins).
+Filtered cell-by-gene matrix (.mtx), cell barcodes (.tsv), gene ids/ feature names (.tsv)
+
+**b. Cell annotations** : 
+
+The annotation table (.tsv) should include three columns named 'barcode', 'label' and 'time'. 'barcode' for the cell barcodes in the scRNA-seq data, 'label' for the categorical labels (cell types, conditions ... etc), and 'time' for temporal steps (treatment time points, dev stages, time bins).
    
-**c. Cell lineage blueprint** : The cell lineage table (.tsv) should include how each trajectory (row) is defined. How many trajectories (rows) are there? How many temporal steps (columns) are there? And how cells should be sampled based on the annotation table for each trajectory (biological knowledge or hypothesis).
+**c. Cell lineage blueprint** : 
+
+The cell lineage table (.tsv) should include how each trajectory (row) is defined. How many trajectories (rows) are there? How many temporal steps (columns) are there? And how cells should be sampled based on the annotation table for each trajectory (biological knowledge or hypothesis).
 
 Example toy data can be found in **toy_data** folder.
 
