@@ -64,7 +64,7 @@ genesys --train --custom matrix.mtx barcodes.tsv genes.tsv -anno annotations.tsv
 
 **c. [AnnData](https://anndata.readthedocs.io/en/stable/) as the input** : 
 
-If an anndata is provided, there should be metadata columns 'label' and 'time' in the anndata.obs. The expression matrix provided in anndata.X will be scaled for training.
+If an anndata is provided, there should be metadata columns 'label' and 'time' in the anndata.obs. The expression matrix provided in anndata.X will be scaled for training. If the anndata.X provided are raw counts, they will first be log-normalized before scaling.
 
 ```
 genesys --train --anndata sample.h5ad -bprint lineage.tsv  
