@@ -4,8 +4,7 @@
 ---
 Temporal single-cell transcriptomics enables the reconstruction of dynamic gene expression changes during development, yet its analytical power is often limited by data sparsity, technical noise, and imbalanced cell-type representation across time points. To overcome these challenges, we present GeneSys (Generative Modeling of Developmental System), a generative deep learning model that simulates single-cell transcriptomic landscapes under developmental constraints and informed by prior biological knowledge or user-defined hypotheses. GeneSys integrates a temporal variational autoencoder with a cell-type classifier and requires a lineage blueprint as input, allowing it to model the temporal transitions of transcriptional states with cell-type specificity. Leveraging data from Arabidopsis thaliana roots and mouse embryos, we show that GeneSys learns robust developmental trajectories, generates realistic and representative transcriptomes, and enhances gene prioritization accuracy compared to unregularized scRNA-seq data.
 
-Our manuscript is available on [bioRxiv](https://doi.org/10.1101/2025.08.20.671385).
-The model will be available for easy installation via pip soon. Please stay tuned.
+**Our manuscript is available on [bioRxiv](https://doi.org/10.1101/2025.08.20.671385).**
 
 ![Screenshot](images/Image1.png)
 
@@ -31,11 +30,11 @@ pip install genesys
 ### 1. Prepare your inputs
 GeneSys requires these inputs to train:
 
-1. scRNA-seq data : Filtered cell-by-gene matrix (.mtx), cell barcodes (.tsv), gene ids/ feature names (.tsv)
+**a. scRNA-seq data** : Filtered cell-by-gene matrix (.mtx), cell barcodes (.tsv), gene ids/ feature names (.tsv)
 
-2. Cell annotations : The annotation table (.tsv) should include two columns, one for the categorical labels (cell types, conditions ... etc), another for temporal steps (treatment time points, dev stages, time bins)
+**b. Cell annotations** : The annotation table (.tsv) should include two columns, one for the categorical labels (cell types, conditions ... etc), another for temporal steps (treatment time points, dev stages, time bins)
    
-3. Cell lineage blueprint : The cell lineage table (.tsv) should include how each trajectory (rows) is defined. How many trajectories are there? How many temporal steps are there? And how cells should be sampled based on the annotation table for each trajectory.    
+**c. Cell lineage blueprint** : The cell lineage table (.tsv) should include how each trajectory (rows) is defined. How many trajectories are there? How many temporal steps are there? And how cells should be sampled based on the annotation table for each trajectory.    
 
 ```
 
