@@ -47,16 +47,24 @@ Example toy data can be found in **toy_data** folder.
 ### 2. Train GeneSys
 
 #### Raw RNA counts
-Raw RNA counts will be log-normalized and scaled for training
+Raw RNA counts will be log-normalized and scaled for training.
 ```
 genesys --train matrix.mtx barcodes.tsv genes.tsv -anno annotations.tsv -bprint lineage.tsv  
 ```
 #### User-provided normalized values
-User-provided normalized/corrected values will be scaled for training
+User-provided normalized/corrected values will be scaled for training.
 
 ```
 genesys --train --custom matrix.mtx barcodes.tsv genes.tsv -anno annotations.tsv -bprint lineage.tsv  
 ```
+
+#### AnnData as the input
+If an anndata is provided, there should be metadata columns 'label' and 'time' in the anndata.obs. The expression matrix provided in anndata.X will be scaled for training.
+
+```
+genesys --train --anndata sample.h5ad -bprint lineage.tsv  
+```
+
 The output includes the trained model (.pth) and the training log (.pdf)
 
 ### 3. GeneSys-generated transcriptomes (P)
