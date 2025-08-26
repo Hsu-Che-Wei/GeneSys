@@ -20,7 +20,7 @@ The jupyter notebooks demonstrating how to prepare, train, and evaluate the Gene
 
 ---
 
-## Tutorial
+## Tutorial (Under development)
 
 ### 0. Install GeneSys
 ```
