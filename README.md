@@ -58,7 +58,7 @@ User-provided normalized/corrected values will be scaled for training.
 genesys --train --custom matrix.mtx barcodes.tsv genes.tsv -anno annotations.tsv -bprint lineage.tsv  
 ```
 
-#### AnnData as the input
+#### [AnnData](https://anndata.readthedocs.io/en/stable/) as the input
 If an anndata is provided, there should be metadata columns 'label' and 'time' in the anndata.obs. The expression matrix provided in anndata.X will be scaled for training.
 
 ```
