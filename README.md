@@ -21,7 +21,13 @@ The jupyter notebooks demonstrating how to prepare, train, and evaluate the Gene
 
 ## Tutorial
 
+### 0. Install GeneSys
+
 ### 1. Prepare your inputs
+
+### 2. Train GeneSys
+
+### 3. Evaluate trained GeneSys model
 
 
 
