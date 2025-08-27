@@ -77,7 +77,7 @@ The output includes the trained model (.pth) and the training log (.pdf)
 ```
 genesys --generate trained_model.pth -anno annotations.tsv -bprint lineage.tsv -n_traj_to_generate = 2000  
 ```
-The output includes the generated data in mtx and anndataformat.
+The output includes the generated data in mtx and anndata format.
 
 
 
