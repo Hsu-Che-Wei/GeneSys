@@ -36,7 +36,7 @@ Filtered cell-by-gene matrix (.mtx), cell barcodes (.tsv), gene ids/ feature nam
 
 **b. Cell annotations** : 
 
-The annotation table (.tsv) should include three columns named 'barcode', 'label' and 'time'. 'barcode' for the cell barcodes in the scRNA-seq data, 'label' for the categorical labels (cell types, conditions ... etc), and 'time' for temporal steps (treatment time points, dev stages, time bins).
+The annotation table (.tsv) should include three columns named 'barcode', 'label' and 'time'. 'barcode' for the cell barcodes in the scRNA-seq data, 'label' for the categorical labels (cell types, conditions ... etc), and 'time' for temporal steps (treatment time points, dev stages, time bins), which should be in numeric order starting from 1 (e.g. 1, 2, 3, ... n).
    
 **c. Cell lineage blueprint** : 
 
