@@ -32,15 +32,15 @@ GeneSys requires these inputs to train:
 
 **a. scRNA-seq data** : 
 
-Filtered cell-by-gene matrix (.mtx), cell barcodes (.tsv), gene ids/ feature names (.tsv)
+Filtered cell-by-gene matrix (.mtx), cell barcodes (.txt), gene ids/ feature names (.txt)
 
 **b. Cell annotations** : 
 
-The annotation table (.tsv) should include three columns named 'barcode', 'label' and 'time'. 'barcode' for the cell barcodes in the scRNA-seq data, 'label' for the categorical labels (cell types, conditions ... etc), and 'time' for temporal steps (treatment time points, dev stages, time bins).
+The annotation table (.txt) should include three columns named 'barcode', 'label' and 'time'. 'barcode' for the cell barcodes in the scRNA-seq data, 'label' for the categorical labels (cell types, conditions ... etc), and 'time' for temporal steps (treatment time points, dev stages, time bins), which should be in numeric order starting from 1 (e.g. 1, 2, 3, ... n).
    
 **c. Cell lineage blueprint** : 
 
-The cell lineage table (.tsv) should include how each trajectory (row) is defined. How many trajectories (rows) are there? How many temporal steps (columns) are there? And how cells should be sampled based on the annotation table for each trajectory (biological knowledge or hypothesis).
+The cell lineage table (.txt) should include how each trajectory (row) is defined. How many trajectories (rows) are there? How many temporal steps (columns) are there? And how cells should be sampled based on the annotation table for each trajectory (biological knowledge or hypothesis).
 
 Example toy data can be found in **toy_data** folder.
 
@@ -52,14 +52,14 @@ There are options for the input data:
 Raw RNA counts will be log-normalized and scaled for training.
 
 ```
-genesys --train matrix.mtx barcodes.tsv genes.tsv -anno annotations.tsv -bprint lineage.tsv  
+genesys --train matrix.mtx barcodes.tsv genes.tsv -anno annotations.txt -bprint lineage.txt  
 ```
 **b. User-provided normalized values** : 
 
 User-provided normalized/corrected values will be scaled for training.
 
 ```
-genesys --train --custom matrix.mtx barcodes.tsv genes.tsv -anno annotations.tsv -bprint lineage.tsv  
+genesys --train --custom matrix.mtx barcodes.txt genes.tsv -anno annotations.txt -bprint lineage.tsv  
 ```
 
 **c. [AnnData](https://anndata.readthedocs.io/en/stable/) as the input** : 
@@ -67,7 +67,7 @@ genesys --train --custom matrix.mtx barcodes.tsv genes.tsv -anno annotations.tsv
 If an anndata is provided, there should be metadata columns 'label' and 'time' in the anndata.obs. The expression matrix provided in anndata.X will be scaled for training. If the anndata.X provided are raw counts, they will first be log-normalized before scaling.
 
 ```
-genesys --train --anndata sample.h5ad -bprint lineage.tsv  
+genesys --train --anndata sample.h5ad -bprint lineage.txt  
 ```
 
 The output includes the trained model (.pth) and the training log (.pdf)
@@ -75,7 +75,7 @@ The output includes the trained model (.pth) and the training log (.pdf)
 ### 3. GeneSys-generated transcriptomes (P)
 
 ```
-genesys --generate trained_model.pth -anno annotations.tsv -bprint lineage.tsv -n_traj_to_generate = 2000  
+genesys --generate trained_model.pth -anno annotations.txt -bprint lineage.txt -n_traj_to_generate = 2000  
 ```
 The output includes the generated data in mtx and anndata format.
 
