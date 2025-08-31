@@ -1,0 +1,10 @@
+Quiescent Center	Columella	Columella	Columella	Columella	Columella	Columella	Columella	Columella	Columella	Columella
+Quiescent Center	Lateral Root Cap	Lateral Root Cap	Lateral Root Cap	Lateral Root Cap	Lateral Root Cap	Lateral Root Cap	Lateral Root Cap	Lateral Root Cap	Lateral Root Cap	Lateral Root Cap
+Quiescent Center	Phloem	Phloem	Phloem	Phloem	Phloem	Phloem	Phloem	Phloem	Phloem	Phloem
+Quiescent Center	Xylem	Xylem	Xylem	Xylem	Xylem	Xylem	Xylem	Xylem	Xylem	Xylem
+Quiescent Center	Procambium	Procambium	Procambium	Procambium	Procambium	Procambium	Procambium	Procambium	Procambium	Procambium
+Quiescent Center	Pericycle	Pericycle	Pericycle	Pericycle	Pericycle	Pericycle	Pericycle	Pericycle	Pericycle	Pericycle
+Quiescent Center	Endodermis	Endodermis	Endodermis	Endodermis	Endodermis	Endodermis	Endodermis	Endodermis	Endodermis	Endodermis
+Quiescent Center	Cortex	Cortex	Cortex	Cortex	Cortex	Cortex	Cortex	Cortex	Cortex	Cortex
+Quiescent Center	Atrichoblast	Atrichoblast	Atrichoblast	Atrichoblast	Atrichoblast	Atrichoblast	Atrichoblast	Atrichoblast	Atrichoblast	Atrichoblast
+Quiescent Center	Trichoblast	Trichoblast	Trichoblast	Trichoblast	Trichoblast	Trichoblast	Trichoblast	Trichoblast	Trichoblast	Trichoblast
