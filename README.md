@@ -67,7 +67,7 @@ genesys --train --custom matrix.mtx barcodes.txt genes.tsv -anno annotations.txt
 If an anndata is provided, there should be metadata columns 'label' and 'time' in the anndata.obs. The expression matrix provided in anndata.X will be scaled for training. If the anndata.X provided are raw counts, they will first be log-normalized before scaling.
 
 ```
-genesys --train --anndata sample.h5ad -bprint lineage.txt  
+genesys --train --anndata Root_Atlas_RNA_downsampled_2400_cells.h5ad -bprint lineage.txt  
 ```
 
 The output includes the trained model (.pth) and the training log (.pdf)
