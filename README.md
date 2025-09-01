@@ -24,14 +24,13 @@ The jupyter notebooks demonstrating how to prepare, train, and evaluate the Gene
 
 ### 0. Install GeneSys
 ```
-## Dependencies: Create conda environment
+## Create conda environment (ignore jupyterlab if you don't use jupyter notebooks)
 conda create -n genesys -c conda-forge -c anaconda jupyterlab pytorch-gpu python=3.8 -y
 conda activate genesys
 
+## Install dependencies and genesys
 pip install networkx
-pip install scanpy 
-```
-```
+pip install scanpy
 pip install genesys
 ```
 
