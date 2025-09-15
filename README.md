@@ -66,7 +66,7 @@ genesys --train matrix.mtx barcodes.tsv genes.tsv -anno annotations.txt -bprint 
 User-provided normalized/corrected values will be scaled for training.
 
 ```
-genesys --train --custom matrix.mtx barcodes.txt genes.tsv -anno annotations.txt -bprint lineage.tsv  
+genesys --train --custom matrix.mtx barcodes.txt genes.tsv -anno annotations.txt -bprint lineage.txt  
 ```
 
 **c. [AnnData](https://anndata.readthedocs.io/en/stable/) as the input** : 
