@@ -29,10 +29,10 @@ conda create -n genesys -c conda-forge -c anaconda jupyterlab pytorch-gpu python
 conda activate genesys
 
 ## Clone the github repo
-git clone https://github.com/Hsu-Che-Wei/GeneSys.git ./
+git clone https://github.com/Hsu-Che-Wei/GeneSys.git
 
 ## Install genesys
-cd ./genesys
+cd ./GeneSys/genesys
 pip install -e .
 ```
 
