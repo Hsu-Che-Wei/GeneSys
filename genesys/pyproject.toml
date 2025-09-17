@@ -1,0 +1,10 @@
+[project]
+name = "genesys"
+version = "1.0.0"
+dependencies = ["scanpy", "networkx"]
+
+[project.scripts]
+genesys = "genesys_cli:main"
+
+[tool.setuptools]
+py-modules = ["genesys_cli", "genesys_model"]
