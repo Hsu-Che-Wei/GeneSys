@@ -34,6 +34,9 @@ git clone https://github.com/Hsu-Che-Wei/GeneSys.git
 ## Install genesys
 cd ./GeneSys/genesys
 pip install -e .
+
+## To the folder/directory where the data sets are stored
+cd ../toy_data 
 ```
 
 ### 1. Prepare your inputs (X)
