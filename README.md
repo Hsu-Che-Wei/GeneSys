@@ -73,7 +73,7 @@ genesys --train --raw_counts --anndata ./Root_Atlas_RNA_downsampled_2400_cells.h
 genesys --train --anndata ./Root_Atlas_SCT_downsampled_2400_cells.h5ad --bprint ./lineage.txt --epochs 30 --batch_size 128 --verbose
 ```
 
-**b. Raw RNA counts** : 
+**b. Raw RNA counts cell-by-gene matrix** : 
 
 Raw RNA counts will be log-normalized and scaled for training.
 
@@ -87,7 +87,11 @@ The output includes the trained model (.pth) and the training log (.pdf)
 ### 3. GeneSys-generated transcriptomes (P)
 
 ```
+## Anndata
 genesys --anndata ./Root_Atlas_RNA_downsampled_2400_cells.h5ad --bprint ./lineage.txt --batch_size 128 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_2400_cells"
+
+## Cell-by-gene matrix
+genesys --anndata ./ --anno ./annotations.txt --bprint ./lineage.txt --batch_size 128 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_2400_cells"
 ```
 The output includes the generated data in anndata format (.h5ad).
 
