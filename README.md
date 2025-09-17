@@ -66,7 +66,11 @@ There are options for the input data:
 **a. [AnnData](https://anndata.readthedocs.io/en/stable/) as the input** : 
 
 ```
-genesys --train --anndata ./Root_Atlas_RNA_downsampled_2400_cells.h5ad --bprint ./lineage.txt --epochs 30 --batch_size 128 --verbose 
+## RNA counts
+genesys --train --raw_counts --anndata ./Root_Atlas_RNA_downsampled_2400_cells.h5ad --bprint ./lineage.txt --epochs 30 --batch_size 128 --verbose
+
+## Normalized and/or corrected values
+genesys --train --anndata ./Root_Atlas_SCT_downsampled_2400_cells.h5ad --bprint ./lineage.txt --epochs 30 --batch_size 128 --verbose
 ```
 
 **b. Raw RNA counts** : 
