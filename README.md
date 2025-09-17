@@ -109,13 +109,21 @@ genesys --anndata ./Root_Atlas_RNA_downsampled_20000_cells.h5ad --bprint ./linea
 
 ### 5. Parameters glossary
 
---anndata : Path to anndata (.h5ad) or cell-by-gene matrices
+--anndata : Path to anndata (.h5ad) or cell-by-gene matrices.
 
---bprint : Path to cell lineage blueprint (lineage.txt)
+--bprint : Path to cell lineage blueprint (lineage.txt).
+
+--anno : Path to annotation file (annotation.txt).
 
 --train : A flag determining whether training or generation is run. For generation, remove this flag.
 
 --raw_counts : A flag determining whether raw RNA counts are provided. For normalized values and/or corrected values, remove this flag.
+
+--epochs : Number of training epoch per training cycle.
+
+--max_cycles : Maximum number of training cycle.
+
+
 
 
 
