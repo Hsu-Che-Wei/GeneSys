@@ -28,10 +28,12 @@ The jupyter notebooks demonstrating how to prepare, train, and evaluate the Gene
 conda create -n genesys -c conda-forge -c anaconda jupyterlab pytorch-gpu python=3.8 -y
 conda activate genesys
 
-## Install dependencies and genesys
-pip install networkx
-pip install scanpy
-pip install genesys
+## Clone the github repo
+git clone https://github.com/Hsu-Che-Wei/GeneSys.git ./
+
+## Install genesys
+cd ./genesys
+pip install -e .
 ```
 
 ### 1. Prepare your inputs (X)
