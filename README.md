@@ -127,6 +127,22 @@ genesys --anndata ./Root_Atlas_RNA_downsampled_20000_cells.h5ad --bprint ./linea
 
 --lr : Starting learning rate for training.
 
+--patience : 
+
+--factor :
+
+--threshold : 
+
+--path :
+
+--save_prefix : 
+
+--device : 
+
+--verbose : 
+
+
+
 
 
 
