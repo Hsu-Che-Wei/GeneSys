@@ -123,6 +123,12 @@ genesys --anndata ./Root_Atlas_RNA_downsampled_20000_cells.h5ad --bprint ./linea
 
 --max_cycles : Maximum number of training cycle.
 
+--batch_size : Number of trajectories trained/generated per batch.
+
+--lr : Starting learning rate for training.
+
+
+
 
 
 
