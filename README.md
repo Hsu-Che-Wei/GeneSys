@@ -78,7 +78,8 @@ genesys --train --anndata ./Root_Atlas_SCT_downsampled_2400_cells.h5ad --bprint 
 Raw RNA counts will be log-normalized and scaled for training.
 
 ```
-genesys --train ./matrix.mtx ./barcodes.tsv ./genes.tsv --anno ./annotations.txt --bprint ./lineage.txt --epochs 30 --batch_size 128 --verbose 
+## Provide --anndata with directory to where matrix.mtx barcodes.tsv genes.tsv is stored
+genesys --train --anndata ./ --anno ./annotations.txt --bprint ./lineage.txt --epochs 30 --batch_size 128 --verbose 
 ```
 
 The output includes the trained model (.pth) and the training log (.pdf)
