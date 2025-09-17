@@ -79,7 +79,7 @@ Raw RNA counts will be log-normalized and scaled for training.
 
 ```
 ## Provide --anndata with directory to where matrix.mtx barcodes.tsv genes.tsv is stored
-genesys --train --raw_counts --anndata ./cell_by_gene_matrix --anno ./annotations.txt --bprint ./lineage.txt --epochs 30 --batch_size 128 --verbose 
+genesys --train --raw_counts --anndata ./cell_by_gene_matrix/ --anno ./annotations.txt --bprint ./lineage.txt --epochs 30 --batch_size 128 --verbose 
 ```
 
 The output includes the trained model (.pth) and the training log (.pdf)
@@ -91,7 +91,7 @@ The output includes the trained model (.pth) and the training log (.pdf)
 genesys --anndata ./Root_Atlas_RNA_downsampled_2400_cells.h5ad --bprint ./lineage.txt --batch_size 128 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_2400_cells"
 
 ## Cell-by-gene matrix
-genesys --anndata ./cell_by_gene_matrix --anno ./annotations.txt --bprint ./lineage.txt --batch_size 128 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_2400_cells"
+genesys --anndata ./cell_by_gene_matrix/ --anno ./annotations.txt --bprint ./lineage.txt --batch_size 128 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_2400_cells"
 ```
 The output includes the generated data in anndata format (.h5ad).
 
