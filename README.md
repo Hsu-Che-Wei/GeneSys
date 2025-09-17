@@ -51,32 +51,27 @@ The annotation table (.txt) should include three columns named 'barcode', 'label
 
 The cell lineage table (.txt) should include how each trajectory (row) is defined. How many trajectories (rows) are there? How many temporal steps (columns) are there? And how cells should be sampled based on the annotation table for each trajectory (biological knowledge or hypothesis).
 
+**Recommendation**:
+
+We encourage users to provide the training data in the format of [AnnData](https://anndata.readthedocs.io/en/stable/). The annotations should be stored as 'label' and 'time' metadata columns in the anndata.obs. The expression matrix provided in anndata.X will be scaled for training. If the anndata.X provided are raw counts, they will first be log-normalized before scaling.
+
 Example toy data can be found in **toy_data** folder.
 
 ### 2. Train GeneSys
 There are options for the input data:
 
-**a. Raw RNA counts** : 
+**a. [AnnData](https://anndata.readthedocs.io/en/stable/) as the input** : 
+
+```
+genesys --train --anndata ./Root_Atlas_RNA_downsampled_2400_cells.h5ad --bprint ./lineage.txt --epochs 30 --batch_size 128 --verbose 
+```
+
+**b. Raw RNA counts** : 
 
 Raw RNA counts will be log-normalized and scaled for training.
 
 ```
-genesys --train matrix.mtx barcodes.tsv genes.tsv -anno annotations.txt -bprint lineage.txt  
-```
-**b. User-provided normalized values** : 
-
-User-provided normalized/corrected values will be scaled for training.
-
-```
-genesys --train --custom matrix.mtx barcodes.txt genes.tsv -anno annotations.txt -bprint lineage.txt  
-```
-
-**c. [AnnData](https://anndata.readthedocs.io/en/stable/) as the input** : 
-
-If an anndata is provided, there should be metadata columns 'label' and 'time' in the anndata.obs. The expression matrix provided in anndata.X will be scaled for training. If the anndata.X provided are raw counts, they will first be log-normalized before scaling.
-
-```
-genesys --train --anndata Root_Atlas_RNA_downsampled_2400_cells.h5ad -bprint lineage.txt  
+genesys --train ./matrix.mtx ./barcodes.tsv ./genes.tsv --anno ./annotations.txt --bprint ./lineage.txt --epochs 30 --batch_size 128 --verbose 
 ```
 
 The output includes the trained model (.pth) and the training log (.pdf)
@@ -84,9 +79,18 @@ The output includes the trained model (.pth) and the training log (.pdf)
 ### 3. GeneSys-generated transcriptomes (P)
 
 ```
-genesys --generate trained_model.pth -anno annotations.txt -bprint lineage.txt -n_traj_to_generate = 2000  
+genesys --anndata ./Root_Atlas_RNA_downsampled_2400_cells.h5ad --bprint ./lineage.txt --batch_size 128 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_2400_cells"
 ```
-The output includes the generated data in mtx and anndata format.
+The output includes the generated data in anndata format (.h5ad).
+
+### 4. Real-world applications
+
+The examples shown in 2. and 3. are just for sanity check, in real-word, the data that contains only 2400 cells is not sufficient for training meaningful GeneSys model. We recommend at least 20k cells to try out GeneSys.   
+
+```
+genesys --train --anndata ./Root_Atlas_RNA_downsampled_20000_cells.h5ad --bprint ./lineage.txt --epochs 100 --batch_size 512 --verbose 
+genesys --anndata ./Root_Atlas_RNA_downsampled_20000_cells.h5ad --bprint ./lineage.txt --batch_size 512 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_20000_cells"
+```
 
 
 
