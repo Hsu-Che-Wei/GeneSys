@@ -79,7 +79,7 @@ Raw RNA counts will be log-normalized and scaled for training.
 
 ```
 ## Provide --anndata with directory to where matrix.mtx barcodes.tsv genes.tsv is stored
-genesys --train --anndata ./ --anno ./annotations.txt --bprint ./lineage.txt --epochs 30 --batch_size 128 --verbose 
+genesys --train --raw_counts --anndata ./ --anno ./annotations.txt --bprint ./lineage.txt --epochs 30 --batch_size 128 --verbose 
 ```
 
 The output includes the trained model (.pth) and the training log (.pdf)
