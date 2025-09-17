@@ -88,7 +88,7 @@ The output includes the generated data in anndata format (.h5ad).
 
 ### 4. Real-world applications
 
-The examples shown in 2. and 3. are just for sanity check, in real-word, the data that contains only 2400 cells is not sufficient for training meaningful GeneSys model. We recommend at least 20k cells to try out GeneSys.   
+The toy data examples with 2,400 cells shown in sections 2 and 3 are provided only as a sanity check. In real-world applications, a dataset of 2,400 cells is not sufficient to train a meaningful GeneSys model. We recommend using at least 20,000 cells to effectively try out GeneSys.   
 
 ```
 #Train
