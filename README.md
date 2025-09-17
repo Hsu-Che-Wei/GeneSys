@@ -20,7 +20,7 @@ The jupyter notebooks demonstrating how to prepare, train, and evaluate the Gene
 
 ---
 
-## Tutorial (Under development)
+## Tutorial
 
 ### 0. Install GeneSys
 ```
@@ -79,7 +79,7 @@ genesys --train ./matrix.mtx ./barcodes.tsv ./genes.tsv --anno ./annotations.txt
 
 The output includes the trained model (.pth) and the training log (.pdf)
 
-### 3. GeneSys-generated transcriptomes (P)
+### 3. GeneSys-generated transcriptomes
 
 ```
 genesys --anndata ./Root_Atlas_RNA_downsampled_2400_cells.h5ad --bprint ./lineage.txt --batch_size 128 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_2400_cells"
@@ -97,6 +97,9 @@ genesys --train --anndata ./Root_Atlas_RNA_downsampled_20000_cells.h5ad --bprint
 #Generate 
 genesys --anndata ./Root_Atlas_RNA_downsampled_20000_cells.h5ad --bprint ./lineage.txt --batch_size 512 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_20000_cells"
 ```
+
+### 5. Parameters glossary
+
 
 
 
