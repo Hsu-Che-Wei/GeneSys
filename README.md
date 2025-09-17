@@ -88,7 +88,10 @@ The output includes the generated data in anndata format (.h5ad).
 The examples shown in 2. and 3. are just for sanity check, in real-word, the data that contains only 2400 cells is not sufficient for training meaningful GeneSys model. We recommend at least 20k cells to try out GeneSys.   
 
 ```
-genesys --train --anndata ./Root_Atlas_RNA_downsampled_20000_cells.h5ad --bprint ./lineage.txt --epochs 100 --batch_size 512 --verbose 
+#Train
+genesys --train --anndata ./Root_Atlas_RNA_downsampled_20000_cells.h5ad --bprint ./lineage.txt --epochs 100 --batch_size 512 --verbose
+
+#Generate 
 genesys --anndata ./Root_Atlas_RNA_downsampled_20000_cells.h5ad --bprint ./lineage.txt --batch_size 512 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_20000_cells"
 ```
 
