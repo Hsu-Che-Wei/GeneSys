@@ -52,7 +52,7 @@ The cell lineage table (.txt) should include how each trajectory (row) is define
 
 We encourage users to provide the training data in the format of [AnnData](https://anndata.readthedocs.io/en/stable/). The annotations should be stored as 'label' and 'time' metadata columns in the anndata.obs. The expression matrix provided in anndata.X will be scaled for training. If the anndata.X provided are raw counts, they will first be log-normalized before scaling.
 
-Example toy data can be found in **toy_data** folder.
+Example toy data can be found in [toy_data](./toy_data) folder.
 
 ### 2. Train GeneSys
 There are options for the input data:
