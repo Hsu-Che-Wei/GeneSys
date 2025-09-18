@@ -116,16 +116,16 @@ genesys --anndata ./Root_Atlas_RNA_downsampled_20000_cells.h5ad --bprint ./linea
 | `--anno`        | Path to annotation file (annotation.txt). |
 | `--train`       | Flag: run training. Remove this flag to run generation. |
 | `--raw_counts`  | Flag: input is raw RNA counts. Remove for normalized/corrected values. |
-| `--epochs`      | Number of training epochs per training cycle. |
-| `--max_cycles`  | Maximum number of training cycles. |
-| `--batch_size`  | Number of trajectories trained/generated per batch. |
-| `--lr`          | Starting learning rate for training. |
-| `--patience`    | How many epochs with no improvement in the monitored metric (e.g., validation loss) to wait before reducing the learning rate.<br>**Example:** With `patience=10`, the scheduler waits 10 epochs after the last improvement before lowering the LR. |
-| `--factor`      | Multiplicative factor to reduce the learning rate when triggered.<br>**Example:** With `factor=0.5` and current LR = 1e-3, it will drop to 5e-4 after patience runs out. Typical values: 0.1 or 0.5. |
-| `--threshold`   | Minimum significant change in the monitored metric to qualify as an "improvement." Changes smaller than this are ignored.<br>**Example:** With `threshold=0.05`, a validation loss drop from 1.000 → 0.995 (0.5%) does **not** count; you’d need at least a 5% relative drop. |
-| `--path`        | Path to where the model checkpoints and training logs are stored. |
-| `--save_prefix` | Prefix for the GeneSys-generated transcriptomes. |
-| `--device`      | GPU (`"cuda"`) or CPU (`"cpu"`) to use for training and generation. |
+| `--epochs`      | Number of training epochs per training cycle. Default=100.|
+| `--max_cycles`  | Maximum number of training cycles. Default=20.|
+| `--batch_size`  | Number of trajectories trained/generated per batch. Default = 512.|
+| `--lr`          | Starting learning rate for training. Default=1e-3.|
+| `--patience`    | How many epochs with no improvement in the monitored metric (e.g., validation loss) to wait before reducing the learning rate.<br>**Example:** With `patience=10`, the scheduler waits 10 epochs after the last improvement before lowering the learning rate. Default=10.|
+| `--factor`      | Multiplicative factor to reduce the learning rate when triggered.<br>**Example:** With `factor=0.5` and current learning rate = 1e-3, it will drop to 5e-4 after patience runs out. Typical values: 0.1 or 0.5. Default=0.5.|
+| `--threshold`   | Minimum significant change in the monitored metric to qualify as an "improvement." Changes smaller than this are ignored.<br>**Example:** With `threshold=0.05`, a validation loss drop from 1.000 → 0.995 (0.5%) does **not** count; you’d need at least a 5% relative drop. Default=0.05.|
+| `--path`        | Path to where the model checkpoints and training logs are stored. Default="./checkpoints".|
+| `--save_prefix` | Prefix for the GeneSys-generated transcriptomes. Default="Data_Set_1".|
+| `--device`      | GPU (`"cuda"`) or CPU (`"cpu"`) to use for training and generation. Default = "cuda" if available.|
 | `--verbose`     | Flag: print real-time running information. Remove this flag to silence. |
 
 
