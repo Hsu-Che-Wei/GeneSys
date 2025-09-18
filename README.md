@@ -55,7 +55,7 @@ We encourage users to provide training data in the [AnnData](https://anndata.rea
 Example toy data can be found in [toy_data](./toy_data) folder.
 
 ### 2. Train GeneSys
-Estimated running time for toy data is 10 mins on one NVDIA P100 GPU. Should expect less training time on more advanced GPUs.
+Estimated running time for toy data is 10 mins on one NVIDIA P100 GPU. Should expect less training time on more advanced GPUs.
 
 **a. [AnnData](https://anndata.readthedocs.io/en/stable/) as the input** : 
 
