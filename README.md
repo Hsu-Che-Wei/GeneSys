@@ -108,8 +108,10 @@ genesys --anndata ./Root_Atlas_RNA_downsampled_20000_cells.h5ad --bprint ./linea
 ```
 
 ### 5. Parameters glossary
-
---anndata : Path to anndata (.h5ad) or cell-by-gene matrices.
+```
+--anndata :
+```
+Path to anndata (.h5ad) or cell-by-gene matrices.
 
 --bprint : Path to cell lineage blueprint (lineage.txt).
 
