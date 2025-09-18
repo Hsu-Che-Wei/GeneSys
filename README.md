@@ -35,7 +35,7 @@ cd ../toy_data
 ```
 
 ### 1. Prepare your inputs
-Essentially, GeneSys requires three inputs for training: scRNA-seq data, cell annotations, and a cell lineage blueprint. A recommended alternative is to provide an annotated AnnData object together with the cell lineage blueprint. The details of each items are shown below.
+Essentially, GeneSys requires three inputs for training: scRNA-seq data, cell annotations, and a cell lineage blueprint. A recommended alternative is to provide an annotated AnnData object together with the cell lineage blueprint. The details of each items are shown below. Example toy data can be found in [toy_data](./toy_data) folder.
 
 **a. scRNA-seq data** (output of 10X genomics cellranger or our tool [copilot](https://github.com/Hsu-Che-Wei/COPILOT)) : 
 
@@ -53,10 +53,8 @@ The cell lineage table (.txt) should include how each trajectory (row) is define
 
 We encourage users to provide training data in the [AnnData](https://anndata.readthedocs.io/en/stable/) format, which includes (a) the scRNA-seq expression matrix and (b) cell annotations. The expression matrix should be stored in anndata.X, which will be scaled during training. If raw counts are provided in anndata.X, they will first be log-normalized before scaling. Cell annotations should be stored in anndata.obs under the metadata columns named "label" and "time".
 
-Example toy data can be found in [toy_data](./toy_data) folder.
-
 ### 2. Train GeneSys
-The estimated running time for toy data is ~10 mins on one NVIDIA P100 GPU. Less training time is expected when trained on more advanced GPUs. Select the relevant section of the code below according to your input format.
+The estimated running time for toy data is ~10 mins on one NVIDIA P100 GPU. Less training time is expected when trained on more advanced GPUs. Select the relevant section of the code below according to your input format. The output includes the trained model (.pth) and the training log (.pdf)
 
 **Raw RNA counts cell-by-gene matrix** : 
 
@@ -78,11 +76,9 @@ genesys --train --raw_counts --anndata ./Root_Atlas_RNA_downsampled_2400_cells.h
 #genesys --train --anndata ./Root_Atlas_SCT_downsampled_2400_cells.h5ad --bprint ./lineage.txt --epochs 30 --batch_size 128 --verbose
 ```
 
-The output includes the trained model (.pth) and the training log (.pdf)
-
 ### 3. GeneSys-generated transcriptomes (P)
 
-CPU nodes are recommended here as the RAM availability and capacity to handle large data are usually higher. Select the relevant section of the code below according to your input format.
+CPU nodes are recommended here as the RAM availability and capacity to handle large data are usually higher. Select the relevant section of the code below according to your input format. The output includes the generated data in anndata format (.h5ad).
 
 **Raw RNA counts cell-by-gene matrix** :
 ```
@@ -95,8 +91,6 @@ genesys --anndata ./cell_by_gene_matrix/ --anno ./annotations.txt --bprint ./lin
 ## Anndata
 genesys --anndata ./Root_Atlas_RNA_downsampled_2400_cells.h5ad --bprint ./lineage.txt --batch_size 128 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_2400_cells"
 ```
-
-The output includes the generated data in anndata format (.h5ad).
 
 ### 4. Real-world applications (i.e., your own data)
 
