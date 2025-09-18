@@ -1,7 +1,7 @@
 [project]
 name = "genesys"
 version = "1.0.0"
-dependencies = ["scanpy", "networkx"]
+dependencies = ["scanpy", "networkx", " leidenalg"]
 
 [project.scripts]
 genesys = "genesys_cli:main"
