@@ -14,7 +14,7 @@ Temporal single-cell transcriptomics enables the reconstruction of dynamic gene 
 
 ## Tutorial
 
-**This tutorial is effectively stable since September 17th, 2025.**
+**This tutorial has been stable since September 17, 2025. As a reminder, you must train the model before attempting generation.**
 
 ### 0. Install GeneSys (Please use GPU node to install !!)
 ```
@@ -55,7 +55,7 @@ We encourage users to provide the training data in the format of [AnnData](https
 Example toy data can be found in [toy_data](./toy_data) folder.
 
 ### 2. Train GeneSys
-There are options for the input data:
+Estimated running time for toy data is 10 mins on one NVDIA P100 GPU. Should expect less training time on more advanced GPUs.
 
 **a. [AnnData](https://anndata.readthedocs.io/en/stable/) as the input** : 
 
