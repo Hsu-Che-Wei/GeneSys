@@ -48,9 +48,9 @@ The annotation table (.txt) should include three columns named 'barcode', 'label
 
 The cell lineage table (.txt) should include how each trajectory (row) is defined. How many trajectories (rows) are there? How many temporal steps (columns) are there? And how cells should be sampled based on the annotation table for each trajectory (biological knowledge or hypothesis).
 
-**Recommendation**:
+**Alternative (recommended)**:
 
-We encourage users to provide the training data in the format of [AnnData](https://anndata.readthedocs.io/en/stable/). The annotations should be stored as 'label' and 'time' metadata columns in the anndata.obs. The expression matrix provided in anndata.X will be scaled for training. If the anndata.X provided are raw counts, they will first be log-normalized before scaling.
+We encourage users to provide training data in the [AnnData](https://anndata.readthedocs.io/en/stable/) format, which includes (a) the scRNA-seq expression matrix and (b) cell annotations. The expression matrix should be stored in anndata.X, which will be scaled during training. If raw counts are provided in anndata.X, they will first be log-normalized before scaling. Cell annotations should be stored in anndata.obs under the metadata columns "label" and "time".
 
 Example toy data can be found in [toy_data](./toy_data) folder.
 
