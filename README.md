@@ -66,7 +66,7 @@ Raw RNA counts will be log-normalized and scaled for training.
 genesys --train --raw_counts --anndata ./cell_by_gene_matrix/ --anno ./annotations.txt --bprint ./lineage.txt --epochs 30 --batch_size 128 --verbose 
 ```
 
-**\* Alternative (recommended): [AnnData](https://anndata.readthedocs.io/en/stable/) as the input** : 
+**\* Alternative (recommended): AnnData as the input** : 
 
 ```
 ## RNA counts
