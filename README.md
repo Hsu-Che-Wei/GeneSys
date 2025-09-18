@@ -12,14 +12,6 @@ Temporal single-cell transcriptomics enables the reconstruction of dynamic gene 
 
 ---
 
-## For those comfortable with raw Python code and interested in the intricacies of the development process
-
-The source codes used for the GeneSys manuscript are under the code folder.
-
-The jupyter notebooks demonstrating how to prepare, train, and evaluate the GeneSys model can be found under jupyter_notebook folder.
-
----
-
 ## Tutorial
 
 ### 0. Install GeneSys
@@ -127,6 +119,16 @@ genesys --anndata ./Root_Atlas_RNA_downsampled_30000_cells.h5ad --bprint ./linea
 | `--save_prefix` | Prefix for the GeneSys-generated transcriptomes. Default="Data_Set_1".|
 | `--device`      | GPU (`"cuda"`) or CPU (`"cpu"`) to use for training and generation. Default = "cuda" if available.|
 | `--verbose`     | Flag: print real-time running information. Remove this flag to silence. |
+
+---
+
+## For those comfortable with raw Python code and interested in the intricacies of the development process
+
+The source codes used for the GeneSys manuscript are under the code folder.
+
+The jupyter notebooks demonstrating how to prepare, train, and evaluate the GeneSys model can be found under jupyter_notebook folder.
+
+
 
 
 
