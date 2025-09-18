@@ -16,7 +16,7 @@ Temporal single-cell transcriptomics enables the reconstruction of dynamic gene 
 
 **This tutorial is effectively stable since September 17th, 2025.**
 
-### 0. Install GeneSys
+### 0. Install GeneSys (Please use GPU node to install !!)
 ```
 ## Create conda environment (ignore jupyterlab if you don't use jupyter notebooks)
 conda create -n genesys -c conda-forge -c anaconda jupyterlab pytorch-gpu python=3.8 -y
