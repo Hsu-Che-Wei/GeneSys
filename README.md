@@ -14,7 +14,7 @@ Temporal single-cell transcriptomics enables the reconstruction of dynamic gene 
 
 ## Tutorial
 
-**This tutorial has been stable since September 17, 2025. As a reminder, you must train the model before attempting generation.**
+**This tutorial has been stable since September 17, 2025. As a reminder, you must train the model before attempting generation. Please follow the steps in numerical order.**
 
 ### 0. Install GeneSys (Please use GPU node to install !!)
 ```
@@ -104,7 +104,7 @@ genesys --train --raw_counts --anndata ./Root_Atlas_RNA_downsampled_30000_cells.
 genesys --anndata ./Root_Atlas_RNA_downsampled_30000_cells.h5ad --bprint ./lineage.txt --batch_size 512 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_30000_cells"
 ```
 
-### 5. Parameters Glossary
+### Parameters Glossary
 
 | Parameter       | Description |
 |-----------------|-------------|
