@@ -98,11 +98,11 @@ The toy data examples with 2,400 cells shown in sections 2 and 3 are provided on
 
 ```
 ## Train
-## Noticed that Root_Atlas_SCT_downsampled_30000_cells.h5ad is not provided, this is just an example of a real-world applications.
+## Noticed that Root_Atlas_SCT_downsampled_30000_cells.h5ad is not provided, this is just an example of real-world applications.
 genesys --train --raw_counts --anndata ./Root_Atlas_RNA_downsampled_30000_cells.h5ad --bprint ./lineage.txt --epochs 100 --batch_size 512 --verbose
 
 ## Generate
-## Noticed that Root_Atlas_SCT_downsampled_30000_cells.h5ad is not provided, this is just an example of a real-world applications.
+## Noticed that Root_Atlas_SCT_downsampled_30000_cells.h5ad is not provided, this is just an example of real-world applications.
 genesys --anndata ./Root_Atlas_RNA_downsampled_30000_cells.h5ad --bprint ./lineage.txt --batch_size 512 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_30000_cells"
 ```
 
