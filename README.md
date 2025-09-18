@@ -36,7 +36,7 @@ cd ../toy_data
 ### 1. Prepare your inputs (X)
 GeneSys requires these inputs to train:
 
-**a. scRNA-seq data as the format of the output of 10X genomics pipeline** : 
+**a. scRNA-seq data (the output of 10X genomics cellranger or my tool [copilot](https://github.com/Hsu-Che-Wei/COPILOT)) ** : 
 
 Filtered cell-by-gene matrix (.mtx), cell barcodes (.txt), gene ids/ feature names (.txt)
 
