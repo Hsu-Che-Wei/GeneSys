@@ -127,19 +127,19 @@ genesys --anndata ./Root_Atlas_RNA_downsampled_20000_cells.h5ad --bprint ./linea
 
 --lr : Starting learning rate for training.
 
---patience : 
+--patience : How many epochs with no improvement in the monitored metric (e.g. validation loss) to wait before reducing the learning rate. Example: If patience=10, the scheduler waits 10 epochs after the last improvement before lowering the learning rate.
 
---factor :
+--factor : The multiplicative factor to reduce the learning rate by once triggered. Example: If factor=0.5 and current learning rate = 1e-3, it will drop to 5e-4 after patience runs out. Typical values are 0.1 or 0.5.
 
---threshold : 
+--threshold : Minimum significant change in the monitored metric to qualify as an "improvement." If the metric improves by less than threshold, it’s treated as no improvement. Example: With threshold=0.05, a validation loss drop from 1.000 → 0.995 (0.5%) would not count as improvement; you’d need at least a 5% relative drop.
 
---path :
+--path : Path to where the model checkpoints and training logs are stored.
 
---save_prefix : 
+--save_prefix : Prefix for the GeneSys-generated transcriptomes. 
 
---device : 
+--device : GPU ("cuda") or CPU ("cpu") to use for training and generation.
 
---verbose : 
+--verbose : Whether or not to print the real-time running information. Remove this flag to silence. 
 
 
 
