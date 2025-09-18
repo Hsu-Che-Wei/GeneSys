@@ -107,41 +107,27 @@ genesys --train --raw_counts --anndata ./Root_Atlas_RNA_downsampled_20000_cells.
 genesys --anndata ./Root_Atlas_RNA_downsampled_20000_cells.h5ad --bprint ./lineage.txt --batch_size 512 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_20000_cells"
 ```
 
-### 5. Parameters glossary
-```
---anndata :
-```
-Path to anndata (.h5ad) or cell-by-gene matrices.
+### 5. Parameters Glossary
 
---bprint : Path to cell lineage blueprint (lineage.txt).
+| Parameter       | Description |
+|-----------------|-------------|
+| `--anndata`     | Path to anndata (.h5ad) or cell-by-gene matrices. |
+| `--bprint`      | Path to cell lineage blueprint (lineage.txt). |
+| `--anno`        | Path to annotation file (annotation.txt). |
+| `--train`       | Flag: run training. Remove this flag to run generation. |
+| `--raw_counts`  | Flag: input is raw RNA counts. Remove for normalized/corrected values. |
+| `--epochs`      | Number of training epochs per training cycle. |
+| `--max_cycles`  | Maximum number of training cycles. |
+| `--batch_size`  | Number of trajectories trained/generated per batch. |
+| `--lr`          | Starting learning rate for training. |
+| `--patience`    | How many epochs with no improvement in the monitored metric (e.g., validation loss) to wait before reducing the learning rate.<br>**Example:** With `patience=10`, the scheduler waits 10 epochs after the last improvement before lowering the LR. |
+| `--factor`      | Multiplicative factor to reduce the learning rate when triggered.<br>**Example:** With `factor=0.5` and current LR = 1e-3, it will drop to 5e-4 after patience runs out. Typical values: 0.1 or 0.5. |
+| `--threshold`   | Minimum significant change in the monitored metric to qualify as an "improvement." Changes smaller than this are ignored.<br>**Example:** With `threshold=0.05`, a validation loss drop from 1.000 → 0.995 (0.5%) does **not** count; you’d need at least a 5% relative drop. |
+| `--path`        | Path to where the model checkpoints and training logs are stored. |
+| `--save_prefix` | Prefix for the GeneSys-generated transcriptomes. |
+| `--device`      | GPU (`"cuda"`) or CPU (`"cpu"`) to use for training and generation. |
+| `--verbose`     | Flag: print real-time running information. Remove this flag to silence. |
 
---anno : Path to annotation file (annotation.txt).
-
---train : A flag determining whether training or generation is run. For generation, remove this flag.
-
---raw_counts : A flag determining whether raw RNA counts are provided. For normalized values and/or corrected values, remove this flag.
-
---epochs : Number of training epoch per training cycle.
-
---max_cycles : Maximum number of training cycle.
-
---batch_size : Number of trajectories trained/generated per batch.
-
---lr : Starting learning rate for training.
-
---patience : How many epochs with no improvement in the monitored metric (e.g. validation loss) to wait before reducing the learning rate. Example: If patience=10, the scheduler waits 10 epochs after the last improvement before lowering the learning rate.
-
---factor : The multiplicative factor to reduce the learning rate by once triggered. Example: If factor=0.5 and current learning rate = 1e-3, it will drop to 5e-4 after patience runs out. Typical values are 0.1 or 0.5.
-
---threshold : Minimum significant change in the monitored metric to qualify as an "improvement." If the metric improves by less than threshold, it’s treated as no improvement. Example: With threshold=0.05, a validation loss drop from 1.000 → 0.995 (0.5%) would not count as improvement; you’d need at least a 5% relative drop.
-
---path : Path to where the model checkpoints and training logs are stored.
-
---save_prefix : Prefix for the GeneSys-generated transcriptomes. 
-
---device : GPU ("cuda") or CPU ("cpu") to use for training and generation.
-
---verbose : Whether or not to print the real-time running information. Remove this flag to silence. 
 
 
 
