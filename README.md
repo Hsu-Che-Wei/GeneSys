@@ -64,7 +64,8 @@ There are options for the input data:
 genesys --train --raw_counts --anndata ./Root_Atlas_RNA_downsampled_2400_cells.h5ad --bprint ./lineage.txt --epochs 30 --batch_size 128 --verbose
 
 ## Normalized and/or corrected values
-genesys --train --anndata ./Root_Atlas_SCT_downsampled_2400_cells.h5ad --bprint ./lineage.txt --epochs 30 --batch_size 128 --verbose
+## Noticed that Root_Atlas_SCT_downsampled_2400_cells.h5ad is not provided in the toy_data, this is just an example of how such data can be used to train GeneSys.
+#genesys --train --anndata ./Root_Atlas_SCT_downsampled_2400_cells.h5ad --bprint ./lineage.txt --epochs 30 --batch_size 128 --verbose
 ```
 
 **b. Raw RNA counts cell-by-gene matrix** : 
