@@ -57,7 +57,16 @@ Example toy data can be found in [toy_data](./toy_data) folder.
 ### 2. Train GeneSys
 Estimated running time for toy data is 10 mins on one NVIDIA P100 GPU. Should expect less training time on more advanced GPUs.
 
-**a. [AnnData](https://anndata.readthedocs.io/en/stable/) as the input** : 
+**Raw RNA counts cell-by-gene matrix** : 
+
+Raw RNA counts will be log-normalized and scaled for training.
+
+```
+## Provide --anndata with directory to where matrix.mtx barcodes.tsv genes.tsv is stored
+genesys --train --raw_counts --anndata ./cell_by_gene_matrix/ --anno ./annotations.txt --bprint ./lineage.txt --epochs 30 --batch_size 128 --verbose 
+```
+
+**\* Alternative (recommended): [AnnData](https://anndata.readthedocs.io/en/stable/) as the input** : 
 
 ```
 ## RNA counts
@@ -66,15 +75,6 @@ genesys --train --raw_counts --anndata ./Root_Atlas_RNA_downsampled_2400_cells.h
 ## Normalized and/or corrected values
 ## Noticed that Root_Atlas_SCT_downsampled_2400_cells.h5ad is not provided in the toy_data, this is just an example of how such data can be used to train GeneSys.
 #genesys --train --anndata ./Root_Atlas_SCT_downsampled_2400_cells.h5ad --bprint ./lineage.txt --epochs 30 --batch_size 128 --verbose
-```
-
-**b. Raw RNA counts cell-by-gene matrix** : 
-
-Raw RNA counts will be log-normalized and scaled for training.
-
-```
-## Provide --anndata with directory to where matrix.mtx barcodes.tsv genes.tsv is stored
-genesys --train --raw_counts --anndata ./cell_by_gene_matrix/ --anno ./annotations.txt --bprint ./lineage.txt --epochs 30 --batch_size 128 --verbose 
 ```
 
 The output includes the trained model (.pth) and the training log (.pdf)
