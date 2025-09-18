@@ -81,6 +81,8 @@ The output includes the trained model (.pth) and the training log (.pdf)
 
 ### 3. GeneSys-generated transcriptomes (P)
 
+CPU nodes are recommended here as the RAM availability and capacity to handle large data are usually higher.
+
 ```
 ## Anndata
 genesys --anndata ./Root_Atlas_RNA_downsampled_2400_cells.h5ad --bprint ./lineage.txt --batch_size 128 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_2400_cells"
