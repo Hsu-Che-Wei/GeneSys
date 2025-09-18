@@ -26,16 +26,16 @@ conda activate genesys
 ## Clone the github repo
 git clone https://github.com/Hsu-Che-Wei/GeneSys.git
 
-## Install genesys
+## Install Genesys
 cd ./GeneSys/genesys
 pip install -e .
 
-## To the folder/directory where the data sets are stored
+## Go to the folder/directory where the data sets are stored
 cd ../toy_data 
 ```
 
-### 1. Prepare your inputs (X)
-GeneSys requires these inputs to train:
+### 1. Prepare your inputs
+Essentially, GeneSys requires three inputs for training: scRNA-seq data, cell annotations, and a cell lineage blueprint. A recommended alternative is to provide an annotated AnnData object together with the cell lineage blueprint. The details of each items are shown below.
 
 **a. scRNA-seq data** (output of 10X genomics cellranger or our tool [copilot](https://github.com/Hsu-Che-Wei/COPILOT)) : 
 
@@ -56,7 +56,7 @@ We encourage users to provide training data in the [AnnData](https://anndata.rea
 Example toy data can be found in [toy_data](./toy_data) folder.
 
 ### 2. Train GeneSys
-Estimated running time for toy data is 10 mins on one NVIDIA P100 GPU. Should expect less training time on more advanced GPUs.
+The estimated running time for toy data is ~10 mins on one NVIDIA P100 GPU. Less training time is expected when trained on more advanced GPUs. Select the relevant section of the code below according to your input format.
 
 **Raw RNA counts cell-by-gene matrix** : 
 
@@ -82,29 +82,29 @@ The output includes the trained model (.pth) and the training log (.pdf)
 
 ### 3. GeneSys-generated transcriptomes (P)
 
-CPU nodes are recommended here as the RAM availability and capacity to handle large data are usually higher.
+CPU nodes are recommended here as the RAM availability and capacity to handle large data are usually higher. Select the relevant section of the code below according to your input format.
 
 **Raw RNA counts cell-by-gene matrix** :
-```
-## Anndata
-genesys --anndata ./Root_Atlas_RNA_downsampled_2400_cells.h5ad --bprint ./lineage.txt --batch_size 128 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_2400_cells"
-```
-
-**AnnData as the input (recommended)** :
 ```
 ## Cell-by-gene matrix
 genesys --anndata ./cell_by_gene_matrix/ --anno ./annotations.txt --bprint ./lineage.txt --batch_size 128 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_2400_cells"
 ```
 
+**AnnData as the input (recommended)** :
+```
+## Anndata
+genesys --anndata ./Root_Atlas_RNA_downsampled_2400_cells.h5ad --bprint ./lineage.txt --batch_size 128 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_2400_cells"
+```
+
 The output includes the generated data in anndata format (.h5ad).
 
-### 4. Real-world applications
+### 4. Real-world applications (i.e., your own data)
 
 The toy data examples with 2,400 cells shown in sections 2 and 3 are provided only as a sanity check. In real-world applications, a dataset of 2,400 cells is not sufficient to train a meaningful GeneSys model. We recommend using at least 30,000 cells to effectively try out GeneSys.   
 
 ```
 ## Train
-## Noticed that Root_Atlas_SCT_downsampled_30000_cells.h5ad is not provided, this is just an example of real-world applications.
+## Notice that Root_Atlas_SCT_downsampled_30000_cells.h5ad is not provided, this is just an example of real-world applications.
 genesys --train --raw_counts --anndata ./Root_Atlas_RNA_downsampled_30000_cells.h5ad --bprint ./lineage.txt --epochs 100 --batch_size 512 --verbose
 
 ## Generate
