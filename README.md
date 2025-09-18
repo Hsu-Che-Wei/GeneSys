@@ -66,7 +66,7 @@ Raw RNA counts will be log-normalized and scaled for training.
 genesys --train --raw_counts --anndata ./cell_by_gene_matrix/ --anno ./annotations.txt --bprint ./lineage.txt --epochs 30 --batch_size 128 --verbose 
 ```
 
-**\* Alternative (recommended): AnnData as the input** : 
+**AnnData as the input (recommended)** : 
 
 ```
 ## RNA counts
@@ -83,13 +83,18 @@ The output includes the trained model (.pth) and the training log (.pdf)
 
 CPU nodes are recommended here as the RAM availability and capacity to handle large data are usually higher.
 
+**Raw RNA counts cell-by-gene matrix** :
 ```
 ## Anndata
 genesys --anndata ./Root_Atlas_RNA_downsampled_2400_cells.h5ad --bprint ./lineage.txt --batch_size 128 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_2400_cells"
+```
 
+**AnnData as the input (recommended)** :
+```
 ## Cell-by-gene matrix
 genesys --anndata ./cell_by_gene_matrix/ --anno ./annotations.txt --bprint ./lineage.txt --batch_size 128 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_2400_cells"
 ```
+
 The output includes the generated data in anndata format (.h5ad).
 
 ### 4. Real-world applications
