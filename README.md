@@ -15,6 +15,7 @@ Temporal single-cell transcriptomics enables the reconstruction of dynamic gene 
 ## Tutorial
 
 **This tutorial has been stable since September 17, 2025. As a reminder, you must train the model before attempting generation. Please follow the steps in numerical order.**
+![Screenshot](images/Image_tutorial.png)
 
 ### 0. Install GeneSys (Please use GPU node to install !!)
 ```
