@@ -214,6 +214,8 @@ def main():
     if not os.path.exists(args.bprint):
         print(f"[ERR] cell lineage blueprint not found: {args.bprint}", file=sys.stderr)
         sys.exit(1)
+        
+    os.makedirs(args.path, exist_ok=True)
 
     if args.train:
         if ".h5ad" in args.anndata: 
@@ -257,6 +259,7 @@ def main():
             "X_val": X_val, "y_val": y_val,
             "X_test": X_test, "y_test": y_test
         }
+        
         X_path = os.path.join(args.path, "genesys_X.pkl")
         with open(X_path, 'wb') as file_handle:
             pickle.dump(data, file_handle)
