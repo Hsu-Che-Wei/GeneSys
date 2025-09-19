@@ -431,7 +431,7 @@ if __name__ == "__main__":
 
 #### Usage
 ##Train
-#genesys --train --raw_counts --anndata ./Root_Atlas_RNA_downsampled_20000_cells.h5ad --bprint ./lineage.txt --epochs 100 --batch_size 512 --verbose
+#genesys --train --raw_counts --anndata ./Root_Atlas_RNA_downsampled_10000_cells.h5ad --bprint ./lineage.txt --epochs 100 --batch_size 512 --verbose --path ./root_10k_ckpt
 
 ##Generate
-#genesys --anndata ./Root_Atlas_RNA_downsampled_20000_cells.h5ad --bprint ./lineage.txt --batch_size 512 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_20000_cells"
+#genesys --anndata ./Root_Atlas_RNA_downsampled_10000_cells.h5ad --bprint ./lineage.txt --batch_size 512 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_10000_cells" --path ./root_10k_ckpt
