@@ -257,8 +257,8 @@ def main():
             "X_val": X_val, "y_val": y_val,
             "X_test": X_test, "y_test": y_test
         }
-
-        with open("./genesys_X.pkl", 'wb') as file_handle:
+        X_path = os.path.join(args.path, "genesys_X.pkl")
+        with open(X_path, 'wb') as file_handle:
             pickle.dump(data, file_handle)
 
         lineage = pd.read_csv(args.bprint, sep="\t", header=None)
@@ -338,7 +338,8 @@ def main():
             sc.pp.filter_genes(adata, min_cells=3)
             
         genes = [str(g) for g in adata.var.index]   # or adata.var_names
-        with open("./genesys_X.pkl", 'rb') as file_handle:
+        X_path = os.path.join(args.path, "genesys_X.pkl")
+        with open(X_path, 'rb') as file_handle:
             data = pickle.load(file_handle)
 
         lineage = pd.read_csv(args.bprint, sep="\t", header=None)
