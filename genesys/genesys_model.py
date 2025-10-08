@@ -171,11 +171,11 @@ class ClassifierLSTM(nn.Module):
         
         ## From belief to state (b to z)
         ## this is corresponding to P_B distribution in the reference
-        self.b_to_z = DBlock(embedding_dim*2, hidden_dim, embedding_dim*2) 
+        self.b_to_z = DBlock(hidden_dim*2, hidden_dim, embedding_dim*2) 
 
         ## Given belief and state at time t2, infer the state at time t1
         ## infer state
-        self.bz2_infer_z1 = DBlock(embedding_dim*2 + embedding_dim*2, hidden_dim, embedding_dim*2) 
+        self.bz2_infer_z1 = DBlock(hidden_dim*2 + embedding_dim*2, hidden_dim, embedding_dim*2) 
 
         ## Given the state at time t1, model state at time t2 through state transition
         ## state transition
