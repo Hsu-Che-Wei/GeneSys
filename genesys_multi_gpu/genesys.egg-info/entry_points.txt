@@ -1,0 +1,2 @@
+[console_scripts]
+genesys_multi_gpu = genesys_cli_multi_gpu:main

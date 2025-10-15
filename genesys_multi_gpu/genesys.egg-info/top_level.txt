@@ -1,0 +1,2 @@
+genesys_cli_multi_gpu
+genesys_model

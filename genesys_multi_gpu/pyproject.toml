@@ -1,0 +1,10 @@
+[project]
+name = "genesys_multi_gpu"
+version = "1.0.0"
+dependencies = ["scanpy", "networkx", "leidenalg"]
+
+[project.scripts]
+genesys_multi_gpu = "genesys_cli_multi_gpu:main"
+
+[tool.setuptools]
+py-modules = ["genesys_cli_multi_gpu", "genesys_model"]
