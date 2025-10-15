@@ -122,11 +122,14 @@ pip install -e .
 ## Install Genesys Multi-GPU
 cd ./GeneSys/genesys_multi_gpu
 pip install -e .
+
+## Go to the folder/directory where the your data sets are stored
+cd ../your_data_set 
 ```
 
 ### 6. Prepare, train, and generate with GeneSys multi-GPU
 ```
-## Prepare training data (required large memory for large data)
+## Prepare training data (require large memory for large data)
 genesys --prepare_train --raw_counts --anndata ./Root_Atlas_RNA_downsampled_100000_cells.h5ad --bprint ./lineage.txt --epochs 100 --batch_size 512 --verbose --path ./root_100k_ckpt
 
 ## Train
