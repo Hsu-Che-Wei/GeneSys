@@ -78,7 +78,7 @@ genesys --train --raw_counts --anndata ./Root_Atlas_RNA_downsampled_2400_cells.h
 
 ### 3. GeneSys-generated transcriptomes (P)
 
-CPU nodes are recommended here as the RAM availability and capacity to handle large data are usually higher. Select the relevant section of the code below according to your input format. The output includes the generated data in anndata format (.h5ad).
+CPU nodes are recommended here as the RAM availability and capacity to handle large data are usually higher. Select the relevant section of the code below according to your input format. The output includes the generated data in anndata format (.h5ad). The number of trajectories generated can be controlled using the --batch_size parameter. For example, if each trajectory contains 10 time steps and --batch_size is set to 128, the total number of generated cells will be 10 × 128 = 1,280.
 
 **Raw RNA counts cell-by-gene matrix** :
 ```
