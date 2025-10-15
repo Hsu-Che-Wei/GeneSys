@@ -189,6 +189,7 @@ def build_argparser():
     p.add_argument("--anndata", required=True, help="Path to .h5ad file")
     p.add_argument("--bprint", required=True, help="Path to lineage.txt file")
     p.add_argument("--train", action="store_true", help="Run training")
+    p.add_argument("--prepare_train", action="store_true", help="Prepare for training")
     p.add_argument("--raw_counts", action="store_true", help="If the provided X is raw UMI counts")
     p.add_argument("--anno", default="./annotation.txt")
     p.add_argument("--epochs", type=int, default=100, help="Epochs per cycle")
@@ -325,7 +326,55 @@ def main():
 
         fig.tight_layout()
         fig.savefig(log_plot_path, format="pdf")
+        
+    elif args.prepare_train:
+        if ".h5ad" in args.anndata: 
+            adata = sc.read_h5ad(args.anndata)
+            sc.pp.filter_genes(adata, min_cells=3)
+        else:
+            adata = sc.read_10x_mtx(args.anndata)
+            anno = pd.read_csv(args.anno, sep="\t")
+            anno = anno[["barcode", "label", "time"]]  # ensure required columns exist
+            anno = anno.set_index("barcode") 
+            adata.obs["label"] = pd.Categorical(anno["label"])
+            adata.obs["time"]  = pd.to_numeric(anno["time"], errors="raise")
+            sc.pp.filter_genes(adata, min_cells=3)   
 
+        if args.raw_counts :
+            sc.pp.normalize_total(adata, target_sum=1e4)
+            sc.pp.log1p(adata)
+            sc.pp.scale(adata, max_value=10)
+            adata.X[adata.X < 0] = 0
+            mmin = np.amin(adata.X)
+            nor = (np.amax(adata.X) - mmin)
+            adata.X = (adata.X - mmin) / nor
+        else:
+            sc.pp.scale(adata, max_value=10)
+            adata.X[adata.X < 0] = 0
+            mmin = np.amin(adata.X)
+            nor = (np.amax(adata.X) - mmin)
+            adata.X = (adata.X - mmin) / nor
+
+        adata.obs['labels'] = adata.obs['label'].astype(str) + "_" + adata.obs['time'].astype(str)
+
+        X_train, X_test, y_train, y_test = train_test_split(
+            np.array(adata.X), adata.obs['labels'], test_size=0.2,
+            stratify=adata.obs['labels'], shuffle=True, random_state=0
+        )
+        X_train, X_val, y_train, y_val = train_test_split(
+            X_train, y_train, test_size=0.2, stratify=y_train, shuffle=True, random_state=0
+        )
+        data = {
+            "X_train": X_train, "y_train": y_train,
+            "X_val": X_val, "y_val": y_val,
+            "X_test": X_test, "y_test": y_test
+        }
+        
+        print("[INFO] Preparing data for training")        
+        X_path = os.path.join(args.path, "genesys_X.pkl")
+        with open(X_path, 'wb') as file_handle:
+            pickle.dump(data, file_handle)   
+            
     else:
         if ".h5ad" in args.anndata: 
             adata = sc.read_h5ad(args.anndata)
@@ -433,8 +482,12 @@ if __name__ == "__main__":
     main()
 
 #### Usage
+
+## Prepare train:
+#genesys --prepare_train --raw_counts --anndata ./20250528_16S_mannitol_fine_timepoints_integratedonRNAassay_seu5_label_celltypeAnnoLi_RNA.h5ad --bprint ./20250528_16S_mannitol_fine_timepoints_integratedonRNAassay_seu5_celltypeAnnoLi_lineage.txt --epochs 100 --batch_size 512 --verbose --path ./mannitol_ckpt
+
 ##Train
-#genesys --train --raw_counts --anndata ./Root_Atlas_RNA_downsampled_10000_cells.h5ad --bprint ./lineage.txt --epochs 100 --batch_size 512 --verbose --path ./root_10k_ckpt
+#genesys --train --raw_counts --anndata ./Root_Atlas_RNA_downsampled_40000_cells.h5ad --bprint ./lineage.txt --epochs 100 --batch_size 512 --verbose --path ./root_40k_ckpt
 
 ##Generate
-#genesys --anndata ./Root_Atlas_RNA_downsampled_10000_cells.h5ad --bprint ./lineage.txt --batch_size 512 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_10000_cells" --path ./root_10k_ckpt
+#genesys --anndata ./Root_Atlas_RNA_downsampled_40000_cells.h5ad --bprint ./lineage.txt --batch_size 512 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_40000_cells" --path ./root_40k_ckpt
