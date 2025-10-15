@@ -134,6 +134,7 @@ genesys --prepare_train --raw_counts --anndata ./Root_Atlas_RNA_downsampled_1000
 
 ## Train
 #See job_genesys_multi_gpu_train.q
+sbatch job_genesys_multi_gpu_train.q
 
 ## Generate
 genesys --anndata ./Root_Atlas_RNA_downsampled_100000_cells.h5ad --bprint ./lineage.txt --batch_size 512 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_100000_cells_multi_gpu" --path ./root_100k_ckpt
