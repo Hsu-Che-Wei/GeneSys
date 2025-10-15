@@ -132,8 +132,9 @@ cd ../your_data_set
 ## Prepare training data (require large memory for large data)
 genesys --prepare_train --raw_counts --anndata ./Root_Atlas_RNA_downsampled_100000_cells.h5ad --bprint ./lineage.txt --epochs 100 --batch_size 512 --verbose --path ./root_100k_ckpt
 
-## Train
-#See job_genesys_multi_gpu_train.q
+## Launch training script via job scheduler (e.g. SLURM) 
+# See job_genesys_multi_gpu_train.q
+# Note that user should adjust "--batch_size" based on number of GPUs deployed, for example, if batch size of 512 is deployed over 8 GPUs, then the "--batch_size" should be set to 512/8 = 64 
 sbatch job_genesys_multi_gpu_train.q
 
 ## Generate
