@@ -105,6 +105,8 @@ genesys --train --raw_counts --anndata ./Root_Atlas_RNA_downsampled_30000_cells.
 ## Noticed that Root_Atlas_SCT_downsampled_30000_cells.h5ad is not provided, this is just an example of real-world applications.
 genesys --anndata ./Root_Atlas_RNA_downsampled_30000_cells.h5ad --bprint ./lineage.txt --batch_size 512 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_30000_cells"
 ```
+Training data size and results:
+![Screenshot](images/Image3.png)
 
 ### 5. Install GeneSys multi-GPU version for large data or shorter training time (Number of cells >= 50 k)
 ```
