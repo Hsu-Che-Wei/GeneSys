@@ -94,7 +94,7 @@ genesys --anndata ./Root_Atlas_RNA_downsampled_2400_cells.h5ad --bprint ./lineag
 
 ### 4. Real-world applications (i.e., your own data)
 
-The toy data examples with 2,400 cells shown in sections 2 and 3 are provided only as a sanity check. In real-world applications, a dataset of 2,400 cells is not sufficient to train a meaningful GeneSys model. We recommend using at least 30,000 cells to effectively try out GeneSys.   
+The toy data examples with 2,400 cells shown in sections 2 and 3 are provided only as a sanity check. In real-world applications, a dataset of 2,400 cells is not sufficient to train a meaningful GeneSys model. We recommend using at least 20,000 cells to effectively try out GeneSys.   
 
 ```
 ## Train
@@ -104,6 +104,36 @@ genesys --train --raw_counts --anndata ./Root_Atlas_RNA_downsampled_30000_cells.
 ## Generate
 ## Noticed that Root_Atlas_SCT_downsampled_30000_cells.h5ad is not provided, this is just an example of real-world applications.
 genesys --anndata ./Root_Atlas_RNA_downsampled_30000_cells.h5ad --bprint ./lineage.txt --batch_size 512 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_30000_cells"
+```
+
+### 5. Install GeneSys multi-GPU version for large data or shorter training time (Number of cells >= 50 k)
+```
+## Create conda environment (ignore jupyterlab if you don't use jupyter notebooks)
+conda create -n genesys -c conda-forge -c anaconda jupyterlab pytorch-gpu python=3.8 -y
+conda activate genesys
+
+## Clone the github repo
+git clone https://github.com/Hsu-Che-Wei/GeneSys.git
+
+## Install Genesys
+cd ./GeneSys/genesys
+pip install -e .
+
+## Install Genesys Multi-GPU
+cd ./GeneSys/genesys_multi_gpu
+pip install -e .
+```
+
+### 6. Prepare, train, and generate with GeneSys multi-GPU
+```
+## Prepare training data (required large memory for large data)
+genesys --prepare_train --raw_counts --anndata ./Root_Atlas_RNA_downsampled_100000_cells.h5ad --bprint ./lineage.txt --epochs 100 --batch_size 512 --verbose --path ./root_100k_ckpt
+
+## Train
+#See job_genesys_multi_gpu_train.q
+
+## Generate
+genesys --anndata ./Root_Atlas_RNA_downsampled_100000_cells.h5ad --bprint ./lineage.txt --batch_size 512 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_100000_cells_multi_gpu" --path ./root_100k_ckpt
 ```
 
 ### Parameters Glossary
