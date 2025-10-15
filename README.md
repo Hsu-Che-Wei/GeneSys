@@ -78,7 +78,7 @@ genesys --train --raw_counts --anndata ./Root_Atlas_RNA_downsampled_2400_cells.h
 
 ### 3. GeneSys-generated transcriptomes (P)
 
-CPU nodes are recommended here as the RAM availability and capacity to handle large data are usually higher. Select the relevant section of the code below according to your input format. The output includes the generated data in anndata format (.h5ad).
+CPU nodes are recommended here as the RAM availability and capacity to handle large data are usually higher. Select the relevant section of the code below according to your input format. The output includes the generated data in anndata format (.h5ad). The number of trajectories generated can be controlled using the --batch_size parameter. For example, if each trajectory contains 10 time steps and --batch_size is set to 128, the total number of generated cells will be 10 × 128 = 1,280.
 
 **Raw RNA counts cell-by-gene matrix** :
 ```
@@ -129,7 +129,7 @@ cd ../your_data_set
 
 ### 6. Prepare, train, and generate with GeneSys multi-GPU
 ```
-## Prepare training data (require large memory for large data)
+## Prepare training data (recommend to use CPU node with large memory for large data)
 genesys --prepare_train --raw_counts --anndata ./Root_Atlas_RNA_downsampled_100000_cells.h5ad --bprint ./lineage.txt --epochs 100 --batch_size 512 --verbose --path ./root_100k_ckpt
 
 ## Launch training script via job scheduler (e.g. SLURM) 
@@ -137,7 +137,7 @@ genesys --prepare_train --raw_counts --anndata ./Root_Atlas_RNA_downsampled_1000
 # Note that user should adjust "--batch_size" based on number of GPUs deployed, for example, if batch size of 512 is deployed over 8 GPUs, then the "--batch_size" should be set to 512/8 = 64 
 sbatch job_genesys_multi_gpu_train.q
 
-## Generate
+## Generate (recommend to use CPU node with large memory for large data)
 genesys --anndata ./Root_Atlas_RNA_downsampled_100000_cells.h5ad --bprint ./lineage.txt --batch_size 512 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_100000_cells_multi_gpu" --path ./root_100k_ckpt
 ```
 
