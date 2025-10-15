@@ -94,7 +94,7 @@ genesys --anndata ./Root_Atlas_RNA_downsampled_2400_cells.h5ad --bprint ./lineag
 
 ### 4. Real-world applications (i.e., your own data)
 
-The toy data examples with 2,400 cells shown in sections 2 and 3 are provided only as a sanity check. In real-world applications, a dataset of 2,400 cells is not sufficient to train a meaningful GeneSys model. We recommend using at least 20,000 cells to effectively try out GeneSys.   
+The toy data examples with 2,400 cells shown in sections 2 and 3 are provided only as a sanity check. In real-world applications, a dataset of 2,400 cells is not sufficient to train a meaningful GeneSys model. We recommend using at least 20k - 30k cells to effectively try out GeneSys.   
 
 ```
 ## Train
