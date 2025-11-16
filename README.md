@@ -139,6 +139,8 @@ genesys --prepare_train --raw_counts --anndata ./Root_Atlas_RNA_downsampled_1000
 # Note that user should adjust "--batch_size" based on number of GPUs deployed, for example, if batch size of 512 is deployed over 8 GPUs, then the "--batch_size" should be set to 512/8 = 64 
 sbatch job_genesys_multi_gpu_train.q
 
+## If training is interrupted involuntarily, consult the script "job_genesys_multi_gpu_resume_training_example.q" to resume
+
 ## Generate (recommend to use CPU node with large memory for large data)
 genesys --anndata ./Root_Atlas_RNA_downsampled_100000_cells.h5ad --bprint ./lineage.txt --batch_size 512 --verbose --device "cpu" --save_prefix "Root_Atlas_RNA_downsampled_100000_cells_multi_gpu" --path ./root_100k_ckpt
 ```
