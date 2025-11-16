@@ -380,7 +380,9 @@ class ClassifierLSTM(nn.Module):
         hidden = (weight.new(self.n_layers*2, batch_size, self.hidden_dim).to(self.device),
                   weight.new(self.n_layers*2, batch_size, self.hidden_dim).to(self.device))
         return hidden
-        
+
+
+
 
 
         

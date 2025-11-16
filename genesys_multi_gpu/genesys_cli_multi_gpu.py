@@ -230,7 +230,8 @@ def train_until_no_improve(
     pin_memory: bool,
     persistent_workers: bool,
     verbose: bool,
-):
+    resume_from: str = "",
+    training_logs: str = ""):
     """
     Single-GPU behavior preserved under DDP:
     - Start cycle 1 from fresh model.
@@ -281,11 +282,44 @@ def train_until_no_improve(
     # best state across cycles
     overall_best_state = copy.deepcopy(unwrap(net).state_dict())
     prev_cycle_best_loss = float("inf")
+    
+    # ---- optional warm-start from a prior cycle-best ----
+    start_cycle = 1
+    if bool(resume_from):
+        if is_dist():
+            dist.barrier()
+        ckpt = torch.load(resume_from, map_location="cpu")
+        # Expect only a 'state_dict' in the checkpoint
+        if "state_dict" in ckpt:
+            unwrap(net).load_state_dict(ckpt["state_dict"], strict=False)
+            overall_best_state = ckpt["state_dict"]
+        else:
+            raise RuntimeError(f"--resume_from {resume_from} has no 'state_dict' key.")
+        if is_dist():
+            dist.barrier()
+
+    # Determine which cycle to continue from and the previous best loss using the logs
+    if bool(training_logs):
+        last_c, last_loss = _infer_last_cycle_and_loss_from_log(training_logs)
+        if last_c is not None:
+            start_cycle = last_c + 1
+        if last_loss is not None:
+            prev_cycle_best_loss = float(last_loss)
+        if rank0() and verbose:
+            print(f"[Resume] training_logs={training_logs} -> last cycle {last_c}, best_loss {last_loss}; continuing at cycle {start_cycle}.")
+    else:
+        if rank0() and resume_from:
+            print("[Resume] --training_logs was not provided; continuing at cycle 2 by default (set --training_logs to be precise).")
+    # (Optional) sanity-check vs log file
+    if bool(training_logs) and rank0():
+        last_in_log = _infer_last_cycle_from_log(training_logs)
+        if last_in_log is not None and (last_in_log + 1) != start_cycle:
+            print(f"[Note] training_logs suggests next cycle {last_in_log+1}, but checkpoint implies {start_cycle}. Proceeding with checkpoint.")
 
     # for plotting across cycles
     all_logs = []   # list of DataFrames: tloss, val_acc, epoch, cycle, global_epoch
 
-    for cycle in range(1, max_cycles + 1):
+    for cycle in range(start_cycle, max_cycles + 1):
         if rank0() and verbose:
             print(f"\n===== Training Cycle {cycle}/{max_cycles} =====")
 
@@ -396,7 +430,51 @@ def build_argparser():
     # Device
     p.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     p.add_argument("--verbose", action="store_true")
+    p.add_argument("--resume_from", type=str, default="", help="Path to a cycle-best or progress checkpoint to resume from.")
+    p.add_argument("--training_logs", type=str, default="", help="Optional path to previous job log for sanity-checking resume cycle.")
+
     return p
+
+
+
+def _infer_last_cycle_from_log(path: str):
+    try:
+        import re
+        last = None
+        with open(path, "r", errors="ignore") as f:
+            for line in f:
+                m = re.search(r"(?:^|\s)Cycle\s+(\d+)", line)
+                if m:
+                    last = int(m.group(1))
+        return last
+    except Exception:
+        return None
+
+
+
+def _infer_last_cycle_and_loss_from_log(path: str):
+    """
+    Parse the last occurrence of a line like:
+    "[Train] cycle 9 best_loss=2217.422607 val_acc=1.0000 -> saved ..."
+    Returns (last_cycle:int, last_best_loss:float) or (None, None).
+    """
+    try:
+        import re
+        last_c = None
+        last_loss = None
+        pat = re.compile(r"\[Train\]\s*cycle\s*(\d+)\s*best_loss=([0-9]+\.?[0-9]*)", re.I)
+        with open(path, "r", errors="ignore") as f:
+            for line in f:
+                m = pat.search(line)
+                if m:
+                    last_c = int(m.group(1))
+                    try:
+                        last_loss = float(m.group(2))
+                    except Exception:
+                        last_loss = None
+        return last_c, last_loss
+    except Exception:
+        return None, None
 
 
 def main():
@@ -456,7 +534,8 @@ def main():
             pin_memory=args.pin_memory,
             persistent_workers=args.persistent_workers,
             verbose=args.verbose,
-        )
+            resume_from=args.resume_from,
+            training_logs=args.training_logs)
 
     if args.dist:
         ddp_cleanup()
