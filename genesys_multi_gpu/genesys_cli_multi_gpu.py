@@ -375,14 +375,14 @@ def train_until_no_improve(
             fig, ax1 = plt.subplots()
             color = 'tab:red'
             ax1.set_xlabel('Global Epoch')
-            ax1.set_ylabel('Total Loss (classifier + TD-VAE)')
-            ax1.plot(full_log["global_epoch"], full_log["tloss"])
+            ax1.set_ylabel('Total Loss (classifier + TD-VAE)', color=color)
+            ax1.plot(full_log["global_epoch"], full_log["tloss"], color=color)
             ax1.tick_params(axis='y', labelcolor=color)
 
             ax2 = ax1.twinx()
             color = 'tab:blue'
-            ax2.set_ylabel('Validation Accuracy (classifier)')
-            ax2.plot(full_log["global_epoch"], full_log["val_acc"])
+            ax2.set_ylabel('Validation Accuracy (classifier)', color=color)
+            ax2.plot(full_log["global_epoch"], full_log["val_acc"], color=color)
             ax2.tick_params(axis='y', labelcolor=color)
 
             fig.tight_layout()
