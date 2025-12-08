@@ -89,7 +89,7 @@ srun torchrun \
     --dist --pin_memory --persistent_workers --num_workers 1 \
     --sync_bn --seed 42 \
     --verbose \
-    --resume_from ./root_100k_ckpt/genesys_training_cycle4_best.pth \ ## Checkpoint to resume from
+    --resume_from ./root_100k_ckpt/genesys_training_cycle4_best.pth \
     --training_logs ../../Bash_scripts/job_output_37873017.log ## training log that contains the training losses for every epoch before interruption   
 
 
