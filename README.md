@@ -174,6 +174,8 @@ The source codes used for the GeneSys manuscript are under the code folder.
 
 The jupyter notebooks demonstrating how to prepare, train, and evaluate the GeneSys model can be found under jupyter_notebook folder.
 
+The analyses added during the revision of the manuscript (decoy blueprints, ablations, baselines, the prioritization benchmark across data scenarios, LIMA identifiability and sensitivity analyses) are in the revision folder: executed notebooks that recompute every number quoted in the manuscript from the result tables and redraw the figures, the scripts that produced the results, and the result tables themselves. See revision/README.md.
+
 
 
 

@@ -1,0 +1,20 @@
+{
+  "experiment": "exp6",
+  "condition": "no_tdvae",
+  "metric": "recreation_accuracy_figS5_protocol",
+  "pipeline": "Cell_Lineage_Blueprint",
+  "mean_acc": 0.8603320312499999,
+  "acc_per_bin": {
+    "1": 0.096875,
+    "2": 0.720703125,
+    "3": 0.8771484375,
+    "4": 0.94921875,
+    "5": 0.983203125,
+    "6": 0.984375,
+    "7": 0.994921875,
+    "8": 0.9970703125,
+    "9": 0.9998046875,
+    "10": 1.0
+  },
+  "n_samples": 5120
+}

@@ -1,0 +1,31 @@
+{
+  "experiment": "exp1",
+  "condition": "reversed",
+  "metric": "autoregressive_recreation_accuracy",
+  "mean_acc": 0.35763671875,
+  "acc_per_bin": {
+    "1": 0.7548828125,
+    "2": 0.59453125,
+    "3": 0.387109375,
+    "4": 0.323046875,
+    "5": 0.287890625,
+    "6": 0.2630859375,
+    "7": 0.2533203125,
+    "8": 0.241015625,
+    "9": 0.2337890625,
+    "10": 0.2376953125
+  },
+  "n_samples_per_bin": {
+    "1": 5120,
+    "2": 5120,
+    "3": 5120,
+    "4": 5120,
+    "5": 5120,
+    "6": 5120,
+    "7": 5120,
+    "8": 5120,
+    "9": 5120,
+    "10": 5120
+  },
+  "protocol": "Seed t0-t2 with real cells, generate t0-t2 from the seed and t3-t10 autoregressively using generate_next(), classify at each step."
+}

@@ -34,16 +34,15 @@ class Cell_Lineage_Blueprint(Dataset):
         return len(self.features)
     def __getitem__(self, idx):
         ## idx for number of trajectories in the cell lineage blueprint
-        idx = int(np.random.choice(range(self.lineage.shape[0]),1))
+        idx = np.random.randint(self.lineage.shape[0])
+        n_features = self.features.shape[1]
         cell_list = []
         for k in range(0,self.lineage.shape[1]):
-            if self.lineage[k][idx] == None:
-                sample[:] = 0
-                cell_list.append(sample)
+            if self.lineage[k][idx] is None or (isinstance(self.lineage[k][idx], float) and np.isnan(self.lineage[k][idx])):
+                cell_list.append(np.zeros(n_features, dtype=np.float32))
             elif (len(np.where((self.label==self.lineage[k][idx]) & (self.time==(k+1)))[0]) == 0) & (k == 0): ## Impute for one
                 if (len(np.where((self.label==self.lineage[k][idx]) & (self.time==(k+2)))[0]) == 0):
-                    sample[:] = 0
-                    cell_list.append(sample)
+                    cell_list.append(np.zeros(n_features, dtype=np.float32))
                     #print(f"Zeros are filled for column {k} and row {idx} in the lineage blueprint table due to absence of corresponding label and its temporal neighbors in the training data.")
                 else:
                     sample = np.copy(self.features[np.random.choice(np.where((self.label==self.lineage[k][idx]) & (self.time==(k+2)))[0], 1), :]).astype(np.float32).reshape(-1)
@@ -51,8 +50,7 @@ class Cell_Lineage_Blueprint(Dataset):
                     #print(f"Imputation is done for column {k} and row {idx} in the lineage blueprint table due to absence of corresponding label in the training data.")
             elif (len(np.where((self.label==self.lineage[k][idx]) & (self.time==(k+1)))[0]) == 0) & (k == (self.lineage.shape[1]-1)): ## Impute for one
                 if (len(np.where((self.label==self.lineage[k][idx]) & (self.time==(k)))[0]) == 0):
-                    sample[:] = 0
-                    cell_list.append(sample)
+                    cell_list.append(np.zeros(n_features, dtype=np.float32))
                     #print(f"Zeros are filled for column {k} and row {idx} in the lineage blueprint table due to absence of corresponding label and its temporal neighbors in the training data.")
                 else:
                     sample = np.copy(self.features[np.random.choice(np.where((self.label==self.lineage[k][idx]) & (self.time==(k)))[0], 1), :]).astype(np.float32).reshape(-1)
@@ -60,8 +58,7 @@ class Cell_Lineage_Blueprint(Dataset):
                     #print(f"Imputation is done for column {k} and row {idx} in the lineage blueprint table due to absence of corresponding label in the training data.")
             elif (len(np.where((self.label==self.lineage[k][idx]) & (self.time==(k+1)))[0]) == 0): ## Impute for one
                 if (len(np.where((self.label==self.lineage[k][idx]) & ((self.time==(k))|(self.time==(k+2))))[0]) == 0):
-                    sample[:] = 0
-                    cell_list.append(sample)
+                    cell_list.append(np.zeros(n_features, dtype=np.float32))
                     #print(f"Zeros are filled for column {k} and row {idx} in the lineage blueprint table due to absence of corresponding label and its temporal neighbors in the training data.")
                 else:
                     sample = np.copy(self.features[np.random.choice(np.where((self.label==self.lineage[k][idx]) & ((self.time==(k))|(self.time==(k+2))))[0], 1), :]).astype(np.float32).reshape(-1)

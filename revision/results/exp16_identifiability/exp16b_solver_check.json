@@ -1,0 +1,167 @@
+{
+ "spectrum": [
+  {
+   "rep": 0,
+   "dtype": "torch.float32",
+   "rows": 200,
+   "S_max": 214.98239135742188,
+   "S_min": 0.0020831211004406214,
+   "S_quantiles": [
+    0.007637167349457741,
+    0.017660394310951233,
+    0.06273671984672546,
+    0.3103800117969513,
+    1.3604694604873657
+   ],
+   "default_rcond": 0.002087712287902832,
+   "cutoff_abs": 0.44882136583328247,
+   "n_S_below_cutoff": 158,
+   "rank_gelsy": 29,
+   "rank_gelsd": 42,
+   "n_S_below_sqrt_lam": {
+    "1e-06": 0,
+    "0.0001": 29,
+    "0.01": 117,
+    "0.1": 150,
+    "1.0": 175,
+    "10.0": 190
+   }
+  },
+  {
+   "rep": 1,
+   "dtype": "torch.float32",
+   "rows": 200,
+   "S_max": 215.384765625,
+   "S_min": 0.0022213764023035765,
+   "S_quantiles": [
+    0.007323023863136768,
+    0.017833812162280083,
+    0.06061093136668205,
+    0.2882329225540161,
+    1.278977632522583
+   ],
+   "default_rcond": 0.002087712287902832,
+   "cutoff_abs": 0.4496614336967468,
+   "n_S_below_cutoff": 159,
+   "rank_gelsy": 23,
+   "rank_gelsd": 41,
+   "n_S_below_sqrt_lam": {
+    "1e-06": 0,
+    "0.0001": 29,
+    "0.01": 119,
+    "0.1": 152,
+    "1.0": 175,
+    "10.0": 190
+   }
+  },
+  {
+   "rep": 2,
+   "dtype": "torch.float32",
+   "rows": 200,
+   "S_max": 214.33392333984375,
+   "S_min": 0.0027494721580296755,
+   "S_quantiles": [
+    0.009593150578439236,
+    0.022999409586191177,
+    0.07668770104646683,
+    0.3456783890724182,
+    1.492598533630371
+   ],
+   "default_rcond": 0.002087712287902832,
+   "cutoff_abs": 0.447467565536499,
+   "n_S_below_cutoff": 155,
+   "rank_gelsy": 15,
+   "rank_gelsd": 45,
+   "n_S_below_sqrt_lam": {
+    "1e-06": 0,
+    "0.0001": 22,
+    "0.01": 111,
+    "0.1": 147,
+    "1.0": 173,
+    "10.0": 188
+   }
+  }
+ ],
+ "agreement": [
+  {
+   "solver": "lstsq_gelsy",
+   "pearson_tf_block": 1.0,
+   "jaccard_edges_z3": 1.0,
+   "spearman_tf_degree": 0.9999999999999999,
+   "edges_tf_block": 17354,
+   "frobenius_norm_W": 7.530432224273682
+  },
+  {
+   "solver": "lstsq_gelsd",
+   "pearson_tf_block": 0.29534276210238813,
+   "jaccard_edges_z3": 0.26953725209933893,
+   "spearman_tf_degree": 0.874306904895604,
+   "edges_tf_block": 18174,
+   "frobenius_norm_W": 16.077594757080078
+  },
+  {
+   "solver": "pinv_all_directions",
+   "pearson_tf_block": -0.019321543410633663,
+   "jaccard_edges_z3": 0.21784335082681452,
+   "spearman_tf_degree": 0.8369836585529871,
+   "edges_tf_block": 19543,
+   "frobenius_norm_W": 2413.714111328125
+  },
+  {
+   "solver": "pinv_truncated_at_rcond",
+   "pearson_tf_block": 0.2953853256483951,
+   "jaccard_edges_z3": 0.26953725209933893,
+   "spearman_tf_degree": 0.8742715791839789,
+   "edges_tf_block": 18174,
+   "frobenius_norm_W": 16.08432388305664
+  },
+  {
+   "solver": "ridge_1e-06",
+   "pearson_tf_block": -0.01972478658934215,
+   "jaccard_edges_z3": 0.21876956536066167,
+   "spearman_tf_degree": 0.8403112817035047,
+   "edges_tf_block": 19632,
+   "frobenius_norm_W": 2255.6328125
+  },
+  {
+   "solver": "ridge_0.0001",
+   "pearson_tf_block": -0.03931990418254466,
+   "jaccard_edges_z3": 0.22527258566978192,
+   "spearman_tf_degree": 0.845730302664311,
+   "edges_tf_block": 20404,
+   "frobenius_norm_W": 804.7841186523438
+  },
+  {
+   "solver": "ridge_0.01",
+   "pearson_tf_block": 0.03166551171200783,
+   "jaccard_edges_z3": 0.24402344010121862,
+   "spearman_tf_degree": 0.8446086578472226,
+   "edges_tf_block": 20009,
+   "frobenius_norm_W": 91.57250213623047
+  },
+  {
+   "solver": "ridge_0.1",
+   "pearson_tf_block": 0.15336660210686448,
+   "jaccard_edges_z3": 0.2579113924050633,
+   "spearman_tf_degree": 0.8583259637191393,
+   "edges_tf_block": 19216,
+   "frobenius_norm_W": 25.70085906982422
+  },
+  {
+   "solver": "ridge_1.0",
+   "pearson_tf_block": 0.34497112606208097,
+   "jaccard_edges_z3": 0.2827665540297649,
+   "spearman_tf_degree": 0.8701056200610859,
+   "edges_tf_block": 18330,
+   "frobenius_norm_W": 6.740538120269775
+  },
+  {
+   "solver": "ridge_10.0",
+   "pearson_tf_block": 0.3507950256125371,
+   "jaccard_edges_z3": 0.2745343391369633,
+   "spearman_tf_degree": 0.8593238221059076,
+   "edges_tf_block": 18296,
+   "frobenius_norm_W": 1.6979711055755615
+  }
+ ]
+}

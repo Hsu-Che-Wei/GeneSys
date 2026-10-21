@@ -1,0 +1,9 @@
+{
+ "table": "/resnick/groups/NolanLab/cwhsu/CW_data/genesys/_before_degree_fix_20261002/TF_GRN_centrality_t1-t3_zscore3.csv",
+ "n_tfs": 475,
+ "n_common": 475,
+ "max_abs_diff out-degree vs column count (regulators)": 1.1102230246251565e-16,
+ "max_abs_diff out-degree vs row count (targets)": 0.5949367088607594,
+ "max_abs_diff in-degree vs row count (targets)": 1.1102230246251565e-16,
+ "max_abs_diff in-degree vs column count (regulators)": 0.5949367088607596
+}

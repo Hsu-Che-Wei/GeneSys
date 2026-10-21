@@ -1,0 +1,201 @@
+model,repeat,predicted_cell_type,fraction_of_predictions
+trained,0,Columella,0.0
+trained,0,Lateral Root Cap,0.0
+trained,0,Phloem,0.0
+trained,0,Xylem,0.0
+trained,0,Procambium,0.0
+trained,0,Pericycle,0.0
+trained,0,Endodermis,0.0
+trained,0,Cortex,0.0
+trained,0,Atrichoblast,0.0
+trained,0,Trichoblast,1.0
+random,0,Columella,0.0
+random,0,Lateral Root Cap,0.0
+random,0,Phloem,1.0
+random,0,Xylem,0.0
+random,0,Procambium,0.0
+random,0,Pericycle,0.0
+random,0,Endodermis,0.0
+random,0,Cortex,0.0
+random,0,Atrichoblast,0.0
+random,0,Trichoblast,0.0
+trained,1,Columella,0.0
+trained,1,Lateral Root Cap,0.0
+trained,1,Phloem,0.0
+trained,1,Xylem,0.0
+trained,1,Procambium,0.0
+trained,1,Pericycle,0.0
+trained,1,Endodermis,0.0
+trained,1,Cortex,0.0
+trained,1,Atrichoblast,0.0
+trained,1,Trichoblast,1.0
+random,1,Columella,0.0
+random,1,Lateral Root Cap,0.0
+random,1,Phloem,1.0
+random,1,Xylem,0.0
+random,1,Procambium,0.0
+random,1,Pericycle,0.0
+random,1,Endodermis,0.0
+random,1,Cortex,0.0
+random,1,Atrichoblast,0.0
+random,1,Trichoblast,0.0
+trained,2,Columella,0.0
+trained,2,Lateral Root Cap,0.0
+trained,2,Phloem,0.0
+trained,2,Xylem,0.0
+trained,2,Procambium,0.0
+trained,2,Pericycle,0.0
+trained,2,Endodermis,0.0
+trained,2,Cortex,0.0
+trained,2,Atrichoblast,0.0
+trained,2,Trichoblast,1.0
+random,2,Columella,0.0
+random,2,Lateral Root Cap,0.0
+random,2,Phloem,1.0
+random,2,Xylem,0.0
+random,2,Procambium,0.0
+random,2,Pericycle,0.0
+random,2,Endodermis,0.0
+random,2,Cortex,0.0
+random,2,Atrichoblast,0.0
+random,2,Trichoblast,0.0
+trained,3,Columella,0.0
+trained,3,Lateral Root Cap,0.0
+trained,3,Phloem,0.0
+trained,3,Xylem,0.0
+trained,3,Procambium,0.0
+trained,3,Pericycle,0.0
+trained,3,Endodermis,0.0
+trained,3,Cortex,0.0
+trained,3,Atrichoblast,0.0
+trained,3,Trichoblast,1.0
+random,3,Columella,0.0
+random,3,Lateral Root Cap,0.0
+random,3,Phloem,1.0
+random,3,Xylem,0.0
+random,3,Procambium,0.0
+random,3,Pericycle,0.0
+random,3,Endodermis,0.0
+random,3,Cortex,0.0
+random,3,Atrichoblast,0.0
+random,3,Trichoblast,0.0
+trained,4,Columella,0.0
+trained,4,Lateral Root Cap,0.0
+trained,4,Phloem,0.0
+trained,4,Xylem,0.0
+trained,4,Procambium,0.0
+trained,4,Pericycle,0.0
+trained,4,Endodermis,0.0
+trained,4,Cortex,0.0
+trained,4,Atrichoblast,0.0
+trained,4,Trichoblast,1.0
+random,4,Columella,0.0
+random,4,Lateral Root Cap,0.0
+random,4,Phloem,1.0
+random,4,Xylem,0.0
+random,4,Procambium,0.0
+random,4,Pericycle,0.0
+random,4,Endodermis,0.0
+random,4,Cortex,0.0
+random,4,Atrichoblast,0.0
+random,4,Trichoblast,0.0
+trained,5,Columella,0.0
+trained,5,Lateral Root Cap,0.0
+trained,5,Phloem,0.0
+trained,5,Xylem,0.0
+trained,5,Procambium,0.0
+trained,5,Pericycle,0.0
+trained,5,Endodermis,0.0
+trained,5,Cortex,0.0
+trained,5,Atrichoblast,0.0
+trained,5,Trichoblast,1.0
+random,5,Columella,0.0
+random,5,Lateral Root Cap,0.0
+random,5,Phloem,1.0
+random,5,Xylem,0.0
+random,5,Procambium,0.0
+random,5,Pericycle,0.0
+random,5,Endodermis,0.0
+random,5,Cortex,0.0
+random,5,Atrichoblast,0.0
+random,5,Trichoblast,0.0
+trained,6,Columella,0.0
+trained,6,Lateral Root Cap,0.0
+trained,6,Phloem,0.0
+trained,6,Xylem,0.0
+trained,6,Procambium,0.0
+trained,6,Pericycle,0.0
+trained,6,Endodermis,0.0
+trained,6,Cortex,0.0
+trained,6,Atrichoblast,0.0
+trained,6,Trichoblast,1.0
+random,6,Columella,0.0
+random,6,Lateral Root Cap,0.0
+random,6,Phloem,1.0
+random,6,Xylem,0.0
+random,6,Procambium,0.0
+random,6,Pericycle,0.0
+random,6,Endodermis,0.0
+random,6,Cortex,0.0
+random,6,Atrichoblast,0.0
+random,6,Trichoblast,0.0
+trained,7,Columella,0.0
+trained,7,Lateral Root Cap,0.0
+trained,7,Phloem,0.0
+trained,7,Xylem,0.0
+trained,7,Procambium,0.0
+trained,7,Pericycle,0.0
+trained,7,Endodermis,0.0
+trained,7,Cortex,0.0
+trained,7,Atrichoblast,0.0
+trained,7,Trichoblast,1.0
+random,7,Columella,0.0
+random,7,Lateral Root Cap,0.0
+random,7,Phloem,1.0
+random,7,Xylem,0.0
+random,7,Procambium,0.0
+random,7,Pericycle,0.0
+random,7,Endodermis,0.0
+random,7,Cortex,0.0
+random,7,Atrichoblast,0.0
+random,7,Trichoblast,0.0
+trained,8,Columella,0.0
+trained,8,Lateral Root Cap,0.0
+trained,8,Phloem,0.0
+trained,8,Xylem,0.0
+trained,8,Procambium,0.0
+trained,8,Pericycle,0.0
+trained,8,Endodermis,0.0
+trained,8,Cortex,0.0
+trained,8,Atrichoblast,0.0
+trained,8,Trichoblast,1.0
+random,8,Columella,0.0
+random,8,Lateral Root Cap,0.0
+random,8,Phloem,1.0
+random,8,Xylem,0.0
+random,8,Procambium,0.0
+random,8,Pericycle,0.0
+random,8,Endodermis,0.0
+random,8,Cortex,0.0
+random,8,Atrichoblast,0.0
+random,8,Trichoblast,0.0
+trained,9,Columella,0.0
+trained,9,Lateral Root Cap,0.0
+trained,9,Phloem,0.0
+trained,9,Xylem,0.0
+trained,9,Procambium,0.0
+trained,9,Pericycle,0.0
+trained,9,Endodermis,0.0
+trained,9,Cortex,0.0
+trained,9,Atrichoblast,0.0
+trained,9,Trichoblast,1.0
+random,9,Columella,0.0
+random,9,Lateral Root Cap,0.0
+random,9,Phloem,1.0
+random,9,Xylem,0.0
+random,9,Procambium,0.0
+random,9,Pericycle,0.0
+random,9,Endodermis,0.0
+random,9,Cortex,0.0
+random,9,Atrichoblast,0.0
+random,9,Trichoblast,0.0

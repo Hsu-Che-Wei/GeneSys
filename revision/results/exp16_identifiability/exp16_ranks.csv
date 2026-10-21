@@ -1,0 +1,1101 @@
+label,cell_type,batch,rows,rank
+ridge_rows200_eps1.0_lam0,Atrichoblast,0,200,23
+ridge_rows200_eps1.0_lam0,Atrichoblast,1,200,24
+ridge_rows200_eps1.0_lam0,Atrichoblast,2,200,28
+ridge_rows200_eps1.0_lam0,Atrichoblast,3,200,21
+ridge_rows200_eps1.0_lam0,Atrichoblast,4,186,27
+ridge_rows200_eps1.0_lam0,Atrichoblast,5,183,22
+ridge_rows200_eps1.0_lam0,Atrichoblast,6,200,22
+ridge_rows200_eps1.0_lam0,Atrichoblast,7,200,23
+ridge_rows200_eps1.0_lam0,Atrichoblast,8,200,22
+ridge_rows200_eps1.0_lam0,Atrichoblast,9,200,24
+ridge_rows200_eps1.0_lam0,Atrichoblast,10,200,20
+ridge_rows200_eps1.0_lam0,Trichoblast,0,200,32
+ridge_rows200_eps1.0_lam0,Trichoblast,1,200,32
+ridge_rows200_eps1.0_lam0,Trichoblast,2,200,32
+ridge_rows200_eps1.0_lam0,Trichoblast,3,200,28
+ridge_rows200_eps1.0_lam0,Trichoblast,4,200,32
+ridge_rows200_eps1.0_lam0,Trichoblast,5,200,32
+ridge_rows200_eps1.0_lam0,Trichoblast,6,200,32
+ridge_rows200_eps1.0_lam0,Trichoblast,7,200,32
+ridge_rows200_eps1.0_lam0,Trichoblast,8,200,32
+ridge_rows200_eps1.0_lam0,Trichoblast,9,200,32
+ridge_rows200_eps1.0_lam0,Trichoblast,10,186,30
+ridge_rows200_eps1.0_lam0,Cortex,0,200,4
+ridge_rows200_eps1.0_lam0,Cortex,1,200,4
+ridge_rows200_eps1.0_lam0,Cortex,2,190,4
+ridge_rows200_eps1.0_lam0,Cortex,3,199,4
+ridge_rows200_eps1.0_lam0,Cortex,4,200,5
+ridge_rows200_eps1.0_lam0,Cortex,5,200,4
+ridge_rows200_eps1.0_lam0,Cortex,6,200,4
+ridge_rows200_eps1.0_lam0,Cortex,7,200,4
+ridge_rows200_eps1.0_lam0,Cortex,8,200,4
+ridge_rows200_eps1.0_lam0,Cortex,9,200,5
+ridge_rows200_eps1.0_lam0,Cortex,10,200,4
+ridge_rows200_eps1.0_lam0,Endodermis,0,200,5
+ridge_rows200_eps1.0_lam0,Endodermis,1,195,5
+ridge_rows200_eps1.0_lam0,Endodermis,2,200,4
+ridge_rows200_eps1.0_lam0,Endodermis,3,200,5
+ridge_rows200_eps1.0_lam0,Endodermis,4,192,5
+ridge_rows200_eps1.0_lam0,Endodermis,5,200,6
+ridge_rows200_eps1.0_lam0,Endodermis,6,200,4
+ridge_rows200_eps1.0_lam0,Endodermis,7,200,7
+ridge_rows200_eps1.0_lam0,Endodermis,8,200,4
+ridge_rows200_eps1.0_lam0,Endodermis,9,200,8
+ridge_rows200_eps1.0_lam0,Endodermis,10,200,5
+ridge_rows200_eps1.0_lam0,Pericycle,0,200,6
+ridge_rows200_eps1.0_lam0,Pericycle,1,197,6
+ridge_rows200_eps1.0_lam0,Pericycle,2,200,6
+ridge_rows200_eps1.0_lam0,Pericycle,3,200,6
+ridge_rows200_eps1.0_lam0,Pericycle,4,200,6
+ridge_rows200_eps1.0_lam0,Pericycle,5,200,6
+ridge_rows200_eps1.0_lam0,Pericycle,6,200,6
+ridge_rows200_eps1.0_lam0,Pericycle,7,200,6
+ridge_rows200_eps1.0_lam0,Pericycle,8,200,6
+ridge_rows200_eps1.0_lam0,Pericycle,9,200,6
+ridge_rows200_eps1.0_lam0,Pericycle,10,200,6
+ridge_rows200_eps1.0_lam0,Procambium,0,192,12
+ridge_rows200_eps1.0_lam0,Procambium,1,200,10
+ridge_rows200_eps1.0_lam0,Procambium,2,200,11
+ridge_rows200_eps1.0_lam0,Procambium,3,192,11
+ridge_rows200_eps1.0_lam0,Procambium,4,200,10
+ridge_rows200_eps1.0_lam0,Procambium,5,200,10
+ridge_rows200_eps1.0_lam0,Procambium,6,200,11
+ridge_rows200_eps1.0_lam0,Procambium,7,200,7
+ridge_rows200_eps1.0_lam0,Procambium,8,200,10
+ridge_rows200_eps1.0_lam0,Procambium,9,200,9
+ridge_rows200_eps1.0_lam0,Procambium,10,200,10
+ridge_rows200_eps1.0_lam0,Xylem,0,200,8
+ridge_rows200_eps1.0_lam0,Xylem,1,200,11
+ridge_rows200_eps1.0_lam0,Xylem,2,200,9
+ridge_rows200_eps1.0_lam0,Xylem,3,200,8
+ridge_rows200_eps1.0_lam0,Xylem,4,200,9
+ridge_rows200_eps1.0_lam0,Xylem,5,200,11
+ridge_rows200_eps1.0_lam0,Xylem,6,200,9
+ridge_rows200_eps1.0_lam0,Xylem,7,200,9
+ridge_rows200_eps1.0_lam0,Xylem,8,200,11
+ridge_rows200_eps1.0_lam0,Xylem,9,200,11
+ridge_rows200_eps1.0_lam0,Xylem,10,200,9
+ridge_rows200_eps1.0_lam0,Phloem,0,200,11
+ridge_rows200_eps1.0_lam0,Phloem,1,200,15
+ridge_rows200_eps1.0_lam0,Phloem,2,200,11
+ridge_rows200_eps1.0_lam0,Phloem,3,200,11
+ridge_rows200_eps1.0_lam0,Phloem,4,200,11
+ridge_rows200_eps1.0_lam0,Phloem,5,200,11
+ridge_rows200_eps1.0_lam0,Phloem,6,200,11
+ridge_rows200_eps1.0_lam0,Phloem,7,200,11
+ridge_rows200_eps1.0_lam0,Phloem,8,200,11
+ridge_rows200_eps1.0_lam0,Phloem,9,200,11
+ridge_rows200_eps1.0_lam0,Phloem,10,200,11
+ridge_rows200_eps1.0_lam0,Lateral Root Cap,0,200,27
+ridge_rows200_eps1.0_lam0,Lateral Root Cap,1,200,27
+ridge_rows200_eps1.0_lam0,Lateral Root Cap,2,200,17
+ridge_rows200_eps1.0_lam0,Lateral Root Cap,3,200,28
+ridge_rows200_eps1.0_lam0,Lateral Root Cap,4,200,24
+ridge_rows200_eps1.0_lam0,Lateral Root Cap,5,200,24
+ridge_rows200_eps1.0_lam0,Lateral Root Cap,6,200,23
+ridge_rows200_eps1.0_lam0,Lateral Root Cap,7,200,26
+ridge_rows200_eps1.0_lam0,Lateral Root Cap,8,200,22
+ridge_rows200_eps1.0_lam0,Lateral Root Cap,9,200,26
+ridge_rows200_eps1.0_lam0,Lateral Root Cap,10,200,27
+ridge_rows200_eps1.0_lam0,Columella,0,200,11
+ridge_rows200_eps1.0_lam0,Columella,1,200,10
+ridge_rows200_eps1.0_lam0,Columella,2,200,14
+ridge_rows200_eps1.0_lam0,Columella,3,200,13
+ridge_rows200_eps1.0_lam0,Columella,4,200,11
+ridge_rows200_eps1.0_lam0,Columella,5,200,11
+ridge_rows200_eps1.0_lam0,Columella,6,200,11
+ridge_rows200_eps1.0_lam0,Columella,7,200,11
+ridge_rows200_eps1.0_lam0,Columella,8,200,23
+ridge_rows200_eps1.0_lam0,Columella,9,200,14
+ridge_rows200_eps1.0_lam0,Columella,10,194,6
+ridge_rows200_eps1.0_lam0.01,Atrichoblast,0,200,200
+ridge_rows200_eps1.0_lam0.01,Atrichoblast,1,200,200
+ridge_rows200_eps1.0_lam0.01,Atrichoblast,2,200,200
+ridge_rows200_eps1.0_lam0.01,Atrichoblast,3,200,200
+ridge_rows200_eps1.0_lam0.01,Atrichoblast,4,186,186
+ridge_rows200_eps1.0_lam0.01,Atrichoblast,5,183,183
+ridge_rows200_eps1.0_lam0.01,Atrichoblast,6,200,200
+ridge_rows200_eps1.0_lam0.01,Atrichoblast,7,200,200
+ridge_rows200_eps1.0_lam0.01,Atrichoblast,8,200,200
+ridge_rows200_eps1.0_lam0.01,Atrichoblast,9,200,200
+ridge_rows200_eps1.0_lam0.01,Atrichoblast,10,200,200
+ridge_rows200_eps1.0_lam0.01,Trichoblast,0,200,200
+ridge_rows200_eps1.0_lam0.01,Trichoblast,1,200,200
+ridge_rows200_eps1.0_lam0.01,Trichoblast,2,200,200
+ridge_rows200_eps1.0_lam0.01,Trichoblast,3,200,200
+ridge_rows200_eps1.0_lam0.01,Trichoblast,4,200,200
+ridge_rows200_eps1.0_lam0.01,Trichoblast,5,200,200
+ridge_rows200_eps1.0_lam0.01,Trichoblast,6,200,200
+ridge_rows200_eps1.0_lam0.01,Trichoblast,7,200,200
+ridge_rows200_eps1.0_lam0.01,Trichoblast,8,200,200
+ridge_rows200_eps1.0_lam0.01,Trichoblast,9,200,200
+ridge_rows200_eps1.0_lam0.01,Trichoblast,10,186,186
+ridge_rows200_eps1.0_lam0.01,Cortex,0,200,200
+ridge_rows200_eps1.0_lam0.01,Cortex,1,200,200
+ridge_rows200_eps1.0_lam0.01,Cortex,2,190,190
+ridge_rows200_eps1.0_lam0.01,Cortex,3,199,199
+ridge_rows200_eps1.0_lam0.01,Cortex,4,200,200
+ridge_rows200_eps1.0_lam0.01,Cortex,5,200,200
+ridge_rows200_eps1.0_lam0.01,Cortex,6,200,200
+ridge_rows200_eps1.0_lam0.01,Cortex,7,200,200
+ridge_rows200_eps1.0_lam0.01,Cortex,8,200,200
+ridge_rows200_eps1.0_lam0.01,Cortex,9,200,200
+ridge_rows200_eps1.0_lam0.01,Cortex,10,200,200
+ridge_rows200_eps1.0_lam0.01,Endodermis,0,200,200
+ridge_rows200_eps1.0_lam0.01,Endodermis,1,195,195
+ridge_rows200_eps1.0_lam0.01,Endodermis,2,200,200
+ridge_rows200_eps1.0_lam0.01,Endodermis,3,200,200
+ridge_rows200_eps1.0_lam0.01,Endodermis,4,192,192
+ridge_rows200_eps1.0_lam0.01,Endodermis,5,200,200
+ridge_rows200_eps1.0_lam0.01,Endodermis,6,200,200
+ridge_rows200_eps1.0_lam0.01,Endodermis,7,200,200
+ridge_rows200_eps1.0_lam0.01,Endodermis,8,200,200
+ridge_rows200_eps1.0_lam0.01,Endodermis,9,200,200
+ridge_rows200_eps1.0_lam0.01,Endodermis,10,200,200
+ridge_rows200_eps1.0_lam0.01,Pericycle,0,200,200
+ridge_rows200_eps1.0_lam0.01,Pericycle,1,197,197
+ridge_rows200_eps1.0_lam0.01,Pericycle,2,200,200
+ridge_rows200_eps1.0_lam0.01,Pericycle,3,200,200
+ridge_rows200_eps1.0_lam0.01,Pericycle,4,200,200
+ridge_rows200_eps1.0_lam0.01,Pericycle,5,200,200
+ridge_rows200_eps1.0_lam0.01,Pericycle,6,200,200
+ridge_rows200_eps1.0_lam0.01,Pericycle,7,200,200
+ridge_rows200_eps1.0_lam0.01,Pericycle,8,200,200
+ridge_rows200_eps1.0_lam0.01,Pericycle,9,200,200
+ridge_rows200_eps1.0_lam0.01,Pericycle,10,200,200
+ridge_rows200_eps1.0_lam0.01,Procambium,0,192,192
+ridge_rows200_eps1.0_lam0.01,Procambium,1,200,200
+ridge_rows200_eps1.0_lam0.01,Procambium,2,200,200
+ridge_rows200_eps1.0_lam0.01,Procambium,3,192,192
+ridge_rows200_eps1.0_lam0.01,Procambium,4,200,200
+ridge_rows200_eps1.0_lam0.01,Procambium,5,200,200
+ridge_rows200_eps1.0_lam0.01,Procambium,6,200,200
+ridge_rows200_eps1.0_lam0.01,Procambium,7,200,200
+ridge_rows200_eps1.0_lam0.01,Procambium,8,200,200
+ridge_rows200_eps1.0_lam0.01,Procambium,9,200,200
+ridge_rows200_eps1.0_lam0.01,Procambium,10,200,200
+ridge_rows200_eps1.0_lam0.01,Xylem,0,200,200
+ridge_rows200_eps1.0_lam0.01,Xylem,1,200,200
+ridge_rows200_eps1.0_lam0.01,Xylem,2,200,200
+ridge_rows200_eps1.0_lam0.01,Xylem,3,200,200
+ridge_rows200_eps1.0_lam0.01,Xylem,4,200,200
+ridge_rows200_eps1.0_lam0.01,Xylem,5,200,200
+ridge_rows200_eps1.0_lam0.01,Xylem,6,200,200
+ridge_rows200_eps1.0_lam0.01,Xylem,7,200,200
+ridge_rows200_eps1.0_lam0.01,Xylem,8,200,200
+ridge_rows200_eps1.0_lam0.01,Xylem,9,200,200
+ridge_rows200_eps1.0_lam0.01,Xylem,10,200,200
+ridge_rows200_eps1.0_lam0.01,Phloem,0,200,200
+ridge_rows200_eps1.0_lam0.01,Phloem,1,200,200
+ridge_rows200_eps1.0_lam0.01,Phloem,2,200,200
+ridge_rows200_eps1.0_lam0.01,Phloem,3,200,200
+ridge_rows200_eps1.0_lam0.01,Phloem,4,200,200
+ridge_rows200_eps1.0_lam0.01,Phloem,5,200,200
+ridge_rows200_eps1.0_lam0.01,Phloem,6,200,200
+ridge_rows200_eps1.0_lam0.01,Phloem,7,200,200
+ridge_rows200_eps1.0_lam0.01,Phloem,8,200,200
+ridge_rows200_eps1.0_lam0.01,Phloem,9,200,200
+ridge_rows200_eps1.0_lam0.01,Phloem,10,200,200
+ridge_rows200_eps1.0_lam0.01,Lateral Root Cap,0,200,200
+ridge_rows200_eps1.0_lam0.01,Lateral Root Cap,1,200,200
+ridge_rows200_eps1.0_lam0.01,Lateral Root Cap,2,200,200
+ridge_rows200_eps1.0_lam0.01,Lateral Root Cap,3,200,200
+ridge_rows200_eps1.0_lam0.01,Lateral Root Cap,4,200,200
+ridge_rows200_eps1.0_lam0.01,Lateral Root Cap,5,200,200
+ridge_rows200_eps1.0_lam0.01,Lateral Root Cap,6,200,200
+ridge_rows200_eps1.0_lam0.01,Lateral Root Cap,7,200,200
+ridge_rows200_eps1.0_lam0.01,Lateral Root Cap,8,200,200
+ridge_rows200_eps1.0_lam0.01,Lateral Root Cap,9,200,200
+ridge_rows200_eps1.0_lam0.01,Lateral Root Cap,10,200,200
+ridge_rows200_eps1.0_lam0.01,Columella,0,200,200
+ridge_rows200_eps1.0_lam0.01,Columella,1,200,200
+ridge_rows200_eps1.0_lam0.01,Columella,2,200,200
+ridge_rows200_eps1.0_lam0.01,Columella,3,200,200
+ridge_rows200_eps1.0_lam0.01,Columella,4,200,200
+ridge_rows200_eps1.0_lam0.01,Columella,5,200,200
+ridge_rows200_eps1.0_lam0.01,Columella,6,200,200
+ridge_rows200_eps1.0_lam0.01,Columella,7,200,200
+ridge_rows200_eps1.0_lam0.01,Columella,8,200,200
+ridge_rows200_eps1.0_lam0.01,Columella,9,200,200
+ridge_rows200_eps1.0_lam0.01,Columella,10,194,194
+ridge_rows200_eps1.0_lam0.1,Atrichoblast,0,200,200
+ridge_rows200_eps1.0_lam0.1,Atrichoblast,1,200,200
+ridge_rows200_eps1.0_lam0.1,Atrichoblast,2,200,200
+ridge_rows200_eps1.0_lam0.1,Atrichoblast,3,200,200
+ridge_rows200_eps1.0_lam0.1,Atrichoblast,4,186,186
+ridge_rows200_eps1.0_lam0.1,Atrichoblast,5,183,183
+ridge_rows200_eps1.0_lam0.1,Atrichoblast,6,200,200
+ridge_rows200_eps1.0_lam0.1,Atrichoblast,7,200,200
+ridge_rows200_eps1.0_lam0.1,Atrichoblast,8,200,200
+ridge_rows200_eps1.0_lam0.1,Atrichoblast,9,200,200
+ridge_rows200_eps1.0_lam0.1,Atrichoblast,10,200,200
+ridge_rows200_eps1.0_lam0.1,Trichoblast,0,200,200
+ridge_rows200_eps1.0_lam0.1,Trichoblast,1,200,200
+ridge_rows200_eps1.0_lam0.1,Trichoblast,2,200,200
+ridge_rows200_eps1.0_lam0.1,Trichoblast,3,200,200
+ridge_rows200_eps1.0_lam0.1,Trichoblast,4,200,200
+ridge_rows200_eps1.0_lam0.1,Trichoblast,5,200,200
+ridge_rows200_eps1.0_lam0.1,Trichoblast,6,200,200
+ridge_rows200_eps1.0_lam0.1,Trichoblast,7,200,200
+ridge_rows200_eps1.0_lam0.1,Trichoblast,8,200,200
+ridge_rows200_eps1.0_lam0.1,Trichoblast,9,200,200
+ridge_rows200_eps1.0_lam0.1,Trichoblast,10,186,186
+ridge_rows200_eps1.0_lam0.1,Cortex,0,200,200
+ridge_rows200_eps1.0_lam0.1,Cortex,1,200,200
+ridge_rows200_eps1.0_lam0.1,Cortex,2,190,190
+ridge_rows200_eps1.0_lam0.1,Cortex,3,199,199
+ridge_rows200_eps1.0_lam0.1,Cortex,4,200,200
+ridge_rows200_eps1.0_lam0.1,Cortex,5,200,200
+ridge_rows200_eps1.0_lam0.1,Cortex,6,200,200
+ridge_rows200_eps1.0_lam0.1,Cortex,7,200,200
+ridge_rows200_eps1.0_lam0.1,Cortex,8,200,200
+ridge_rows200_eps1.0_lam0.1,Cortex,9,200,200
+ridge_rows200_eps1.0_lam0.1,Cortex,10,200,200
+ridge_rows200_eps1.0_lam0.1,Endodermis,0,200,200
+ridge_rows200_eps1.0_lam0.1,Endodermis,1,195,195
+ridge_rows200_eps1.0_lam0.1,Endodermis,2,200,200
+ridge_rows200_eps1.0_lam0.1,Endodermis,3,200,200
+ridge_rows200_eps1.0_lam0.1,Endodermis,4,192,192
+ridge_rows200_eps1.0_lam0.1,Endodermis,5,200,200
+ridge_rows200_eps1.0_lam0.1,Endodermis,6,200,200
+ridge_rows200_eps1.0_lam0.1,Endodermis,7,200,200
+ridge_rows200_eps1.0_lam0.1,Endodermis,8,200,200
+ridge_rows200_eps1.0_lam0.1,Endodermis,9,200,200
+ridge_rows200_eps1.0_lam0.1,Endodermis,10,200,200
+ridge_rows200_eps1.0_lam0.1,Pericycle,0,200,200
+ridge_rows200_eps1.0_lam0.1,Pericycle,1,197,197
+ridge_rows200_eps1.0_lam0.1,Pericycle,2,200,200
+ridge_rows200_eps1.0_lam0.1,Pericycle,3,200,200
+ridge_rows200_eps1.0_lam0.1,Pericycle,4,200,200
+ridge_rows200_eps1.0_lam0.1,Pericycle,5,200,200
+ridge_rows200_eps1.0_lam0.1,Pericycle,6,200,200
+ridge_rows200_eps1.0_lam0.1,Pericycle,7,200,200
+ridge_rows200_eps1.0_lam0.1,Pericycle,8,200,200
+ridge_rows200_eps1.0_lam0.1,Pericycle,9,200,200
+ridge_rows200_eps1.0_lam0.1,Pericycle,10,200,200
+ridge_rows200_eps1.0_lam0.1,Procambium,0,192,192
+ridge_rows200_eps1.0_lam0.1,Procambium,1,200,200
+ridge_rows200_eps1.0_lam0.1,Procambium,2,200,200
+ridge_rows200_eps1.0_lam0.1,Procambium,3,192,192
+ridge_rows200_eps1.0_lam0.1,Procambium,4,200,200
+ridge_rows200_eps1.0_lam0.1,Procambium,5,200,200
+ridge_rows200_eps1.0_lam0.1,Procambium,6,200,200
+ridge_rows200_eps1.0_lam0.1,Procambium,7,200,200
+ridge_rows200_eps1.0_lam0.1,Procambium,8,200,200
+ridge_rows200_eps1.0_lam0.1,Procambium,9,200,200
+ridge_rows200_eps1.0_lam0.1,Procambium,10,200,200
+ridge_rows200_eps1.0_lam0.1,Xylem,0,200,200
+ridge_rows200_eps1.0_lam0.1,Xylem,1,200,200
+ridge_rows200_eps1.0_lam0.1,Xylem,2,200,200
+ridge_rows200_eps1.0_lam0.1,Xylem,3,200,200
+ridge_rows200_eps1.0_lam0.1,Xylem,4,200,200
+ridge_rows200_eps1.0_lam0.1,Xylem,5,200,200
+ridge_rows200_eps1.0_lam0.1,Xylem,6,200,200
+ridge_rows200_eps1.0_lam0.1,Xylem,7,200,200
+ridge_rows200_eps1.0_lam0.1,Xylem,8,200,200
+ridge_rows200_eps1.0_lam0.1,Xylem,9,200,200
+ridge_rows200_eps1.0_lam0.1,Xylem,10,200,200
+ridge_rows200_eps1.0_lam0.1,Phloem,0,200,200
+ridge_rows200_eps1.0_lam0.1,Phloem,1,200,200
+ridge_rows200_eps1.0_lam0.1,Phloem,2,200,200
+ridge_rows200_eps1.0_lam0.1,Phloem,3,200,200
+ridge_rows200_eps1.0_lam0.1,Phloem,4,200,200
+ridge_rows200_eps1.0_lam0.1,Phloem,5,200,200
+ridge_rows200_eps1.0_lam0.1,Phloem,6,200,200
+ridge_rows200_eps1.0_lam0.1,Phloem,7,200,200
+ridge_rows200_eps1.0_lam0.1,Phloem,8,200,200
+ridge_rows200_eps1.0_lam0.1,Phloem,9,200,200
+ridge_rows200_eps1.0_lam0.1,Phloem,10,200,200
+ridge_rows200_eps1.0_lam0.1,Lateral Root Cap,0,200,200
+ridge_rows200_eps1.0_lam0.1,Lateral Root Cap,1,200,200
+ridge_rows200_eps1.0_lam0.1,Lateral Root Cap,2,200,200
+ridge_rows200_eps1.0_lam0.1,Lateral Root Cap,3,200,200
+ridge_rows200_eps1.0_lam0.1,Lateral Root Cap,4,200,200
+ridge_rows200_eps1.0_lam0.1,Lateral Root Cap,5,200,200
+ridge_rows200_eps1.0_lam0.1,Lateral Root Cap,6,200,200
+ridge_rows200_eps1.0_lam0.1,Lateral Root Cap,7,200,200
+ridge_rows200_eps1.0_lam0.1,Lateral Root Cap,8,200,200
+ridge_rows200_eps1.0_lam0.1,Lateral Root Cap,9,200,200
+ridge_rows200_eps1.0_lam0.1,Lateral Root Cap,10,200,200
+ridge_rows200_eps1.0_lam0.1,Columella,0,200,200
+ridge_rows200_eps1.0_lam0.1,Columella,1,200,200
+ridge_rows200_eps1.0_lam0.1,Columella,2,200,200
+ridge_rows200_eps1.0_lam0.1,Columella,3,200,200
+ridge_rows200_eps1.0_lam0.1,Columella,4,200,200
+ridge_rows200_eps1.0_lam0.1,Columella,5,200,200
+ridge_rows200_eps1.0_lam0.1,Columella,6,200,200
+ridge_rows200_eps1.0_lam0.1,Columella,7,200,200
+ridge_rows200_eps1.0_lam0.1,Columella,8,200,200
+ridge_rows200_eps1.0_lam0.1,Columella,9,200,200
+ridge_rows200_eps1.0_lam0.1,Columella,10,194,194
+ridge_rows200_eps1.0_lam1.0,Atrichoblast,0,200,200
+ridge_rows200_eps1.0_lam1.0,Atrichoblast,1,200,200
+ridge_rows200_eps1.0_lam1.0,Atrichoblast,2,200,200
+ridge_rows200_eps1.0_lam1.0,Atrichoblast,3,200,200
+ridge_rows200_eps1.0_lam1.0,Atrichoblast,4,186,186
+ridge_rows200_eps1.0_lam1.0,Atrichoblast,5,183,183
+ridge_rows200_eps1.0_lam1.0,Atrichoblast,6,200,200
+ridge_rows200_eps1.0_lam1.0,Atrichoblast,7,200,200
+ridge_rows200_eps1.0_lam1.0,Atrichoblast,8,200,200
+ridge_rows200_eps1.0_lam1.0,Atrichoblast,9,200,200
+ridge_rows200_eps1.0_lam1.0,Atrichoblast,10,200,200
+ridge_rows200_eps1.0_lam1.0,Trichoblast,0,200,200
+ridge_rows200_eps1.0_lam1.0,Trichoblast,1,200,200
+ridge_rows200_eps1.0_lam1.0,Trichoblast,2,200,200
+ridge_rows200_eps1.0_lam1.0,Trichoblast,3,200,200
+ridge_rows200_eps1.0_lam1.0,Trichoblast,4,200,200
+ridge_rows200_eps1.0_lam1.0,Trichoblast,5,200,200
+ridge_rows200_eps1.0_lam1.0,Trichoblast,6,200,200
+ridge_rows200_eps1.0_lam1.0,Trichoblast,7,200,200
+ridge_rows200_eps1.0_lam1.0,Trichoblast,8,200,200
+ridge_rows200_eps1.0_lam1.0,Trichoblast,9,200,200
+ridge_rows200_eps1.0_lam1.0,Trichoblast,10,186,186
+ridge_rows200_eps1.0_lam1.0,Cortex,0,200,200
+ridge_rows200_eps1.0_lam1.0,Cortex,1,200,200
+ridge_rows200_eps1.0_lam1.0,Cortex,2,190,190
+ridge_rows200_eps1.0_lam1.0,Cortex,3,199,199
+ridge_rows200_eps1.0_lam1.0,Cortex,4,200,200
+ridge_rows200_eps1.0_lam1.0,Cortex,5,200,200
+ridge_rows200_eps1.0_lam1.0,Cortex,6,200,200
+ridge_rows200_eps1.0_lam1.0,Cortex,7,200,200
+ridge_rows200_eps1.0_lam1.0,Cortex,8,200,200
+ridge_rows200_eps1.0_lam1.0,Cortex,9,200,200
+ridge_rows200_eps1.0_lam1.0,Cortex,10,200,200
+ridge_rows200_eps1.0_lam1.0,Endodermis,0,200,200
+ridge_rows200_eps1.0_lam1.0,Endodermis,1,195,195
+ridge_rows200_eps1.0_lam1.0,Endodermis,2,200,200
+ridge_rows200_eps1.0_lam1.0,Endodermis,3,200,200
+ridge_rows200_eps1.0_lam1.0,Endodermis,4,192,192
+ridge_rows200_eps1.0_lam1.0,Endodermis,5,200,200
+ridge_rows200_eps1.0_lam1.0,Endodermis,6,200,200
+ridge_rows200_eps1.0_lam1.0,Endodermis,7,200,200
+ridge_rows200_eps1.0_lam1.0,Endodermis,8,200,200
+ridge_rows200_eps1.0_lam1.0,Endodermis,9,200,200
+ridge_rows200_eps1.0_lam1.0,Endodermis,10,200,200
+ridge_rows200_eps1.0_lam1.0,Pericycle,0,200,200
+ridge_rows200_eps1.0_lam1.0,Pericycle,1,197,197
+ridge_rows200_eps1.0_lam1.0,Pericycle,2,200,200
+ridge_rows200_eps1.0_lam1.0,Pericycle,3,200,200
+ridge_rows200_eps1.0_lam1.0,Pericycle,4,200,200
+ridge_rows200_eps1.0_lam1.0,Pericycle,5,200,200
+ridge_rows200_eps1.0_lam1.0,Pericycle,6,200,200
+ridge_rows200_eps1.0_lam1.0,Pericycle,7,200,200
+ridge_rows200_eps1.0_lam1.0,Pericycle,8,200,200
+ridge_rows200_eps1.0_lam1.0,Pericycle,9,200,200
+ridge_rows200_eps1.0_lam1.0,Pericycle,10,200,200
+ridge_rows200_eps1.0_lam1.0,Procambium,0,192,192
+ridge_rows200_eps1.0_lam1.0,Procambium,1,200,200
+ridge_rows200_eps1.0_lam1.0,Procambium,2,200,200
+ridge_rows200_eps1.0_lam1.0,Procambium,3,192,192
+ridge_rows200_eps1.0_lam1.0,Procambium,4,200,200
+ridge_rows200_eps1.0_lam1.0,Procambium,5,200,200
+ridge_rows200_eps1.0_lam1.0,Procambium,6,200,200
+ridge_rows200_eps1.0_lam1.0,Procambium,7,200,200
+ridge_rows200_eps1.0_lam1.0,Procambium,8,200,200
+ridge_rows200_eps1.0_lam1.0,Procambium,9,200,200
+ridge_rows200_eps1.0_lam1.0,Procambium,10,200,200
+ridge_rows200_eps1.0_lam1.0,Xylem,0,200,200
+ridge_rows200_eps1.0_lam1.0,Xylem,1,200,200
+ridge_rows200_eps1.0_lam1.0,Xylem,2,200,200
+ridge_rows200_eps1.0_lam1.0,Xylem,3,200,200
+ridge_rows200_eps1.0_lam1.0,Xylem,4,200,200
+ridge_rows200_eps1.0_lam1.0,Xylem,5,200,200
+ridge_rows200_eps1.0_lam1.0,Xylem,6,200,200
+ridge_rows200_eps1.0_lam1.0,Xylem,7,200,200
+ridge_rows200_eps1.0_lam1.0,Xylem,8,200,200
+ridge_rows200_eps1.0_lam1.0,Xylem,9,200,200
+ridge_rows200_eps1.0_lam1.0,Xylem,10,200,200
+ridge_rows200_eps1.0_lam1.0,Phloem,0,200,200
+ridge_rows200_eps1.0_lam1.0,Phloem,1,200,200
+ridge_rows200_eps1.0_lam1.0,Phloem,2,200,200
+ridge_rows200_eps1.0_lam1.0,Phloem,3,200,200
+ridge_rows200_eps1.0_lam1.0,Phloem,4,200,200
+ridge_rows200_eps1.0_lam1.0,Phloem,5,200,200
+ridge_rows200_eps1.0_lam1.0,Phloem,6,200,200
+ridge_rows200_eps1.0_lam1.0,Phloem,7,200,200
+ridge_rows200_eps1.0_lam1.0,Phloem,8,200,200
+ridge_rows200_eps1.0_lam1.0,Phloem,9,200,200
+ridge_rows200_eps1.0_lam1.0,Phloem,10,200,200
+ridge_rows200_eps1.0_lam1.0,Lateral Root Cap,0,200,200
+ridge_rows200_eps1.0_lam1.0,Lateral Root Cap,1,200,200
+ridge_rows200_eps1.0_lam1.0,Lateral Root Cap,2,200,200
+ridge_rows200_eps1.0_lam1.0,Lateral Root Cap,3,200,200
+ridge_rows200_eps1.0_lam1.0,Lateral Root Cap,4,200,200
+ridge_rows200_eps1.0_lam1.0,Lateral Root Cap,5,200,200
+ridge_rows200_eps1.0_lam1.0,Lateral Root Cap,6,200,200
+ridge_rows200_eps1.0_lam1.0,Lateral Root Cap,7,200,200
+ridge_rows200_eps1.0_lam1.0,Lateral Root Cap,8,200,200
+ridge_rows200_eps1.0_lam1.0,Lateral Root Cap,9,200,200
+ridge_rows200_eps1.0_lam1.0,Lateral Root Cap,10,200,200
+ridge_rows200_eps1.0_lam1.0,Columella,0,200,200
+ridge_rows200_eps1.0_lam1.0,Columella,1,200,200
+ridge_rows200_eps1.0_lam1.0,Columella,2,200,200
+ridge_rows200_eps1.0_lam1.0,Columella,3,200,200
+ridge_rows200_eps1.0_lam1.0,Columella,4,200,200
+ridge_rows200_eps1.0_lam1.0,Columella,5,200,200
+ridge_rows200_eps1.0_lam1.0,Columella,6,200,200
+ridge_rows200_eps1.0_lam1.0,Columella,7,200,200
+ridge_rows200_eps1.0_lam1.0,Columella,8,200,200
+ridge_rows200_eps1.0_lam1.0,Columella,9,200,200
+ridge_rows200_eps1.0_lam1.0,Columella,10,194,194
+ridge_rows200_eps1.0_lam10.0,Atrichoblast,0,200,200
+ridge_rows200_eps1.0_lam10.0,Atrichoblast,1,200,200
+ridge_rows200_eps1.0_lam10.0,Atrichoblast,2,200,200
+ridge_rows200_eps1.0_lam10.0,Atrichoblast,3,200,200
+ridge_rows200_eps1.0_lam10.0,Atrichoblast,4,186,186
+ridge_rows200_eps1.0_lam10.0,Atrichoblast,5,183,183
+ridge_rows200_eps1.0_lam10.0,Atrichoblast,6,200,200
+ridge_rows200_eps1.0_lam10.0,Atrichoblast,7,200,200
+ridge_rows200_eps1.0_lam10.0,Atrichoblast,8,200,200
+ridge_rows200_eps1.0_lam10.0,Atrichoblast,9,200,200
+ridge_rows200_eps1.0_lam10.0,Atrichoblast,10,200,200
+ridge_rows200_eps1.0_lam10.0,Trichoblast,0,200,200
+ridge_rows200_eps1.0_lam10.0,Trichoblast,1,200,200
+ridge_rows200_eps1.0_lam10.0,Trichoblast,2,200,200
+ridge_rows200_eps1.0_lam10.0,Trichoblast,3,200,200
+ridge_rows200_eps1.0_lam10.0,Trichoblast,4,200,200
+ridge_rows200_eps1.0_lam10.0,Trichoblast,5,200,200
+ridge_rows200_eps1.0_lam10.0,Trichoblast,6,200,200
+ridge_rows200_eps1.0_lam10.0,Trichoblast,7,200,200
+ridge_rows200_eps1.0_lam10.0,Trichoblast,8,200,200
+ridge_rows200_eps1.0_lam10.0,Trichoblast,9,200,200
+ridge_rows200_eps1.0_lam10.0,Trichoblast,10,186,186
+ridge_rows200_eps1.0_lam10.0,Cortex,0,200,200
+ridge_rows200_eps1.0_lam10.0,Cortex,1,200,200
+ridge_rows200_eps1.0_lam10.0,Cortex,2,190,190
+ridge_rows200_eps1.0_lam10.0,Cortex,3,199,199
+ridge_rows200_eps1.0_lam10.0,Cortex,4,200,200
+ridge_rows200_eps1.0_lam10.0,Cortex,5,200,200
+ridge_rows200_eps1.0_lam10.0,Cortex,6,200,200
+ridge_rows200_eps1.0_lam10.0,Cortex,7,200,200
+ridge_rows200_eps1.0_lam10.0,Cortex,8,200,200
+ridge_rows200_eps1.0_lam10.0,Cortex,9,200,200
+ridge_rows200_eps1.0_lam10.0,Cortex,10,200,200
+ridge_rows200_eps1.0_lam10.0,Endodermis,0,200,200
+ridge_rows200_eps1.0_lam10.0,Endodermis,1,195,195
+ridge_rows200_eps1.0_lam10.0,Endodermis,2,200,200
+ridge_rows200_eps1.0_lam10.0,Endodermis,3,200,200
+ridge_rows200_eps1.0_lam10.0,Endodermis,4,192,192
+ridge_rows200_eps1.0_lam10.0,Endodermis,5,200,200
+ridge_rows200_eps1.0_lam10.0,Endodermis,6,200,200
+ridge_rows200_eps1.0_lam10.0,Endodermis,7,200,200
+ridge_rows200_eps1.0_lam10.0,Endodermis,8,200,200
+ridge_rows200_eps1.0_lam10.0,Endodermis,9,200,200
+ridge_rows200_eps1.0_lam10.0,Endodermis,10,200,200
+ridge_rows200_eps1.0_lam10.0,Pericycle,0,200,200
+ridge_rows200_eps1.0_lam10.0,Pericycle,1,197,197
+ridge_rows200_eps1.0_lam10.0,Pericycle,2,200,200
+ridge_rows200_eps1.0_lam10.0,Pericycle,3,200,200
+ridge_rows200_eps1.0_lam10.0,Pericycle,4,200,200
+ridge_rows200_eps1.0_lam10.0,Pericycle,5,200,200
+ridge_rows200_eps1.0_lam10.0,Pericycle,6,200,200
+ridge_rows200_eps1.0_lam10.0,Pericycle,7,200,200
+ridge_rows200_eps1.0_lam10.0,Pericycle,8,200,200
+ridge_rows200_eps1.0_lam10.0,Pericycle,9,200,200
+ridge_rows200_eps1.0_lam10.0,Pericycle,10,200,200
+ridge_rows200_eps1.0_lam10.0,Procambium,0,192,192
+ridge_rows200_eps1.0_lam10.0,Procambium,1,200,200
+ridge_rows200_eps1.0_lam10.0,Procambium,2,200,200
+ridge_rows200_eps1.0_lam10.0,Procambium,3,192,192
+ridge_rows200_eps1.0_lam10.0,Procambium,4,200,200
+ridge_rows200_eps1.0_lam10.0,Procambium,5,200,200
+ridge_rows200_eps1.0_lam10.0,Procambium,6,200,200
+ridge_rows200_eps1.0_lam10.0,Procambium,7,200,200
+ridge_rows200_eps1.0_lam10.0,Procambium,8,200,200
+ridge_rows200_eps1.0_lam10.0,Procambium,9,200,200
+ridge_rows200_eps1.0_lam10.0,Procambium,10,200,200
+ridge_rows200_eps1.0_lam10.0,Xylem,0,200,200
+ridge_rows200_eps1.0_lam10.0,Xylem,1,200,200
+ridge_rows200_eps1.0_lam10.0,Xylem,2,200,200
+ridge_rows200_eps1.0_lam10.0,Xylem,3,200,200
+ridge_rows200_eps1.0_lam10.0,Xylem,4,200,200
+ridge_rows200_eps1.0_lam10.0,Xylem,5,200,200
+ridge_rows200_eps1.0_lam10.0,Xylem,6,200,200
+ridge_rows200_eps1.0_lam10.0,Xylem,7,200,200
+ridge_rows200_eps1.0_lam10.0,Xylem,8,200,200
+ridge_rows200_eps1.0_lam10.0,Xylem,9,200,200
+ridge_rows200_eps1.0_lam10.0,Xylem,10,200,200
+ridge_rows200_eps1.0_lam10.0,Phloem,0,200,200
+ridge_rows200_eps1.0_lam10.0,Phloem,1,200,200
+ridge_rows200_eps1.0_lam10.0,Phloem,2,200,200
+ridge_rows200_eps1.0_lam10.0,Phloem,3,200,200
+ridge_rows200_eps1.0_lam10.0,Phloem,4,200,200
+ridge_rows200_eps1.0_lam10.0,Phloem,5,200,200
+ridge_rows200_eps1.0_lam10.0,Phloem,6,200,200
+ridge_rows200_eps1.0_lam10.0,Phloem,7,200,200
+ridge_rows200_eps1.0_lam10.0,Phloem,8,200,200
+ridge_rows200_eps1.0_lam10.0,Phloem,9,200,200
+ridge_rows200_eps1.0_lam10.0,Phloem,10,200,200
+ridge_rows200_eps1.0_lam10.0,Lateral Root Cap,0,200,200
+ridge_rows200_eps1.0_lam10.0,Lateral Root Cap,1,200,200
+ridge_rows200_eps1.0_lam10.0,Lateral Root Cap,2,200,200
+ridge_rows200_eps1.0_lam10.0,Lateral Root Cap,3,200,200
+ridge_rows200_eps1.0_lam10.0,Lateral Root Cap,4,200,200
+ridge_rows200_eps1.0_lam10.0,Lateral Root Cap,5,200,200
+ridge_rows200_eps1.0_lam10.0,Lateral Root Cap,6,200,200
+ridge_rows200_eps1.0_lam10.0,Lateral Root Cap,7,200,200
+ridge_rows200_eps1.0_lam10.0,Lateral Root Cap,8,200,200
+ridge_rows200_eps1.0_lam10.0,Lateral Root Cap,9,200,200
+ridge_rows200_eps1.0_lam10.0,Lateral Root Cap,10,200,200
+ridge_rows200_eps1.0_lam10.0,Columella,0,200,200
+ridge_rows200_eps1.0_lam10.0,Columella,1,200,200
+ridge_rows200_eps1.0_lam10.0,Columella,2,200,200
+ridge_rows200_eps1.0_lam10.0,Columella,3,200,200
+ridge_rows200_eps1.0_lam10.0,Columella,4,200,200
+ridge_rows200_eps1.0_lam10.0,Columella,5,200,200
+ridge_rows200_eps1.0_lam10.0,Columella,6,200,200
+ridge_rows200_eps1.0_lam10.0,Columella,7,200,200
+ridge_rows200_eps1.0_lam10.0,Columella,8,200,200
+ridge_rows200_eps1.0_lam10.0,Columella,9,200,200
+ridge_rows200_eps1.0_lam10.0,Columella,10,194,194
+minnorm_rows200_eps1.0_lamminnorm,Atrichoblast,0,200,200
+minnorm_rows200_eps1.0_lamminnorm,Atrichoblast,1,200,200
+minnorm_rows200_eps1.0_lamminnorm,Atrichoblast,2,200,200
+minnorm_rows200_eps1.0_lamminnorm,Atrichoblast,3,200,200
+minnorm_rows200_eps1.0_lamminnorm,Atrichoblast,4,186,186
+minnorm_rows200_eps1.0_lamminnorm,Atrichoblast,5,183,183
+minnorm_rows200_eps1.0_lamminnorm,Atrichoblast,6,200,200
+minnorm_rows200_eps1.0_lamminnorm,Atrichoblast,7,200,200
+minnorm_rows200_eps1.0_lamminnorm,Atrichoblast,8,200,200
+minnorm_rows200_eps1.0_lamminnorm,Atrichoblast,9,200,200
+minnorm_rows200_eps1.0_lamminnorm,Atrichoblast,10,200,200
+minnorm_rows200_eps1.0_lamminnorm,Trichoblast,0,200,200
+minnorm_rows200_eps1.0_lamminnorm,Trichoblast,1,200,200
+minnorm_rows200_eps1.0_lamminnorm,Trichoblast,2,200,200
+minnorm_rows200_eps1.0_lamminnorm,Trichoblast,3,200,200
+minnorm_rows200_eps1.0_lamminnorm,Trichoblast,4,200,200
+minnorm_rows200_eps1.0_lamminnorm,Trichoblast,5,200,200
+minnorm_rows200_eps1.0_lamminnorm,Trichoblast,6,200,200
+minnorm_rows200_eps1.0_lamminnorm,Trichoblast,7,200,200
+minnorm_rows200_eps1.0_lamminnorm,Trichoblast,8,200,200
+minnorm_rows200_eps1.0_lamminnorm,Trichoblast,9,200,200
+minnorm_rows200_eps1.0_lamminnorm,Trichoblast,10,186,186
+minnorm_rows200_eps1.0_lamminnorm,Cortex,0,200,200
+minnorm_rows200_eps1.0_lamminnorm,Cortex,1,200,200
+minnorm_rows200_eps1.0_lamminnorm,Cortex,2,190,190
+minnorm_rows200_eps1.0_lamminnorm,Cortex,3,199,199
+minnorm_rows200_eps1.0_lamminnorm,Cortex,4,200,200
+minnorm_rows200_eps1.0_lamminnorm,Cortex,5,200,200
+minnorm_rows200_eps1.0_lamminnorm,Cortex,6,200,200
+minnorm_rows200_eps1.0_lamminnorm,Cortex,7,200,200
+minnorm_rows200_eps1.0_lamminnorm,Cortex,8,200,200
+minnorm_rows200_eps1.0_lamminnorm,Cortex,9,200,200
+minnorm_rows200_eps1.0_lamminnorm,Cortex,10,200,200
+minnorm_rows200_eps1.0_lamminnorm,Endodermis,0,200,200
+minnorm_rows200_eps1.0_lamminnorm,Endodermis,1,195,195
+minnorm_rows200_eps1.0_lamminnorm,Endodermis,2,200,200
+minnorm_rows200_eps1.0_lamminnorm,Endodermis,3,200,200
+minnorm_rows200_eps1.0_lamminnorm,Endodermis,4,192,192
+minnorm_rows200_eps1.0_lamminnorm,Endodermis,5,200,200
+minnorm_rows200_eps1.0_lamminnorm,Endodermis,6,200,200
+minnorm_rows200_eps1.0_lamminnorm,Endodermis,7,200,200
+minnorm_rows200_eps1.0_lamminnorm,Endodermis,8,200,200
+minnorm_rows200_eps1.0_lamminnorm,Endodermis,9,200,200
+minnorm_rows200_eps1.0_lamminnorm,Endodermis,10,200,200
+minnorm_rows200_eps1.0_lamminnorm,Pericycle,0,200,200
+minnorm_rows200_eps1.0_lamminnorm,Pericycle,1,197,197
+minnorm_rows200_eps1.0_lamminnorm,Pericycle,2,200,200
+minnorm_rows200_eps1.0_lamminnorm,Pericycle,3,200,200
+minnorm_rows200_eps1.0_lamminnorm,Pericycle,4,200,200
+minnorm_rows200_eps1.0_lamminnorm,Pericycle,5,200,200
+minnorm_rows200_eps1.0_lamminnorm,Pericycle,6,200,200
+minnorm_rows200_eps1.0_lamminnorm,Pericycle,7,200,200
+minnorm_rows200_eps1.0_lamminnorm,Pericycle,8,200,200
+minnorm_rows200_eps1.0_lamminnorm,Pericycle,9,200,200
+minnorm_rows200_eps1.0_lamminnorm,Pericycle,10,200,200
+minnorm_rows200_eps1.0_lamminnorm,Procambium,0,192,192
+minnorm_rows200_eps1.0_lamminnorm,Procambium,1,200,200
+minnorm_rows200_eps1.0_lamminnorm,Procambium,2,200,200
+minnorm_rows200_eps1.0_lamminnorm,Procambium,3,192,192
+minnorm_rows200_eps1.0_lamminnorm,Procambium,4,200,200
+minnorm_rows200_eps1.0_lamminnorm,Procambium,5,200,200
+minnorm_rows200_eps1.0_lamminnorm,Procambium,6,200,200
+minnorm_rows200_eps1.0_lamminnorm,Procambium,7,200,200
+minnorm_rows200_eps1.0_lamminnorm,Procambium,8,200,200
+minnorm_rows200_eps1.0_lamminnorm,Procambium,9,200,200
+minnorm_rows200_eps1.0_lamminnorm,Procambium,10,200,200
+minnorm_rows200_eps1.0_lamminnorm,Xylem,0,200,200
+minnorm_rows200_eps1.0_lamminnorm,Xylem,1,200,200
+minnorm_rows200_eps1.0_lamminnorm,Xylem,2,200,200
+minnorm_rows200_eps1.0_lamminnorm,Xylem,3,200,200
+minnorm_rows200_eps1.0_lamminnorm,Xylem,4,200,200
+minnorm_rows200_eps1.0_lamminnorm,Xylem,5,200,200
+minnorm_rows200_eps1.0_lamminnorm,Xylem,6,200,200
+minnorm_rows200_eps1.0_lamminnorm,Xylem,7,200,200
+minnorm_rows200_eps1.0_lamminnorm,Xylem,8,200,200
+minnorm_rows200_eps1.0_lamminnorm,Xylem,9,200,200
+minnorm_rows200_eps1.0_lamminnorm,Xylem,10,200,200
+minnorm_rows200_eps1.0_lamminnorm,Phloem,0,200,200
+minnorm_rows200_eps1.0_lamminnorm,Phloem,1,200,200
+minnorm_rows200_eps1.0_lamminnorm,Phloem,2,200,200
+minnorm_rows200_eps1.0_lamminnorm,Phloem,3,200,200
+minnorm_rows200_eps1.0_lamminnorm,Phloem,4,200,200
+minnorm_rows200_eps1.0_lamminnorm,Phloem,5,200,200
+minnorm_rows200_eps1.0_lamminnorm,Phloem,6,200,200
+minnorm_rows200_eps1.0_lamminnorm,Phloem,7,200,200
+minnorm_rows200_eps1.0_lamminnorm,Phloem,8,200,200
+minnorm_rows200_eps1.0_lamminnorm,Phloem,9,200,200
+minnorm_rows200_eps1.0_lamminnorm,Phloem,10,200,200
+minnorm_rows200_eps1.0_lamminnorm,Lateral Root Cap,0,200,200
+minnorm_rows200_eps1.0_lamminnorm,Lateral Root Cap,1,200,200
+minnorm_rows200_eps1.0_lamminnorm,Lateral Root Cap,2,200,200
+minnorm_rows200_eps1.0_lamminnorm,Lateral Root Cap,3,200,200
+minnorm_rows200_eps1.0_lamminnorm,Lateral Root Cap,4,200,200
+minnorm_rows200_eps1.0_lamminnorm,Lateral Root Cap,5,200,200
+minnorm_rows200_eps1.0_lamminnorm,Lateral Root Cap,6,200,200
+minnorm_rows200_eps1.0_lamminnorm,Lateral Root Cap,7,200,200
+minnorm_rows200_eps1.0_lamminnorm,Lateral Root Cap,8,200,200
+minnorm_rows200_eps1.0_lamminnorm,Lateral Root Cap,9,200,200
+minnorm_rows200_eps1.0_lamminnorm,Lateral Root Cap,10,200,200
+minnorm_rows200_eps1.0_lamminnorm,Columella,0,200,200
+minnorm_rows200_eps1.0_lamminnorm,Columella,1,200,200
+minnorm_rows200_eps1.0_lamminnorm,Columella,2,200,200
+minnorm_rows200_eps1.0_lamminnorm,Columella,3,200,200
+minnorm_rows200_eps1.0_lamminnorm,Columella,4,200,200
+minnorm_rows200_eps1.0_lamminnorm,Columella,5,200,200
+minnorm_rows200_eps1.0_lamminnorm,Columella,6,200,200
+minnorm_rows200_eps1.0_lamminnorm,Columella,7,200,200
+minnorm_rows200_eps1.0_lamminnorm,Columella,8,200,200
+minnorm_rows200_eps1.0_lamminnorm,Columella,9,200,200
+minnorm_rows200_eps1.0_lamminnorm,Columella,10,194,194
+rows_rows50_eps1.0_lam0,Atrichoblast,0,50,23
+rows_rows50_eps1.0_lam0,Atrichoblast,1,50,26
+rows_rows50_eps1.0_lam0,Atrichoblast,2,50,27
+rows_rows50_eps1.0_lam0,Atrichoblast,3,50,14
+rows_rows50_eps1.0_lam0,Atrichoblast,4,50,27
+rows_rows50_eps1.0_lam0,Atrichoblast,5,50,18
+rows_rows50_eps1.0_lam0,Atrichoblast,6,50,26
+rows_rows50_eps1.0_lam0,Atrichoblast,7,50,27
+rows_rows50_eps1.0_lam0,Atrichoblast,8,50,18
+rows_rows50_eps1.0_lam0,Atrichoblast,9,50,27
+rows_rows50_eps1.0_lam0,Atrichoblast,10,50,24
+rows_rows50_eps1.0_lam0,Trichoblast,0,50,25
+rows_rows50_eps1.0_lam0,Trichoblast,1,50,24
+rows_rows50_eps1.0_lam0,Trichoblast,2,50,26
+rows_rows50_eps1.0_lam0,Trichoblast,3,50,29
+rows_rows50_eps1.0_lam0,Trichoblast,4,50,28
+rows_rows50_eps1.0_lam0,Trichoblast,5,50,27
+rows_rows50_eps1.0_lam0,Trichoblast,6,50,23
+rows_rows50_eps1.0_lam0,Trichoblast,7,50,24
+rows_rows50_eps1.0_lam0,Trichoblast,8,50,23
+rows_rows50_eps1.0_lam0,Trichoblast,9,50,22
+rows_rows50_eps1.0_lam0,Trichoblast,10,50,22
+rows_rows50_eps1.0_lam0,Cortex,0,50,5
+rows_rows50_eps1.0_lam0,Cortex,1,50,5
+rows_rows50_eps1.0_lam0,Cortex,2,50,8
+rows_rows50_eps1.0_lam0,Cortex,3,50,6
+rows_rows50_eps1.0_lam0,Cortex,4,50,9
+rows_rows50_eps1.0_lam0,Cortex,5,50,4
+rows_rows50_eps1.0_lam0,Cortex,6,50,4
+rows_rows50_eps1.0_lam0,Cortex,7,50,4
+rows_rows50_eps1.0_lam0,Cortex,8,50,6
+rows_rows50_eps1.0_lam0,Cortex,9,50,6
+rows_rows50_eps1.0_lam0,Cortex,10,50,5
+rows_rows50_eps1.0_lam0,Endodermis,0,50,5
+rows_rows50_eps1.0_lam0,Endodermis,1,50,6
+rows_rows50_eps1.0_lam0,Endodermis,2,50,6
+rows_rows50_eps1.0_lam0,Endodermis,3,50,6
+rows_rows50_eps1.0_lam0,Endodermis,4,50,5
+rows_rows50_eps1.0_lam0,Endodermis,5,50,6
+rows_rows50_eps1.0_lam0,Endodermis,6,50,6
+rows_rows50_eps1.0_lam0,Endodermis,7,50,6
+rows_rows50_eps1.0_lam0,Endodermis,8,50,6
+rows_rows50_eps1.0_lam0,Endodermis,9,50,6
+rows_rows50_eps1.0_lam0,Endodermis,10,50,6
+rows_rows50_eps1.0_lam0,Pericycle,0,50,17
+rows_rows50_eps1.0_lam0,Pericycle,1,50,5
+rows_rows50_eps1.0_lam0,Pericycle,2,50,9
+rows_rows50_eps1.0_lam0,Pericycle,3,50,7
+rows_rows50_eps1.0_lam0,Pericycle,4,50,5
+rows_rows50_eps1.0_lam0,Pericycle,5,50,5
+rows_rows50_eps1.0_lam0,Pericycle,6,50,7
+rows_rows50_eps1.0_lam0,Pericycle,7,50,11
+rows_rows50_eps1.0_lam0,Pericycle,8,50,5
+rows_rows50_eps1.0_lam0,Pericycle,9,50,5
+rows_rows50_eps1.0_lam0,Pericycle,10,50,5
+rows_rows50_eps1.0_lam0,Procambium,0,50,10
+rows_rows50_eps1.0_lam0,Procambium,1,50,5
+rows_rows50_eps1.0_lam0,Procambium,2,50,10
+rows_rows50_eps1.0_lam0,Procambium,3,50,10
+rows_rows50_eps1.0_lam0,Procambium,4,50,8
+rows_rows50_eps1.0_lam0,Procambium,5,50,7
+rows_rows50_eps1.0_lam0,Procambium,6,50,6
+rows_rows50_eps1.0_lam0,Procambium,7,50,7
+rows_rows50_eps1.0_lam0,Procambium,8,50,6
+rows_rows50_eps1.0_lam0,Procambium,9,50,8
+rows_rows50_eps1.0_lam0,Procambium,10,50,7
+rows_rows50_eps1.0_lam0,Xylem,0,50,7
+rows_rows50_eps1.0_lam0,Xylem,1,50,8
+rows_rows50_eps1.0_lam0,Xylem,2,50,9
+rows_rows50_eps1.0_lam0,Xylem,3,50,9
+rows_rows50_eps1.0_lam0,Xylem,4,50,10
+rows_rows50_eps1.0_lam0,Xylem,5,50,10
+rows_rows50_eps1.0_lam0,Xylem,6,50,8
+rows_rows50_eps1.0_lam0,Xylem,7,50,14
+rows_rows50_eps1.0_lam0,Xylem,8,50,10
+rows_rows50_eps1.0_lam0,Xylem,9,50,10
+rows_rows50_eps1.0_lam0,Xylem,10,50,10
+rows_rows50_eps1.0_lam0,Phloem,0,50,7
+rows_rows50_eps1.0_lam0,Phloem,1,50,9
+rows_rows50_eps1.0_lam0,Phloem,2,50,6
+rows_rows50_eps1.0_lam0,Phloem,3,50,9
+rows_rows50_eps1.0_lam0,Phloem,4,50,11
+rows_rows50_eps1.0_lam0,Phloem,5,50,11
+rows_rows50_eps1.0_lam0,Phloem,6,50,10
+rows_rows50_eps1.0_lam0,Phloem,7,50,10
+rows_rows50_eps1.0_lam0,Phloem,8,50,11
+rows_rows50_eps1.0_lam0,Phloem,9,50,11
+rows_rows50_eps1.0_lam0,Phloem,10,50,10
+rows_rows50_eps1.0_lam0,Lateral Root Cap,0,50,17
+rows_rows50_eps1.0_lam0,Lateral Root Cap,1,50,23
+rows_rows50_eps1.0_lam0,Lateral Root Cap,2,50,22
+rows_rows50_eps1.0_lam0,Lateral Root Cap,3,50,23
+rows_rows50_eps1.0_lam0,Lateral Root Cap,4,50,23
+rows_rows50_eps1.0_lam0,Lateral Root Cap,5,50,25
+rows_rows50_eps1.0_lam0,Lateral Root Cap,6,50,17
+rows_rows50_eps1.0_lam0,Lateral Root Cap,7,50,15
+rows_rows50_eps1.0_lam0,Lateral Root Cap,8,50,20
+rows_rows50_eps1.0_lam0,Lateral Root Cap,9,50,20
+rows_rows50_eps1.0_lam0,Lateral Root Cap,10,50,22
+rows_rows50_eps1.0_lam0,Columella,0,50,5
+rows_rows50_eps1.0_lam0,Columella,1,50,16
+rows_rows50_eps1.0_lam0,Columella,2,50,14
+rows_rows50_eps1.0_lam0,Columella,3,50,5
+rows_rows50_eps1.0_lam0,Columella,4,50,5
+rows_rows50_eps1.0_lam0,Columella,5,50,6
+rows_rows50_eps1.0_lam0,Columella,6,50,17
+rows_rows50_eps1.0_lam0,Columella,7,50,5
+rows_rows50_eps1.0_lam0,Columella,8,50,12
+rows_rows50_eps1.0_lam0,Columella,9,50,14
+rows_rows50_eps1.0_lam0,Columella,10,50,20
+rows_rows800_eps1.0_lam0,Atrichoblast,0,800,20
+rows_rows800_eps1.0_lam0,Atrichoblast,1,800,12
+rows_rows800_eps1.0_lam0,Atrichoblast,2,800,6
+rows_rows800_eps1.0_lam0,Atrichoblast,3,800,16
+rows_rows800_eps1.0_lam0,Atrichoblast,4,800,5
+rows_rows800_eps1.0_lam0,Atrichoblast,5,800,13
+rows_rows800_eps1.0_lam0,Atrichoblast,6,800,11
+rows_rows800_eps1.0_lam0,Atrichoblast,7,800,29
+rows_rows800_eps1.0_lam0,Atrichoblast,8,800,16
+rows_rows800_eps1.0_lam0,Atrichoblast,9,800,16
+rows_rows800_eps1.0_lam0,Atrichoblast,10,800,3
+rows_rows800_eps1.0_lam0,Trichoblast,0,793,32
+rows_rows800_eps1.0_lam0,Trichoblast,1,800,32
+rows_rows800_eps1.0_lam0,Trichoblast,2,784,32
+rows_rows800_eps1.0_lam0,Trichoblast,3,800,32
+rows_rows800_eps1.0_lam0,Trichoblast,4,800,32
+rows_rows800_eps1.0_lam0,Trichoblast,5,800,32
+rows_rows800_eps1.0_lam0,Trichoblast,6,768,32
+rows_rows800_eps1.0_lam0,Trichoblast,7,800,32
+rows_rows800_eps1.0_lam0,Trichoblast,8,800,32
+rows_rows800_eps1.0_lam0,Trichoblast,9,800,32
+rows_rows800_eps1.0_lam0,Trichoblast,10,800,32
+rows_rows800_eps1.0_lam0,Cortex,0,800,7
+rows_rows800_eps1.0_lam0,Cortex,1,771,8
+rows_rows800_eps1.0_lam0,Cortex,2,800,6
+rows_rows800_eps1.0_lam0,Cortex,3,800,6
+rows_rows800_eps1.0_lam0,Cortex,4,800,7
+rows_rows800_eps1.0_lam0,Cortex,5,800,12
+rows_rows800_eps1.0_lam0,Cortex,6,800,7
+rows_rows800_eps1.0_lam0,Cortex,7,800,7
+rows_rows800_eps1.0_lam0,Cortex,8,800,7
+rows_rows800_eps1.0_lam0,Cortex,9,790,6
+rows_rows800_eps1.0_lam0,Cortex,10,800,7
+rows_rows800_eps1.0_lam0,Endodermis,0,798,5
+rows_rows800_eps1.0_lam0,Endodermis,1,800,3
+rows_rows800_eps1.0_lam0,Endodermis,2,800,6
+rows_rows800_eps1.0_lam0,Endodermis,3,800,6
+rows_rows800_eps1.0_lam0,Endodermis,4,800,6
+rows_rows800_eps1.0_lam0,Endodermis,5,800,6
+rows_rows800_eps1.0_lam0,Endodermis,6,800,6
+rows_rows800_eps1.0_lam0,Endodermis,7,800,6
+rows_rows800_eps1.0_lam0,Endodermis,8,800,6
+rows_rows800_eps1.0_lam0,Endodermis,9,800,6
+rows_rows800_eps1.0_lam0,Endodermis,10,800,6
+rows_rows800_eps1.0_lam0,Pericycle,0,800,5
+rows_rows800_eps1.0_lam0,Pericycle,1,795,5
+rows_rows800_eps1.0_lam0,Pericycle,2,794,5
+rows_rows800_eps1.0_lam0,Pericycle,3,796,9
+rows_rows800_eps1.0_lam0,Pericycle,4,800,5
+rows_rows800_eps1.0_lam0,Pericycle,5,800,5
+rows_rows800_eps1.0_lam0,Pericycle,6,800,5
+rows_rows800_eps1.0_lam0,Pericycle,7,786,5
+rows_rows800_eps1.0_lam0,Pericycle,8,800,5
+rows_rows800_eps1.0_lam0,Pericycle,9,800,5
+rows_rows800_eps1.0_lam0,Pericycle,10,800,6
+rows_rows800_eps1.0_lam0,Procambium,0,800,11
+rows_rows800_eps1.0_lam0,Procambium,1,800,18
+rows_rows800_eps1.0_lam0,Procambium,2,800,13
+rows_rows800_eps1.0_lam0,Procambium,3,800,13
+rows_rows800_eps1.0_lam0,Procambium,4,800,12
+rows_rows800_eps1.0_lam0,Procambium,5,800,13
+rows_rows800_eps1.0_lam0,Procambium,6,800,15
+rows_rows800_eps1.0_lam0,Procambium,7,800,19
+rows_rows800_eps1.0_lam0,Procambium,8,800,10
+rows_rows800_eps1.0_lam0,Procambium,9,794,14
+rows_rows800_eps1.0_lam0,Procambium,10,800,13
+rows_rows800_eps1.0_lam0,Xylem,0,777,10
+rows_rows800_eps1.0_lam0,Xylem,1,800,10
+rows_rows800_eps1.0_lam0,Xylem,2,800,8
+rows_rows800_eps1.0_lam0,Xylem,3,800,10
+rows_rows800_eps1.0_lam0,Xylem,4,800,8
+rows_rows800_eps1.0_lam0,Xylem,5,798,10
+rows_rows800_eps1.0_lam0,Xylem,6,800,10
+rows_rows800_eps1.0_lam0,Xylem,7,776,8
+rows_rows800_eps1.0_lam0,Xylem,8,783,10
+rows_rows800_eps1.0_lam0,Xylem,9,777,8
+rows_rows800_eps1.0_lam0,Xylem,10,751,10
+rows_rows800_eps1.0_lam0,Phloem,0,800,12
+rows_rows800_eps1.0_lam0,Phloem,1,800,9
+rows_rows800_eps1.0_lam0,Phloem,2,800,12
+rows_rows800_eps1.0_lam0,Phloem,3,792,11
+rows_rows800_eps1.0_lam0,Phloem,4,800,12
+rows_rows800_eps1.0_lam0,Phloem,5,785,11
+rows_rows800_eps1.0_lam0,Phloem,6,800,12
+rows_rows800_eps1.0_lam0,Phloem,7,800,12
+rows_rows800_eps1.0_lam0,Phloem,8,800,11
+rows_rows800_eps1.0_lam0,Phloem,9,800,12
+rows_rows800_eps1.0_lam0,Phloem,10,797,11
+rows_rows800_eps1.0_lam0,Lateral Root Cap,0,800,17
+rows_rows800_eps1.0_lam0,Lateral Root Cap,1,776,16
+rows_rows800_eps1.0_lam0,Lateral Root Cap,2,800,12
+rows_rows800_eps1.0_lam0,Lateral Root Cap,3,800,26
+rows_rows800_eps1.0_lam0,Lateral Root Cap,4,800,15
+rows_rows800_eps1.0_lam0,Lateral Root Cap,5,800,26
+rows_rows800_eps1.0_lam0,Lateral Root Cap,6,800,15
+rows_rows800_eps1.0_lam0,Lateral Root Cap,7,800,16
+rows_rows800_eps1.0_lam0,Lateral Root Cap,8,800,26
+rows_rows800_eps1.0_lam0,Lateral Root Cap,9,800,16
+rows_rows800_eps1.0_lam0,Lateral Root Cap,10,800,26
+rows_rows800_eps1.0_lam0,Columella,0,800,22
+rows_rows800_eps1.0_lam0,Columella,1,800,10
+rows_rows800_eps1.0_lam0,Columella,2,800,10
+rows_rows800_eps1.0_lam0,Columella,3,776,10
+rows_rows800_eps1.0_lam0,Columella,4,800,22
+rows_rows800_eps1.0_lam0,Columella,5,800,13
+rows_rows800_eps1.0_lam0,Columella,6,800,13
+rows_rows800_eps1.0_lam0,Columella,7,787,12
+rows_rows800_eps1.0_lam0,Columella,8,800,13
+rows_rows800_eps1.0_lam0,Columella,9,797,12
+rows_rows800_eps1.0_lam0,Columella,10,800,13
+spread_rows200_eps0.5_lam0,Atrichoblast,0,200,26
+spread_rows200_eps0.5_lam0,Atrichoblast,1,200,26
+spread_rows200_eps0.5_lam0,Atrichoblast,2,200,29
+spread_rows200_eps0.5_lam0,Atrichoblast,3,200,30
+spread_rows200_eps0.5_lam0,Atrichoblast,4,186,29
+spread_rows200_eps0.5_lam0,Atrichoblast,5,183,18
+spread_rows200_eps0.5_lam0,Atrichoblast,6,200,26
+spread_rows200_eps0.5_lam0,Atrichoblast,7,200,31
+spread_rows200_eps0.5_lam0,Atrichoblast,8,200,26
+spread_rows200_eps0.5_lam0,Atrichoblast,9,200,25
+spread_rows200_eps0.5_lam0,Atrichoblast,10,200,26
+spread_rows200_eps0.5_lam0,Trichoblast,0,200,32
+spread_rows200_eps0.5_lam0,Trichoblast,1,200,28
+spread_rows200_eps0.5_lam0,Trichoblast,2,200,30
+spread_rows200_eps0.5_lam0,Trichoblast,3,200,27
+spread_rows200_eps0.5_lam0,Trichoblast,4,200,28
+spread_rows200_eps0.5_lam0,Trichoblast,5,200,28
+spread_rows200_eps0.5_lam0,Trichoblast,6,200,28
+spread_rows200_eps0.5_lam0,Trichoblast,7,200,28
+spread_rows200_eps0.5_lam0,Trichoblast,8,200,29
+spread_rows200_eps0.5_lam0,Trichoblast,9,200,28
+spread_rows200_eps0.5_lam0,Trichoblast,10,186,27
+spread_rows200_eps0.5_lam0,Cortex,0,200,6
+spread_rows200_eps0.5_lam0,Cortex,1,200,28
+spread_rows200_eps0.5_lam0,Cortex,2,190,27
+spread_rows200_eps0.5_lam0,Cortex,3,199,29
+spread_rows200_eps0.5_lam0,Cortex,4,200,27
+spread_rows200_eps0.5_lam0,Cortex,5,200,27
+spread_rows200_eps0.5_lam0,Cortex,6,200,33
+spread_rows200_eps0.5_lam0,Cortex,7,200,28
+spread_rows200_eps0.5_lam0,Cortex,8,200,33
+spread_rows200_eps0.5_lam0,Cortex,9,200,28
+spread_rows200_eps0.5_lam0,Cortex,10,200,28
+spread_rows200_eps0.5_lam0,Endodermis,0,200,5
+spread_rows200_eps0.5_lam0,Endodermis,1,195,5
+spread_rows200_eps0.5_lam0,Endodermis,2,200,5
+spread_rows200_eps0.5_lam0,Endodermis,3,200,5
+spread_rows200_eps0.5_lam0,Endodermis,4,192,5
+spread_rows200_eps0.5_lam0,Endodermis,5,200,5
+spread_rows200_eps0.5_lam0,Endodermis,6,200,5
+spread_rows200_eps0.5_lam0,Endodermis,7,200,5
+spread_rows200_eps0.5_lam0,Endodermis,8,200,5
+spread_rows200_eps0.5_lam0,Endodermis,9,200,5
+spread_rows200_eps0.5_lam0,Endodermis,10,200,6
+spread_rows200_eps0.5_lam0,Pericycle,0,200,6
+spread_rows200_eps0.5_lam0,Pericycle,1,197,6
+spread_rows200_eps0.5_lam0,Pericycle,2,200,6
+spread_rows200_eps0.5_lam0,Pericycle,3,200,6
+spread_rows200_eps0.5_lam0,Pericycle,4,200,5
+spread_rows200_eps0.5_lam0,Pericycle,5,200,6
+spread_rows200_eps0.5_lam0,Pericycle,6,200,6
+spread_rows200_eps0.5_lam0,Pericycle,7,200,6
+spread_rows200_eps0.5_lam0,Pericycle,8,200,6
+spread_rows200_eps0.5_lam0,Pericycle,9,200,6
+spread_rows200_eps0.5_lam0,Pericycle,10,200,6
+spread_rows200_eps0.5_lam0,Procambium,0,192,12
+spread_rows200_eps0.5_lam0,Procambium,1,200,9
+spread_rows200_eps0.5_lam0,Procambium,2,200,12
+spread_rows200_eps0.5_lam0,Procambium,3,192,12
+spread_rows200_eps0.5_lam0,Procambium,4,200,9
+spread_rows200_eps0.5_lam0,Procambium,5,200,9
+spread_rows200_eps0.5_lam0,Procambium,6,200,12
+spread_rows200_eps0.5_lam0,Procambium,7,200,9
+spread_rows200_eps0.5_lam0,Procambium,8,200,12
+spread_rows200_eps0.5_lam0,Procambium,9,200,9
+spread_rows200_eps0.5_lam0,Procambium,10,200,9
+spread_rows200_eps0.5_lam0,Xylem,0,200,8
+spread_rows200_eps0.5_lam0,Xylem,1,200,8
+spread_rows200_eps0.5_lam0,Xylem,2,200,8
+spread_rows200_eps0.5_lam0,Xylem,3,200,8
+spread_rows200_eps0.5_lam0,Xylem,4,200,9
+spread_rows200_eps0.5_lam0,Xylem,5,200,9
+spread_rows200_eps0.5_lam0,Xylem,6,200,9
+spread_rows200_eps0.5_lam0,Xylem,7,200,9
+spread_rows200_eps0.5_lam0,Xylem,8,200,9
+spread_rows200_eps0.5_lam0,Xylem,9,200,11
+spread_rows200_eps0.5_lam0,Xylem,10,200,9
+spread_rows200_eps0.5_lam0,Phloem,0,200,11
+spread_rows200_eps0.5_lam0,Phloem,1,200,9
+spread_rows200_eps0.5_lam0,Phloem,2,200,9
+spread_rows200_eps0.5_lam0,Phloem,3,200,8
+spread_rows200_eps0.5_lam0,Phloem,4,200,9
+spread_rows200_eps0.5_lam0,Phloem,5,200,9
+spread_rows200_eps0.5_lam0,Phloem,6,200,9
+spread_rows200_eps0.5_lam0,Phloem,7,200,9
+spread_rows200_eps0.5_lam0,Phloem,8,200,9
+spread_rows200_eps0.5_lam0,Phloem,9,200,9
+spread_rows200_eps0.5_lam0,Phloem,10,200,9
+spread_rows200_eps0.5_lam0,Lateral Root Cap,0,200,20
+spread_rows200_eps0.5_lam0,Lateral Root Cap,1,200,24
+spread_rows200_eps0.5_lam0,Lateral Root Cap,2,200,27
+spread_rows200_eps0.5_lam0,Lateral Root Cap,3,200,24
+spread_rows200_eps0.5_lam0,Lateral Root Cap,4,200,24
+spread_rows200_eps0.5_lam0,Lateral Root Cap,5,200,26
+spread_rows200_eps0.5_lam0,Lateral Root Cap,6,200,20
+spread_rows200_eps0.5_lam0,Lateral Root Cap,7,200,21
+spread_rows200_eps0.5_lam0,Lateral Root Cap,8,200,20
+spread_rows200_eps0.5_lam0,Lateral Root Cap,9,200,20
+spread_rows200_eps0.5_lam0,Lateral Root Cap,10,200,24
+spread_rows200_eps0.5_lam0,Columella,0,200,6
+spread_rows200_eps0.5_lam0,Columella,1,200,12
+spread_rows200_eps0.5_lam0,Columella,2,200,9
+spread_rows200_eps0.5_lam0,Columella,3,200,8
+spread_rows200_eps0.5_lam0,Columella,4,200,9
+spread_rows200_eps0.5_lam0,Columella,5,200,10
+spread_rows200_eps0.5_lam0,Columella,6,200,6
+spread_rows200_eps0.5_lam0,Columella,7,200,6
+spread_rows200_eps0.5_lam0,Columella,8,200,13
+spread_rows200_eps0.5_lam0,Columella,9,200,14
+spread_rows200_eps0.5_lam0,Columella,10,194,5
+spread_rows200_eps2.0_lam0,Atrichoblast,0,200,23
+spread_rows200_eps2.0_lam0,Atrichoblast,1,200,5
+spread_rows200_eps2.0_lam0,Atrichoblast,2,200,30
+spread_rows200_eps2.0_lam0,Atrichoblast,3,200,15
+spread_rows200_eps2.0_lam0,Atrichoblast,4,186,15
+spread_rows200_eps2.0_lam0,Atrichoblast,5,183,44
+spread_rows200_eps2.0_lam0,Atrichoblast,6,200,22
+spread_rows200_eps2.0_lam0,Atrichoblast,7,200,33
+spread_rows200_eps2.0_lam0,Atrichoblast,8,200,27
+spread_rows200_eps2.0_lam0,Atrichoblast,9,200,24
+spread_rows200_eps2.0_lam0,Atrichoblast,10,200,18
+spread_rows200_eps2.0_lam0,Trichoblast,0,200,29
+spread_rows200_eps2.0_lam0,Trichoblast,1,200,29
+spread_rows200_eps2.0_lam0,Trichoblast,2,200,29
+spread_rows200_eps2.0_lam0,Trichoblast,3,200,29
+spread_rows200_eps2.0_lam0,Trichoblast,4,200,29
+spread_rows200_eps2.0_lam0,Trichoblast,5,200,29
+spread_rows200_eps2.0_lam0,Trichoblast,6,200,18
+spread_rows200_eps2.0_lam0,Trichoblast,7,200,29
+spread_rows200_eps2.0_lam0,Trichoblast,8,200,29
+spread_rows200_eps2.0_lam0,Trichoblast,9,200,29
+spread_rows200_eps2.0_lam0,Trichoblast,10,186,37
+spread_rows200_eps2.0_lam0,Cortex,0,200,20
+spread_rows200_eps2.0_lam0,Cortex,1,200,12
+spread_rows200_eps2.0_lam0,Cortex,2,190,12
+spread_rows200_eps2.0_lam0,Cortex,3,199,15
+spread_rows200_eps2.0_lam0,Cortex,4,200,15
+spread_rows200_eps2.0_lam0,Cortex,5,200,12
+spread_rows200_eps2.0_lam0,Cortex,6,200,7
+spread_rows200_eps2.0_lam0,Cortex,7,200,12
+spread_rows200_eps2.0_lam0,Cortex,8,200,12
+spread_rows200_eps2.0_lam0,Cortex,9,200,15
+spread_rows200_eps2.0_lam0,Cortex,10,200,7
+spread_rows200_eps2.0_lam0,Endodermis,0,200,8
+spread_rows200_eps2.0_lam0,Endodermis,1,195,6
+spread_rows200_eps2.0_lam0,Endodermis,2,200,12
+spread_rows200_eps2.0_lam0,Endodermis,3,200,6
+spread_rows200_eps2.0_lam0,Endodermis,4,192,4
+spread_rows200_eps2.0_lam0,Endodermis,5,200,5
+spread_rows200_eps2.0_lam0,Endodermis,6,200,5
+spread_rows200_eps2.0_lam0,Endodermis,7,200,8
+spread_rows200_eps2.0_lam0,Endodermis,8,200,5
+spread_rows200_eps2.0_lam0,Endodermis,9,200,9
+spread_rows200_eps2.0_lam0,Endodermis,10,200,8
+spread_rows200_eps2.0_lam0,Pericycle,0,200,6
+spread_rows200_eps2.0_lam0,Pericycle,1,197,6
+spread_rows200_eps2.0_lam0,Pericycle,2,200,6
+spread_rows200_eps2.0_lam0,Pericycle,3,200,6
+spread_rows200_eps2.0_lam0,Pericycle,4,200,6
+spread_rows200_eps2.0_lam0,Pericycle,5,200,6
+spread_rows200_eps2.0_lam0,Pericycle,6,200,6
+spread_rows200_eps2.0_lam0,Pericycle,7,200,6
+spread_rows200_eps2.0_lam0,Pericycle,8,200,6
+spread_rows200_eps2.0_lam0,Pericycle,9,200,6
+spread_rows200_eps2.0_lam0,Pericycle,10,200,6
+spread_rows200_eps2.0_lam0,Procambium,0,192,9
+spread_rows200_eps2.0_lam0,Procambium,1,200,10
+spread_rows200_eps2.0_lam0,Procambium,2,200,12
+spread_rows200_eps2.0_lam0,Procambium,3,192,12
+spread_rows200_eps2.0_lam0,Procambium,4,200,10
+spread_rows200_eps2.0_lam0,Procambium,5,200,8
+spread_rows200_eps2.0_lam0,Procambium,6,200,12
+spread_rows200_eps2.0_lam0,Procambium,7,200,8
+spread_rows200_eps2.0_lam0,Procambium,8,200,10
+spread_rows200_eps2.0_lam0,Procambium,9,200,8
+spread_rows200_eps2.0_lam0,Procambium,10,200,11
+spread_rows200_eps2.0_lam0,Xylem,0,200,10
+spread_rows200_eps2.0_lam0,Xylem,1,200,10
+spread_rows200_eps2.0_lam0,Xylem,2,200,7
+spread_rows200_eps2.0_lam0,Xylem,3,200,10
+spread_rows200_eps2.0_lam0,Xylem,4,200,9
+spread_rows200_eps2.0_lam0,Xylem,5,200,10
+spread_rows200_eps2.0_lam0,Xylem,6,200,9
+spread_rows200_eps2.0_lam0,Xylem,7,200,11
+spread_rows200_eps2.0_lam0,Xylem,8,200,12
+spread_rows200_eps2.0_lam0,Xylem,9,200,9
+spread_rows200_eps2.0_lam0,Xylem,10,200,9
+spread_rows200_eps2.0_lam0,Phloem,0,200,11
+spread_rows200_eps2.0_lam0,Phloem,1,200,13
+spread_rows200_eps2.0_lam0,Phloem,2,200,9
+spread_rows200_eps2.0_lam0,Phloem,3,200,9
+spread_rows200_eps2.0_lam0,Phloem,4,200,11
+spread_rows200_eps2.0_lam0,Phloem,5,200,11
+spread_rows200_eps2.0_lam0,Phloem,6,200,11
+spread_rows200_eps2.0_lam0,Phloem,7,200,11
+spread_rows200_eps2.0_lam0,Phloem,8,200,12
+spread_rows200_eps2.0_lam0,Phloem,9,200,11
+spread_rows200_eps2.0_lam0,Phloem,10,200,11
+spread_rows200_eps2.0_lam0,Lateral Root Cap,0,200,24
+spread_rows200_eps2.0_lam0,Lateral Root Cap,1,200,21
+spread_rows200_eps2.0_lam0,Lateral Root Cap,2,200,21
+spread_rows200_eps2.0_lam0,Lateral Root Cap,3,200,25
+spread_rows200_eps2.0_lam0,Lateral Root Cap,4,200,17
+spread_rows200_eps2.0_lam0,Lateral Root Cap,5,200,18
+spread_rows200_eps2.0_lam0,Lateral Root Cap,6,200,16
+spread_rows200_eps2.0_lam0,Lateral Root Cap,7,200,24
+spread_rows200_eps2.0_lam0,Lateral Root Cap,8,200,25
+spread_rows200_eps2.0_lam0,Lateral Root Cap,9,200,22
+spread_rows200_eps2.0_lam0,Lateral Root Cap,10,200,21
+spread_rows200_eps2.0_lam0,Columella,0,200,22
+spread_rows200_eps2.0_lam0,Columella,1,200,10
+spread_rows200_eps2.0_lam0,Columella,2,200,6
+spread_rows200_eps2.0_lam0,Columella,3,200,10
+spread_rows200_eps2.0_lam0,Columella,4,200,6
+spread_rows200_eps2.0_lam0,Columella,5,200,6
+spread_rows200_eps2.0_lam0,Columella,6,200,5
+spread_rows200_eps2.0_lam0,Columella,7,200,7
+spread_rows200_eps2.0_lam0,Columella,8,200,6
+spread_rows200_eps2.0_lam0,Columella,9,200,8
+spread_rows200_eps2.0_lam0,Columella,10,194,5

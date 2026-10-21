@@ -1,0 +1,20 @@
+{
+  "experiment": "exp1",
+  "condition": "correct",
+  "metric": "recreation_accuracy_figS5_protocol",
+  "pipeline": "Cell_Lineage_Blueprint",
+  "mean_acc": 0.8437109375,
+  "acc_per_bin": {
+    "1": 0.09921875,
+    "2": 0.644921875,
+    "3": 0.8412109375,
+    "4": 0.919921875,
+    "5": 0.97421875,
+    "6": 0.9818359375,
+    "7": 0.9884765625,
+    "8": 0.99375,
+    "9": 0.9947265625,
+    "10": 0.998828125
+  },
+  "n_samples": 5120
+}

@@ -1,0 +1,20 @@
+{
+  "experiment": "exp6",
+  "condition": "no_blueprint",
+  "metric": "recreation_accuracy_figS5_protocol",
+  "pipeline": "Cell_Lineage_Blueprint",
+  "mean_acc": 0.11869140624999999,
+  "acc_per_bin": {
+    "1": 0.0927734375,
+    "2": 0.1212890625,
+    "3": 0.1822265625,
+    "4": 0.1357421875,
+    "5": 0.1103515625,
+    "6": 0.1140625,
+    "7": 0.1080078125,
+    "8": 0.1078125,
+    "9": 0.107421875,
+    "10": 0.1072265625
+  },
+  "n_samples": 5120
+}

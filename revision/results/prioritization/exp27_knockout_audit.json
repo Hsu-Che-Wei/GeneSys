@@ -1,0 +1,209 @@
+{
+  "gen_effect": [
+    {
+      "K": 100,
+      "gold_hits": 0,
+      "gold_expected": 0.7994061554273968,
+      "p_gold": 1.0,
+      "tf_hits": 4,
+      "tf_expected": 8.53651573117113,
+      "p_tf": 0.9756425024370827
+    },
+    {
+      "K": 200,
+      "gold_hits": 3,
+      "gold_expected": 1.5988123108547936,
+      "p_gold": 0.21530224229999737,
+      "tf_hits": 11,
+      "tf_expected": 17.07303146234226,
+      "p_tf": 0.9600680296026445
+    },
+    {
+      "K": 300,
+      "gold_hits": 8,
+      "gold_expected": 2.39821846628219,
+      "p_gold": 0.002868438351893021,
+      "tf_hits": 24,
+      "tf_expected": 25.60954719351339,
+      "p_tf": 0.6615760517953027
+    },
+    {
+      "K": 400,
+      "gold_hits": 11,
+      "gold_expected": 3.197624621709587,
+      "p_gold": 0.00037432242741051487,
+      "tf_hits": 34,
+      "tf_expected": 34.14606292468452,
+      "p_tf": 0.5371333814711701
+    }
+  ],
+  "cls_effect": [
+    {
+      "K": 100,
+      "gold_hits": 0,
+      "gold_expected": 0.7994061554273968,
+      "p_gold": 1.0,
+      "tf_hits": 5,
+      "tf_expected": 8.53651573117113,
+      "p_tf": 0.936225176663011
+    },
+    {
+      "K": 200,
+      "gold_hits": 0,
+      "gold_expected": 1.5988123108547936,
+      "p_gold": 1.0,
+      "tf_hits": 13,
+      "tf_expected": 17.07303146234226,
+      "p_tf": 0.8809792691615934
+    },
+    {
+      "K": 300,
+      "gold_hits": 1,
+      "gold_expected": 2.39821846628219,
+      "p_gold": 0.9118514959546382,
+      "tf_hits": 21,
+      "tf_expected": 25.60954719351339,
+      "p_tf": 0.8577432121643033
+    },
+    {
+      "K": 400,
+      "gold_hits": 1,
+      "gold_expected": 3.197624621709587,
+      "p_gold": 0.9611389972228714,
+      "tf_hits": 29,
+      "tf_expected": 34.14606292468452,
+      "p_tf": 0.8470966172527807
+    }
+  ],
+  "combined_effect": [
+    {
+      "K": 100,
+      "gold_hits": 0,
+      "gold_expected": 0.7994061554273968,
+      "p_gold": 1.0,
+      "tf_hits": 5,
+      "tf_expected": 8.53651573117113,
+      "p_tf": 0.936225176663011
+    },
+    {
+      "K": 200,
+      "gold_hits": 1,
+      "gold_expected": 1.5988123108547936,
+      "p_gold": 0.8010027638924541,
+      "tf_hits": 9,
+      "tf_expected": 17.07303146234226,
+      "p_tf": 0.9907664990474229
+    },
+    {
+      "K": 300,
+      "gold_hits": 4,
+      "gold_expected": 2.39821846628219,
+      "p_gold": 0.21928385428395425,
+      "tf_hits": 17,
+      "tf_expected": 25.60954719351339,
+      "p_tf": 0.9765737629215941
+    },
+    {
+      "K": 400,
+      "gold_hits": 6,
+      "gold_expected": 3.197624621709587,
+      "p_gold": 0.10192830236305278,
+      "tf_hits": 27,
+      "tf_expected": 34.14606292468452,
+      "p_tf": 0.9206756659198653
+    }
+  ],
+  "confound_mean_expr": {
+    "rows": [
+      {
+        "K": 100,
+        "gold_hits": 0,
+        "tf_hits": 2
+      },
+      {
+        "K": 200,
+        "gold_hits": 0,
+        "tf_hits": 4
+      },
+      {
+        "K": 300,
+        "gold_hits": 0,
+        "tf_hits": 6
+      },
+      {
+        "K": 400,
+        "gold_hits": 1,
+        "tf_hits": 9
+      }
+    ],
+    "spearman_with_gen_effect": 0.4096883812504116
+  },
+  "confound_detection_rate": {
+    "rows": [
+      {
+        "K": 100,
+        "gold_hits": 0,
+        "tf_hits": 4
+      },
+      {
+        "K": 200,
+        "gold_hits": 0,
+        "tf_hits": 6
+      },
+      {
+        "K": 300,
+        "gold_hits": 0,
+        "tf_hits": 9
+      },
+      {
+        "K": 400,
+        "gold_hits": 0,
+        "tf_hits": 14
+      }
+    ],
+    "spearman_with_gen_effect": -0.024932473640551674
+  },
+  "confound_var_expr": {
+    "rows": [
+      {
+        "K": 100,
+        "gold_hits": 1,
+        "tf_hits": 4
+      },
+      {
+        "K": 200,
+        "gold_hits": 1,
+        "tf_hits": 5
+      },
+      {
+        "K": 300,
+        "gold_hits": 2,
+        "tf_hits": 10
+      },
+      {
+        "K": 400,
+        "gold_hits": 3,
+        "tf_hits": 17
+      }
+    ],
+    "spearman_with_gen_effect": 0.557368992893045
+  },
+  "gen_effect_residualized_on_expression": [
+    {
+      "K": 100,
+      "gold_hits": 3
+    },
+    {
+      "K": 200,
+      "gold_hits": 4
+    },
+    {
+      "K": 300,
+      "gold_hits": 8
+    },
+    {
+      "K": 400,
+      "gold_hits": 9
+    }
+  ]
+}

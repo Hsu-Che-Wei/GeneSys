@@ -1,0 +1,19 @@
+{
+  "trichoblast_trajectory_index": 9,
+  "trichoblast_fraction_of_evaluated_val_cells": 0.11221945137157108,
+  "observed_random_model_floor": 0.167,
+  "explanation_A": "Constant predictor scores its class frequency among evaluated cells (atlas composition), not 1/n_classes.",
+  "seed_default_classes_mid_bin": {
+    "0": "Atrichoblast",
+    "1": "Endodermis",
+    "2": "Pericycle",
+    "3": "Cortex",
+    "4": "Endodermis",
+    "5": "Columella",
+    "6": "Pericycle",
+    "7": "Pericycle",
+    "8": "Procambium",
+    "9": "Cortex"
+  },
+  "trained_zero_input_default": "Trichoblast"
+}

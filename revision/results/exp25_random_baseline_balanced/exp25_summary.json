@@ -1,0 +1,49 @@
+{
+  "protocol": "blueprint-balanced test batches, prediction at t10, 200 trajectories per cell type",
+  "chance_level": 0.1,
+  "trained_all_masked": 0.1,
+  "random_all_masked": 0.1,
+  "trained_10pct": 0.999,
+  "random_mean_over_fractions": 0.09080625,
+  "random_max_over_fractions": 0.157,
+  "trained_zero_input_dominant_class": "Trichoblast",
+  "trained_zero_input_dominant_share": 1.0,
+  "random_zero_input_dominant_class": "Phloem",
+  "random_zero_input_dominant_share": 1.0,
+  "seed_dominant_classes_all_masked": {
+    "0": "Phloem",
+    "1": "Endodermis",
+    "2": "Pericycle",
+    "3": "Cortex",
+    "4": "Endodermis",
+    "5": "Columella",
+    "6": "Procambium",
+    "7": "Pericycle",
+    "8": "Procambium",
+    "9": "Pericycle"
+  },
+  "seed_accuracy_all_masked": {
+    "0": 0.1,
+    "1": 0.1,
+    "2": 0.1,
+    "3": 0.1,
+    "4": 0.1,
+    "5": 0.1,
+    "6": 0.1,
+    "7": 0.1,
+    "8": 0.1,
+    "9": 0.1
+  },
+  "seed_accuracy_all_genes": {
+    "0": 0.058,
+    "1": 0.058,
+    "2": 0.098,
+    "3": 0.1,
+    "4": 0.155,
+    "5": 0.1125,
+    "6": 0.1,
+    "7": 0.0475,
+    "8": 0.1005,
+    "9": 0.1085
+  }
+}

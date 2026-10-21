@@ -1,0 +1,5 @@
+condition,markers,clusters,genes_per_cluster,TFs,gold_TFs
+genesys,18555,101,184,337,72
+scrnaseq,21568,101,214,449,81
+pseudobulk,17744,101,176,353,73
+scvi,6089,101,60,53,14

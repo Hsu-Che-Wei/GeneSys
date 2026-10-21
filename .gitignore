@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+jupyter_notebook/_before_degree_fix_*/
+revision/results/figures/*.tif
+supp_data/notebook13_inputs/genesys/*_all_transition_zscore3.csv

@@ -1,0 +1,46 @@
+[
+ {
+  "tag": "scRNA-seq (Figure 4 object)",
+  "cells": 22000,
+  "rows_mine": 21561,
+  "rows_published": 21568,
+  "rows_common": 21543,
+  "only_mine": 18,
+  "only_published": 25,
+  "max_abs_diff_myAUC": 0.007000000000000006,
+  "max_abs_diff_avg_diff": 0.010205323173071712,
+  "max_abs_diff_avg_log2FC": 7.65980306960401e-09,
+  "max_abs_diff_pct.1": 0.0010000000000000009,
+  "max_abs_diff_pct.2": 0.0,
+  "R50_port": [
+   382,
+   407
+  ],
+  "R50_published": [
+   380,
+   403
+  ]
+ },
+ {
+  "tag": "GeneSys (Figure 4 object)",
+  "cells": 22000,
+  "rows_mine": 18554,
+  "rows_published": 18555,
+  "rows_common": 18554,
+  "only_mine": 0,
+  "only_published": 1,
+  "max_abs_diff_myAUC": 0.007000000000000006,
+  "max_abs_diff_avg_diff": 0.008622046957995066,
+  "max_abs_diff_avg_log2FC": 5.035480254989011e-09,
+  "max_abs_diff_pct.1": 0.0,
+  "max_abs_diff_pct.2": 0.0,
+  "R50_port": [
+   309,
+   331
+  ],
+  "R50_published": [
+   310,
+   331
+  ]
+ }
+]
