@@ -1,0 +1,85 @@
+{
+ "input": {
+  "genesys": {
+   "zero_fraction": 0.0
+  },
+  "scrnaseq": {
+   "zero_fraction": 0.673
+  }
+ },
+ "markers": {
+  "genesys": {
+   "tf_marker_rows": 1433,
+   "pct1_median": 1.0,
+   "pct2_median": 1.0,
+   "auc_median": 0.95,
+   "auc_ge_095": 0.504,
+   "avg_diff_median": 0.266,
+   "log2fc_median": 0.383
+  },
+  "scrnaseq": {
+   "tf_marker_rows": 1816,
+   "pct1_median": 0.8274999999999999,
+   "pct2_median": 0.184,
+   "auc_median": 0.845,
+   "auc_ge_095": 0.058,
+   "avg_diff_median": 0.272,
+   "log2fc_median": 0.393
+  }
+ },
+ "thresholds": {
+  "genesys": {
+   "auc_within_005_of_cutoff": 0.003,
+   "log2fc_within_005_of_cutoff": 0.229,
+   "min_pct1": 1.0
+  },
+  "scrnaseq": {
+   "auc_within_005_of_cutoff": 0.089,
+   "log2fc_within_005_of_cutoff": 0.219,
+   "min_pct1": 0.432
+  }
+ },
+ "coverage": {
+  "genesys": {
+   "tfs_ranked": 337,
+   "gold_ranked": 72,
+   "gold_not_ranked": 68
+  },
+  "scrnaseq": {
+   "tfs_ranked": 449,
+   "gold_ranked": 81,
+   "gold_not_ranked": 59
+  }
+ },
+ "ordering": {
+  "genesys": {
+   "r50_mean_auc_rank": 316,
+   "r50_mean_avg_diff_rank": 295,
+   "r50_random_order_same_tfs": 323.9,
+   "gold_vs_other_auc_mean_auc_rank": 0.486,
+   "gold_vs_other_auc_mean_avg_diff_rank": 0.619
+  },
+  "scrnaseq": {
+   "r50_mean_auc_rank": 318,
+   "r50_mean_avg_diff_rank": 287,
+   "r50_random_order_same_tfs": 384.5,
+   "gold_vs_other_auc_mean_auc_rank": 0.616,
+   "gold_vs_other_auc_mean_avg_diff_rank": 0.652
+  }
+ },
+ "paired": {
+  "shared_tf_marker_rows": 1347,
+  "myAUC": {
+   "median_ratio_genesys_over_scrnaseq": 1.096,
+   "spearman": 0.587
+  },
+  "avg_diff": {
+   "median_ratio_genesys_over_scrnaseq": 0.923,
+   "spearman": 0.871
+  },
+  "avg_log2FC": {
+   "median_ratio_genesys_over_scrnaseq": 0.922,
+   "spearman": 0.87
+  }
+ }
+}

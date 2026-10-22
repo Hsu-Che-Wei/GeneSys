@@ -29,8 +29,9 @@ The heavy steps (scVI training, LIMA and GRNBoost2 fits, the knockout sweep) wer
 | scVI trained for 72 epochs; every scenario with the cell numbers of the Figure 4 batch | 2 |
 | Figure 4 marker criterion and its Python port (same fold changes; 21,543 of 21,568 scRNA-seq markers and 18,554 of 18,555 GeneSys markers) | 3 |
 | LIMA centrality: GeneSys lowest mean R50 and best on four of five metrics; scVI, unregularized and pseudobulk similar to one another | 4.1 |
-| DE: GeneSys ahead of the unregularized data under both statistics; pseudobulk close; scVI has no R50 (14 gold-standard TFs; 60 markers per cluster against 176 to 214) | 4.2 |
-| GeneSys has the lowest mean R50 of the four scenarios over the criteria of Figure 5 | 4.3 |
+| DE (strongest marker first): GeneSys and the unregularized data about equal under both statistics; pseudobulk slightly lower; scVI has no R50 (14 gold-standard TFs; 60 markers per cluster against 176 to 214) | 4.2 |
+| GeneSys has the lowest mean R50 of the four scenarios over the LIMA criteria of Figure 5 | 4.3 |
+| Why DE alone is not sufficient: 68 and 59 of the 140 gold-standard TFs not among the markers; AUC of 0.95 or more for 50% and 6% of the TF markers; average difference about 8% smaller on generated data; AUC ordering does not separate the gold-standard TFs on generated data | 4.4 |
 | GRNBoost2: every centrality metric behind LIMA, eigenvector at the permutation baseline | 5 |
 | Knockout: all three scores behind four of the five LIMA metrics, classifier effect behind the permutation baseline | 6 |
 | Genome-wide: knockout generative effect 11 of 140 in the top 400, 3.4 times chance, p = 4 × 10⁻⁴ | 7.1 |
@@ -232,7 +233,7 @@ assert list(chk['Figure 4 (notebook 12)']) == [365, 444, 330, 447, 536]
 ('md', '''
 ### 4.2 Differential expression
 
-The R50 of the two DE criteria is recomputed here from the four marker tables, following the author's notebook 13 (`13-GeneSys_Top_Regulators_Plots`): the markers are restricted to the 1,495 TFs, the within-cluster ranks of each TF are averaged over the clusters in which it is a marker, the TFs are ordered by descending mean rank, and R50 is read from that list.
+The R50 of the two DE criteria is recomputed here from the four marker tables, following the author's notebook 13 (`13-GeneSys_Top_Regulators_Plots`): the markers are restricted to the 1,495 TFs, the within-cluster ranks of each TF are averaged over the clusters in which it is a marker, the TFs are ordered by ascending mean rank (rank 1 is the strongest marker of a cluster, so the strongest markers come first), and R50 is read from that list. Notebook 13 had sorted the mean rank in descending order, with the weakest markers first, which gave 310 and 331 (GeneSys) and 380 and 403 (scRNA-seq); the notebook and `exp13_fig4_r50.py` now use the ascending order.
 '''),
 ('code', '''
 files = {'genesys': 'GeneSys_P_root_markers_ROC.csv', 'scrnaseq': 'Input_X_root_markers_ROC.csv',      # Figure 4 tables
@@ -248,7 +249,7 @@ for cond, stem in files.items():
     n_gold = int(agg['gene'].isin(gold).sum())
     cover[cond] = dict(markers=len(m), clusters=m['cluster'].nunique(),
                        genes_per_cluster=round(len(m) / m['cluster'].nunique()), TFs=len(agg), gold_TFs=n_gold)
-    de_r50[cond] = {col: (r50_scan(agg.sort_values(col, ascending=False, kind='stable')['gene'].values, gold)
+    de_r50[cond] = {col: (r50_scan(agg.sort_values(col, ascending=True, kind='stable')['gene'].values, gold)
                           if n_gold >= 70 else None) for col in ['myAUC_rank', 'avg_diff_rank']}
 cover = pd.DataFrame(cover).T
 de = pd.DataFrame(de_r50)
@@ -265,16 +266,16 @@ for c in ['genesys', 'scrnaseq', 'pseudobulk']:
 assert stored_de['scvi'].isna().all()
 
 # the values: the GeneSys-generated and unregularized values are those of Figure 4
-assert de['genesys'].to_dict() == {'myAUC_rank': 310, 'avg_diff_rank': 331}
-assert de['scrnaseq'].to_dict() == {'myAUC_rank': 380, 'avg_diff_rank': 403}
-assert de['pseudobulk'].to_dict() == {'myAUC_rank': 326, 'avg_diff_rank': 337}
+assert de['genesys'].to_dict() == {'myAUC_rank': 316, 'avg_diff_rank': 295}
+assert de['scrnaseq'].to_dict() == {'myAUC_rank': 318, 'avg_diff_rank': 287}
+assert de['pseudobulk'].to_dict() == {'myAUC_rank': 330, 'avg_diff_rank': 313}
 
-# "GeneSys-generated profiles again ranked the gold-standard TFs ahead of the unregularized data under both DE statistics"
-assert (de['genesys'] < de['scrnaseq']).all()
-# "pseudobulk averages came close": behind GeneSys by 16 and 6 ranks, far ahead of the unregularized data
-gapd = de['pseudobulk'] - de['genesys']
-print('pseudobulk minus GeneSys:', gapd.to_dict())
-assert (gapd > 0).all() and gapd.max() <= 16 and (de['pseudobulk'] < de['scrnaseq']).all()
+# "GeneSys-generated profiles and the unregularized data ranked the gold-standard TFs about equally well under both DE statistics"
+assert ((de['genesys'] - de['scrnaseq']).abs() <= 10).all()
+# "and pseudobulk averages ranked them slightly lower": behind both by fewer than 30 ranks
+gapd = de['pseudobulk'] - de[['genesys', 'scrnaseq']].min(axis=1)
+print('pseudobulk minus the better of GeneSys and scRNA-seq:', gapd.to_dict())
+assert (gapd > 0).all() and gapd.max() < 30
 
 # scVI: "only 14 of the 140 gold-standard TFs, fewer than the 70 at which R50 is read"
 assert cover.loc['scvi', 'gold_TFs'] == 14 and de['scvi'].isna().all()
@@ -291,14 +292,60 @@ assert set(cover['clusters']) == {101}
 fig5 = tab[tab['method'].isin(['LIMA', 'DE'])]
 overall = fig5.groupby('condition')['R50'].agg(['mean', 'count']).loc[CONDS]
 print(overall.round(1).rename(index=NICE).to_string())
-assert overall['mean'].idxmin() == 'genesys'                          # "the lowest mean R50 of the four scenarios"
+assert overall['mean'].idxmin() == 'genesys'
 assert overall['count'].to_dict() == {'genesys': 7, 'scrnaseq': 7, 'pseudobulk': 7, 'scvi': 5}   # scVI has no DE value
+# "the lowest mean R50 of the four scenarios across the LIMA criteria of Figure 5"
+lima_mean = tab[tab['method'] == 'LIMA'].groupby('condition')['R50'].mean()
+assert lima_mean.idxmin() == 'genesys'
 
-# "GeneSys-generated profiles improve TF prioritization over unregularized scRNA-seq data under every criterion" of Figure 5
+# GeneSys ahead of the unregularized data on every LIMA criterion of Figure 5, not on the DE criteria
 both = fig5.pivot_table(index=['method', 'strategy'], columns='condition', values='R50')
-assert (both['genesys'] < both['scrnaseq']).all() and len(both) == 7
+assert (both.loc['LIMA', 'genesys'] < both.loc['LIMA', 'scrnaseq']).all() and len(both) == 7
+assert not (both.loc['DE', 'genesys'] < both.loc['DE', 'scrnaseq']).all()
 # every criterion on every scenario is ahead of the permutation baseline
 assert fig5['R50'].max() < PERM
+'''),
+('md', '''
+### 4.4 Why DE alone is not sufficient (Methods, DE analysis)
+
+`exp43_de_statistics.py` compares the two marker tables of Figure 4. The cheap parts are recomputed here from the tables: the gold-standard TFs among the markers, the share of TF markers with an AUC of 0.95 or more, the paired ratio of the average difference, and the ROC AUC with which each ordering separates the gold-standard TFs from the other ranked TFs. The share of zero entries in the expression matrices given to Seurat (0% and 67%) is read from the stored result, since the matrices are not stored in this folder.
+'''),
+('code', '''
+de43 = json.load(open(os.path.join(P, 'exp43_de_statistics.json')))
+mk = {c: pd.read_csv(os.path.join(P, 'markers', files[c])) for c in ['genesys', 'scrnaseq']}
+tfm = {c: m[m['gene'].isin(exptf_set)] for c, m in mk.items()}
+
+
+def roc_auc(is_gold, score):
+    r = rankdata(score)
+    n1 = int(is_gold.sum()); n0 = len(is_gold) - n1
+    return (r[is_gold].sum() - n1 * (n1 + 1) / 2) / (n1 * n0)
+
+
+for c in ['genesys', 'scrnaseq']:
+    agg = tfm[c].groupby('gene', as_index=False).agg(rA=('myAUC_rank', 'mean'), rD=('avg_diff_rank', 'mean'))
+    g = agg['gene'].isin(gold).values
+    assert 140 - g.sum() == de43['coverage'][c]['gold_not_ranked']
+    assert round(float((tfm[c]['myAUC'] >= 0.95).mean()), 3) == de43['markers'][c]['auc_ge_095']
+    assert round(roc_auc(g, -agg['rA'].values), 3) == de43['ordering'][c]['gold_vs_other_auc_mean_auc_rank']
+    assert round(roc_auc(g, -agg['rD'].values), 3) == de43['ordering'][c]['gold_vs_other_auc_mean_avg_diff_rank']
+pair = tfm['genesys'].merge(tfm['scrnaseq'], on=['cluster', 'gene'], suffixes=('_g', '_r'))
+assert len(pair) == de43['paired']['shared_tf_marker_rows'] == 1347
+ratio = round(float((pair['avg_diff_g'] / pair['avg_diff_r']).median()), 3)
+assert ratio == de43['paired']['avg_diff']['median_ratio_genesys_over_scrnaseq']
+print(json.dumps({k: de43[k] for k in ['input', 'coverage', 'ordering']}, indent=1))
+
+# "about half of the gold-standard TFs (68 of 140 for the generated profiles and 59 for the unregularized data)"
+assert (de43['coverage']['genesys']['gold_not_ranked'], de43['coverage']['scrnaseq']['gold_not_ranked']) == (68, 59)
+# "half of the TF markers ... AUC of 0.95 or more, against 6%"
+assert (round(100 * de43['markers']['genesys']['auc_ge_095']), round(100 * de43['markers']['scrnaseq']['auc_ge_095'])) == (50, 6)
+# "the average expression difference, about 8% smaller than in the unregularized data"
+assert round(100 * (1 - ratio)) == 8
+# "ordering by AUC no longer distinguished the gold-standard TFs ..., whereas the average expression difference still did"
+o = de43['ordering']['genesys']
+assert o['gold_vs_other_auc_mean_auc_rank'] <= 0.5 < o['gold_vs_other_auc_mean_avg_diff_rank']
+# "Every gene is detected in every generated cell"
+assert de43['input']['genesys']['zero_fraction'] == 0.0 and mk['genesys']['pct.1'].min() == 1.0
 '''),
 ('code', "figures.figure4_expanded()   # Figure 5, drawn from the tables above\ndisplay(Image(os.path.join(R, 'figures', 'fig5_benchmark_conditions.png'), width=850))"),
 ('md', '''

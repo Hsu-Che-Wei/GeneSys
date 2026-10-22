@@ -6,14 +6,19 @@ Faithful port of notebook 13 (13-GeneSys_Top_Regulators_Plots_zscore3_20240325,
 R kernel) so that new data conditions (pseudobulk, scVI) can be scored with the
 IDENTICAL pipeline. Reproduction gate: with --gate, scores the two published
 conditions (GeneSys-generated, raw scRNA-seq) from the on-disk centrality CSVs
-and compares against the published Figure 4A numbers.
+and compares against the Figure 4A numbers of notebook 13.
 
-Published Fig 4A values (from the archived notebook HTML):
-  LIMA (GeneSys):   degree 314, out 327, in 375, betweenness 335, eigen 432
-  LIMA (scRNAseq):  degree 365, out 330, in 444, betweenness 447, eigen 536
-  DE   (GeneSys):   myAUC 310, avg_diff 331
-  DE   (scRNAseq):  myAUC 380, avg_diff 403
+Figure 4A values (notebook 13):
+  LIMA (GeneSys):   degree 314, out 375, in 327, betweenness 335, eigen 432
+  LIMA (scRNAseq):  degree 365, out 444, in 330, betweenness 447, eigen 536
+  DE   (GeneSys):   myAUC 316, avg_diff 295
+  DE   (scRNAseq):  myAUC 318, avg_diff 287
   Permutation:      743.4 (mean of 1000)
+
+DE order: the DE ranks of the marker tables are 1 for the strongest marker of a cluster, so the
+TFs are ordered by ascending mean rank (strongest markers first). Notebook 13 sorted them in
+descending order until 2026-10-21 (310/331 and 380/403 in the first versions of Figure 4);
+--de-descending reproduces that order.
 
 Usage:
   python experiments/exp13_fig4_r50.py --gate
@@ -64,8 +69,8 @@ PUBLISHED = {
     # targets a TF regulates and in-degree the number of regulators acting on it (Figure 4B).
     ('LIMA', 'genesys'): [314, 375, 327, 335, 432],
     ('LIMA', 'scrnaseq'): [365, 444, 330, 447, 536],
-    ('DE', 'genesys'): [310, 331],
-    ('DE', 'scrnaseq'): [380, 403],
+    ('DE', 'genesys'): [316, 295],
+    ('DE', 'scrnaseq'): [318, 287],
     'permutation': 743.4,
 }
 
@@ -167,7 +172,9 @@ def load_de_table(path, exptf, cluster_substrings=None):
     return dat
 
 
-def run_r50_de(dat, col, gold_set, r50, ascending=False):
+def run_r50_de(dat, col, gold_set, r50, ascending=True):
+    """DE ranks are 1 for the strongest marker of a cluster: ascending mean rank puts the
+    strongest markers first."""
     ranked = dat.sort_values(col, ascending=ascending, kind='stable')
     return r50_scan(ranked['GeneID'].values, gold_set, r50)
 
@@ -186,7 +193,7 @@ def permutation_r50(exptf, gold_set, r50, n=1000, seed=0):
 
 
 def score_condition(label, lima_prefix, de_csv, wanted, exptf, gold_set,
-                    stringdb, data_dir=DATA_DIR, de_ascending=False):
+                    stringdb, data_dir=DATA_DIR, de_ascending=True):
     """Score one data condition across LIMA strategies and DE, for the main
     panel and all tissue sub-panels."""
     rows = []
@@ -248,14 +255,14 @@ def gate(wanted, exptf, gold_set, stringdb):
         exp = PUBLISHED[key]
         match = got == exp
         ok &= match
-        print(f"DE {label} (desc): got {got} expected {exp} {'MATCH' if match else 'MISMATCH'}")
-    # DE direction check (G5): also try ascending
+        print(f"DE {label}: got {got} expected {exp} {'MATCH' if match else 'MISMATCH'}")
+    # the descending order used before the correction, for reference
     for label, csv in [('genesys', 'GeneSys_P_root_markers_ROC.csv'),
                        ('scrnaseq', 'Input_X_root_markers_ROC.csv')]:
         de_dat = load_de_table(os.path.join(DATA_DIR, csv), exptf)
-        asc = [run_r50_de(de_dat, c, gold_set, 70, ascending=True)
-               for c in ['myAUC_rank', 'avg_diff_rank']]
-        print(f"DE {label} (asc):  {asc}")
+        desc = [run_r50_de(de_dat, c, gold_set, 70, ascending=False)
+                for c in ['myAUC_rank', 'avg_diff_rank']]
+        print(f"DE {label} (descending, before the correction): {desc}")
     print(f"Permutation: {perm:.1f} expected ~{PUBLISHED['permutation']}")
 
     out = pd.concat([res_g, res_r], ignore_index=True)
@@ -273,8 +280,9 @@ def main():
                     help='Centrality CSV prefix, e.g. pseudobulk_TF_GRN_centrality')
     ap.add_argument('--lima-dir', default=DATA_DIR)
     ap.add_argument('--de-csv', default=None, help='Markers ROC CSV path')
-    ap.add_argument('--de-ascending', action='store_true',
-                    help='Sort DE rank columns ascending (rank 1 = best)')
+    ap.add_argument('--de-descending', action='store_true',
+                    help='Sort DE mean ranks descending (weakest markers first), the order '
+                         'notebook 13 used before the correction')
     ap.add_argument('--out', default=None)
     args = ap.parse_args()
 
@@ -288,7 +296,7 @@ def main():
         ap.error('--label required in scoring mode')
     res = score_condition(args.label, args.lima_prefix, args.de_csv,
                           wanted, exptf, gold_set, stringdb,
-                          data_dir=args.lima_dir, de_ascending=args.de_ascending)
+                          data_dir=args.lima_dir, de_ascending=not args.de_descending)
     out = args.out or os.path.join(RESULTS_DIR, f'exp13_r50_{args.label}.csv')
     res.to_csv(out, index=False)
     print(res.to_string(index=False))

@@ -75,7 +75,8 @@ def fig4_criterion_de_rows():
     avg_log2FC >= 0.25, min.pct = 0.1, myAUC > 0.7; exp35, validated against the published
     scRNA-seq table), with the notebook's within-cluster ranks, applied to all four data
     conditions. As in notebook 13, the TF rows are averaged per gene and ordered by
-    descending mean rank. A condition whose markers contain fewer than 70 gold-standard
+    ascending mean rank, strongest markers first (rank 1 is the strongest marker of a cluster).
+    A condition whose markers contain fewer than 70 gold-standard
     TFs cannot reach R50 and is returned with R50 = NaN."""
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     from exp13_fig4_r50 import load_refs, r50_scan
@@ -106,7 +107,7 @@ def fig4_criterion_de_rows():
                          'genes_per_cluster': round(len(de) / max(1, de['cluster'].nunique())),
                          'TFs': agg['gene'].nunique(), 'gold_TFs': int(n_gold)})
         for col in ['myAUC_rank', 'avg_diff_rank']:
-            r50 = (r50_scan(agg.sort_values(col, ascending=False, kind='stable')
+            r50 = (r50_scan(agg.sort_values(col, ascending=True, kind='stable')
                             ['gene'].values, gold_set, 70)
                    if n_gold >= 70 else float('nan'))
             rows.append({'condition': cond, 'method': 'DE',
@@ -124,10 +125,8 @@ def main():
     main_panel = df[df['panel'] == 'All'].copy()
 
     rows = []
-    # LIMA rows from the exp13 scoring runs; DE rows recomputed uniformly
-    # with the corrected statistic (the exp13 DE rows use the published
-    # sort-direction and heterogeneous marker tables and go to the
-    # transparency supplement instead).
+    # LIMA rows from the exp13 scoring runs; DE rows from fig4_criterion_de_rows, which applies
+    # the Figure 4 marker call to all four conditions
     for _, r in main_panel.iterrows():
         if r['method'] == 'DE':
             continue

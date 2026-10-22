@@ -5,6 +5,9 @@ Experiment 24: manuscript figures for the round-3 revision.
 Builds every figure that the round-3 manuscript adds or replaces, from the
 existing result files. Nothing is recomputed here.
 
+  fig4_benchmark            Figure 4. TF-prioritization benchmark of notebook 13 on
+                            GeneSys-generated and scRNA-seq data, drawn from the R50
+                            tables that notebook 13 writes (supp_data/notebook13_outputs).
   fig5_benchmark_conditions Figure 5. TF-prioritization benchmark across the
                             four data scenarios (GeneSys, scRNA-seq, pseudobulk,
                             scVI), drawn in the style of Figure 4A-B.
@@ -127,14 +130,34 @@ def _table(name):
     return path if os.path.exists(path) else os.path.join(RES, 'prioritization', name)
 
 
+def _write_if_changed(path, data):
+    # rewriting identical bytes would only move the file's modification time
+    if os.path.exists(path) and open(path, 'rb').read() == data:
+        return
+    with open(path, 'wb') as fh:
+        fh.write(data)
+
+
 def save(fig, name):
+    import io
     for ext in ('pdf', 'png'):
-        fig.savefig(os.path.join(FIG, f'{name}.{ext}'), bbox_inches='tight',
-                    pad_inches=0.04)
+        buf = io.BytesIO()
+        # no creation date in the PDF, so the same figure gives the same file
+        fig.savefig(buf, format=ext, bbox_inches='tight', pad_inches=0.04,
+                    metadata={'CreationDate': None} if ext == 'pdf' else None)
+        _write_if_changed(os.path.join(FIG, f'{name}.{ext}'), buf.getvalue())
     plt.close(fig)
     from PIL import Image
+    tif = os.path.join(FIG, f'{name}.tif')
     with Image.open(os.path.join(FIG, f'{name}.png')) as im:
-        im.save(os.path.join(FIG, f'{name}.tif'), compression='tiff_lzw', dpi=(600, 600))
+        # libtiff leaves a padding byte of the LZW strip uninitialized, so the TIFF is
+        # compared by its pixels and rewritten only when the image changed
+        same = False
+        if os.path.exists(tif):
+            with Image.open(tif) as old:
+                same = old.size == im.size and old.mode == im.mode and old.tobytes() == im.tobytes()
+        if not same:
+            im.save(tif, compression='tiff_lzw', dpi=(600, 600))
         w, h = im.size
     print(f'  saved {name}.pdf / .png / .tif  ({w / 600:.2f} x {h / 600:.2f} in at 600 dpi)')
 
@@ -159,7 +182,115 @@ def shade_rows(ax, ys, keys, half=0.5):
 
 
 # ══════════════════════════════════════════════════════════════════════════
-# Figure 4E-F
+# Figure 4: the benchmark of notebook 13 (GeneSys-generated and scRNA-seq data)
+# ══════════════════════════════════════════════════════════════════════════
+FIG4_PANELS = [('All', None, 'R50'), ('Stele', 'Stele', 'R50'), ('Epidermis', 'Epidermis', 'R35'),
+               ('Xylem', 'Xylem', 'R50'), ('Trichoblast', 'Trichoblast', 'R15')]
+FIG4_SCEN = {'GeneSys': 'genesys', 'scRNAseq': 'scrnaseq'}
+FIG4_FAMILIES = ['DE', 'LIMA', 'CellOracle']
+FIG4_STRATEGY = {'myAUC rank': 'mean AUC rank', 'avg diff rank': 'mean avg-diff rank'}
+
+
+def _nb13_outputs():
+    """R50 tables written by notebook 13 (supp_data/notebook13_outputs of the repository)."""
+    env = os.environ.get('GENESYS_NB13_OUTPUTS')
+    for d in ([env] if env else []) + [
+            os.path.join(BASE, 'GeneSys', 'supp_data', 'notebook13_outputs'),
+            os.path.join(BASE, '..', '..', 'supp_data', 'notebook13_outputs')]:
+        if d and os.path.isdir(d):
+            return d
+    raise FileNotFoundError('notebook13_outputs not found; run notebook 13 first')
+
+
+def _fig4_table(panel):
+    d = _nb13_outputs()
+    t = pd.read_csv(os.path.join(d, f'Figure4_R50_{panel}.csv'))
+    # notebook 13 plots the permutation control as the mean R50 of its 1,000 random orders
+    perm = float(t.loc[t['Methods'] == 'Permutation', 'R50'].iloc[0])
+    t = t[t['Methods'] != 'Permutation'].copy()
+    parts = t['Methods'].str.extract(r'^(\w+) (.+) \((\w+)\)$')
+    t['family'], t['strategy'], t['scenario'] = parts[0], parts[1], parts[2].map(FIG4_SCEN)
+    assert t['scenario'].notna().all() and t['family'].isin(FIG4_FAMILIES).all()
+    return t, perm
+
+
+def _fig4_families(ax, t, perm, xlabel):
+    """One row per family and scenario (generated rows first), each criterion a point and the
+    criteria of a family summarized by a box; the permutation control is its mean R50."""
+    rows = [(f'{f} ({COND_LABEL[s]})', s, t[(t['family'] == f) & (t['scenario'] == s)]['R50'].values)
+            for s in ('genesys', 'scrnaseq') for f in FIG4_FAMILIES]
+    rows.append(('Permutation', 'perm', np.array([perm])))
+    ys = np.arange(len(rows))[::-1]
+    shade_rows(ax, ys, [r[1] for r in rows])
+    bp = dict(color='black', linewidth=0.6)
+    for y, (_, _, vals) in zip(ys, rows):
+        if len(vals) > 2:
+            ax.boxplot([vals], positions=[y], vert=False, widths=0.55, showfliers=False,
+                       whis=(0, 100), boxprops=bp, whiskerprops=bp, capprops=bp,
+                       medianprops=dict(color='black', linewidth=1.1), zorder=2)
+        if len(vals):
+            ax.scatter(vals, np.full(len(vals), y), s=8, color='black', zorder=3, linewidths=0)
+    ax.set_yticks(ys)
+    ax.set_yticklabels([r[0] for r in rows])
+    ax.set_ylim(-0.6, len(rows) - 0.4)
+    ax.set_xlabel(xlabel, fontweight='bold')
+    ax.tick_params(axis='y', length=0)
+
+
+def figure4_benchmark():
+    t, perm = _fig4_table('All')
+    fig = plt.figure(figsize=(W2COL - 0.75, 7.6))
+    outer = fig.add_gridspec(1, 2, width_ratios=[1.2, 1.0], wspace=0.95)
+    left = outer[0].subgridspec(2, 1, height_ratios=[0.62, 1.6], hspace=0.22)
+    right = outer[1].subgridspec(4, 1, hspace=0.62)
+    axA = fig.add_subplot(left[0])
+    axB = fig.add_subplot(left[1])
+
+    # A: method families at the system-wide level
+    _fig4_families(axA, t, perm, 'R50')
+    axA.set_xlim(250, 800)
+    axA.set_xticks(range(300, 800, 100))
+    handles = [Patch(facecolor=COND_SHADE[c], label=COND_LABEL[c]) for c in ('genesys', 'scrnaseq')]
+    axA.legend(handles=handles, loc='lower left', bbox_to_anchor=(0.0, 1.01), ncol=2,
+               handlelength=1.2, borderaxespad=0.0, columnspacing=1.0)
+
+    # B: every criterion, best to worst
+    d = t.copy()
+    d['label'] = [f'{f} {FIG4_STRATEGY.get(s, s)} ({COND_LABEL[c]})'
+                  for f, s, c in zip(d['family'], d['strategy'], d['scenario'])]
+    d = d.sort_values('R50', kind='stable')
+    labels = list(d['label']) + ['Permutation']
+    vals = list(d['R50']) + [perm]
+    conds = list(d['scenario']) + ['perm']
+    yb = np.arange(len(labels))[::-1]
+    shade_rows(axB, yb, conds)
+    axB.scatter(vals, yb, s=10, color='black', zorder=3, linewidths=0)
+    axB.set_yticks(yb)
+    axB.set_yticklabels(labels, fontsize=6)
+    axB.set_ylim(-0.6, len(labels) - 0.4)
+    axB.set_xlim(250, 800)
+    axB.set_xticks(range(300, 800, 100))
+    axB.set_xlabel('R50', fontweight='bold')
+    axB.tick_params(axis='y', length=0)
+
+    # C (tissues) and D (cell types)
+    sub = []
+    for k, (panel, title, xlabel) in enumerate(FIG4_PANELS[1:]):
+        ax = fig.add_subplot(right[k])
+        tp, pp = _fig4_table(panel)
+        _fig4_families(ax, tp, pp, xlabel)
+        ax.tick_params(axis='y', labelsize=5.8)
+        ax.set_xlim(0, max(pp, tp['R50'].max()) * 1.1)
+        ax.set_title(title, fontsize=6.5, fontweight='bold', loc='left', pad=3)
+        sub.append(ax)
+
+    letters(fig, [axA, axB], ['A', 'B'], dx=-0.02, align_top=False)
+    letters(fig, [sub[0], sub[2]], ['C', 'D'], dx=-0.02, align_top=False)
+    save(fig, 'fig4_benchmark')
+
+
+# ══════════════════════════════════════════════════════════════════════════
+# Figure 5 (functions keep their 4E-F names)
 # ══════════════════════════════════════════════════════════════════════════
 def figure4_expanded():
     df = pd.read_csv(_table(BENCH_TABLE))
@@ -208,7 +339,7 @@ def figure4_expanded():
     axE.set_yticklabels([r[0] for r in rows])
     axE.set_ylim(-0.6, len(rows) - 0.4)
     xmax = max(830, int(np.nanmax(df['R50'])) + 40)
-    axE.set_xlim(280, xmax)
+    axE.set_xlim(250, xmax)
     axE.set_xticks([t for t in range(300, xmax, 100)])
     axE.set_xlabel('R50', fontweight='bold')
     axE.tick_params(axis='y', length=0)
@@ -231,7 +362,7 @@ def figure4_expanded():
     axF.set_yticks(yf)
     axF.set_yticklabels(labels, fontsize=6)
     axF.set_ylim(-0.6, len(labels) - 0.4)
-    axF.set_xlim(280, xmax)
+    axF.set_xlim(250, xmax)
     axF.set_xticks([t for t in range(300, xmax, 100)])
     axF.set_xlabel('R50', fontweight='bold')
     axF.tick_params(axis='y', length=0)
@@ -856,6 +987,7 @@ def figure_lima_sensitivity():
 
 if __name__ == '__main__':
     print(f'Font: {FONT}')
+    print('Figure 4 (benchmark of notebook 13)'); figure4_benchmark()
     print('Figure 5 (benchmark conditions)'); figure4_expanded()
     print('Figure S5E-F (zero-padded recreation)'); figure_extrapolation_panels()
     print('Figure S6 (blueprint controls)'); figure_blueprint_controls()

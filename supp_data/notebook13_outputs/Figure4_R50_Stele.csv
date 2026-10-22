@@ -1,0 +1,26 @@
+Methods,R50
+LIMA degree centrality (GeneSys),125
+LIMA out centrality (GeneSys),205
+LIMA in centrality (GeneSys),86
+LIMA betweenness centrality (GeneSys),119
+LIMA eigenvector centrality (GeneSys),165
+LIMA degree centrality (scRNAseq),122
+LIMA out centrality (scRNAseq),164
+LIMA in centrality (scRNAseq),86
+LIMA betweenness centrality (scRNAseq),200
+LIMA eigenvector centrality (scRNAseq),212
+CellOracle degree centrality (scRNAseq),261
+CellOracle out centrality (scRNAseq),318
+CellOracle in centrality (scRNAseq),148
+CellOracle betweenness centrality (scRNAseq),111
+CellOracle eigenvector centrality (scRNAseq),217
+CellOracle degree centrality (GeneSys),203
+CellOracle out centrality (GeneSys),250
+CellOracle in centrality (GeneSys),94
+CellOracle betweenness centrality (GeneSys),95
+CellOracle eigenvector centrality (GeneSys),183
+DE myAUC rank (scRNAseq),111
+DE avg diff rank (scRNAseq),101
+DE myAUC rank (GeneSys),115
+DE avg diff rank (GeneSys),81
+Permutation,723.688
