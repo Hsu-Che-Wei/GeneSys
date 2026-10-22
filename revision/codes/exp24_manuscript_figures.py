@@ -116,7 +116,7 @@ STRATEGY_LABELS = {
     'cls_effect': 'classifier effect',
     'combined_effect': 'combined effect',
 }
-METHOD_ORDER = ['LIMA', 'DE']              # Figure 5: the schemes of Figure 4, on all four conditions
+METHOD_ORDER = ['DE', 'LIMA']              # Figure 5: the schemes of Figure 4, on all four conditions
 # Figure S11A: the linear criterion against the two nonlinear ones, on GeneSys-generated data
 GENERATED_ORDER = ['LIMA', 'GRNBoost2', 'Knockout']
 BENCH_TABLE = 'exp20_fig4_expanded_table.csv'   # exp13 R50 scoring of every scheme and condition
@@ -306,18 +306,15 @@ def figure4_expanded():
     axE = fig.add_subplot(gs[0])
     axF = fig.add_subplot(gs[1])
 
-    # ── E: one row per method family and data condition ──
-    # Within each method family the conditions are ordered by their mean R50, best first,
-    # so the figure reads in the order the text reports; a condition that never reaches
-    # R50 closes its family.
+    # ── E: one row per data condition and method family ──
+    # Rows are grouped by condition, generated rows first, as in Figure 4; a family that never
+    # reaches R50 in a condition keeps its row, marked as such.
     rows = []
-    for m in METHOD_ORDER:
-        fam = df[df['method'] == m]
-        order = fam.groupby('condition')['R50'].mean().sort_values(kind='stable').index
-        for c in order:
-            rows.append((f'{m} ({COND_LABEL[c]})', c, fam[fam['condition'] == c]['R50'].values))
-        for _, mr in missing[missing['method'] == m].iterrows():
-            rows.append((f"{m} ({COND_LABEL[mr['condition']]})", mr['condition'], np.array([])))
+    for c in COND_ORDER:
+        for m in METHOD_ORDER:
+            vals = df[(df['method'] == m) & (df['condition'] == c)]['R50'].values
+            if len(vals) or ((missing['method'] == m) & (missing['condition'] == c)).any():
+                rows.append((f'{m} ({COND_LABEL[c]})', c, vals))
     rows.append(('Permutation', 'perm', np.array([PERMUTATION_R50])))
     ys = np.arange(len(rows))[::-1]
     shade_rows(axE, ys, [r[1] for r in rows])
