@@ -277,9 +277,9 @@ The scripts are in `../codes/`. The cluster commands are shown but not executed.
 | Trained model under fully masked input: all trichoblast; belief state cosine similarity 0.85 (trichoblast), 0.76 (atrichoblast), all others below 0.6 | 1.4 |
 | Zero-padding: 78.1% with 7 seed bins, 21.5% with 3, chance with 0 to 1 | 2.2 |
 | Cosine similarity of generated to real transcriptomes | 2.3 |
-| Noise levels 0.0 to 0.4 all give 82.6% to 86.2% recreation accuracy | 3 |
-| Generation accuracy rises with width and levels off from 256 (24.4%, 37.7%, 61.0%, 63.6%); KL(z1) is about 0.5 nats per latent dimension at every width | 4 |
-| KL(z1) stays far from zero during 30 epochs of training from scratch | 5 |
+| Noise levels 0.0 to 0.4 give 82.6% to 86.2% recreation accuracy and 55.8% to 74.0% generation accuracy, without a trend; four runs of the default configuration span 59.6% to 66.7% | 3 |
+| Generation accuracy rises with width and levels off from 256 (24.4%, 37.7%, 61.0%, 63.6%); KL(z1), with the 0.5 nats per latent dimension offset of the estimate removed, rises with width from 0.0 to 7.6 nats | 4 |
+| KL(z1), offset removed, stays above zero during 30 epochs of training from scratch and ends at 2.2 nats (training) and 4.7 nats (validation) | 5 |
 '''),
 ('code', SETUP),
 ('md', TRAINING),
@@ -386,7 +386,7 @@ assert unseen_cos[7] > unseen_cos[5] > unseen_cos[3]
 ('md', '''
 ## 3. Experiment 9: noise sensitivity (Figure S14A and S14B)
 
-Four models are trained through `rescue_train_and_eval.py` and `train_run_cycle.py` that differ in the standard deviation of the Gaussian noise applied to the embedding, 0.0, 0.1, 0.2 (the default) and 0.4. The noise is relative: for each embedding dimension it is drawn with a standard deviation equal to sigma times the absolute value of that dimension, so a zero-valued dimension receives no noise. The models are compared by recreation accuracy on the validation split.
+Four models are trained through `rescue_train_and_eval.py` and `train_run_cycle.py` that differ in the standard deviation of the Gaussian noise applied to the embedding, 0.0, 0.1, 0.2 (the default) and 0.4. The noise is relative: for each embedding dimension it is drawn with a standard deviation equal to sigma times the absolute value of that dimension, so a zero-valued dimension receives no noise. The models are compared by recreation accuracy and by autoregressive generation accuracy on the validation split. Generation accuracy is set against four runs of the default configuration under the same 30-epoch protocol (the full model of the ablation, the width of 256, the correct blueprint of the decoy experiment and the noise level of 0.2), which shows how much it varies between training runs.
 '''),
 ('code', '''
 # Commands used on the cluster (not executed here):
@@ -401,6 +401,17 @@ noise = pd.Series({s: pct(load_json('exp4_noise', f'sigma_{s}', f'exp4_{s}_recre
 print(noise.to_string())
 assert (noise.min(), noise.max()) == (82.6, 86.2)             # "all conditions achieve 82.6 to 86.2%"
 assert noise.max() - noise.min() < 4                           # "varying by less than four percentage points"
+# autoregressive generation of the same four models, and of four runs of the default configuration
+gen_noise = pd.Series({s: pct(load_json('exp4_noise', f'sigma_{s}', f'exp4_{s}_recreation_acc.json')['mean_acc']) for s in sigmas},
+                      name='generation (%)')
+print(gen_noise.to_string())
+assert list(gen_noise) == [74.0, 55.8, 66.7, 58.7]             # "ranged from 55.8% to 74.0% ... without a consistent trend"
+default_runs = {'ablation, full model': pct(load_json('exp6_ablation', 'full', 'exp6_full_recreation_acc.json')['mean_acc']),
+                'width 256': round(100 * pd.read_csv(os.path.join(R, 'exp10_latent_sweep_summary.csv')).set_index('dim').loc[256, 'autoregressive_mean_acc'], 1),
+                'decoy, correct blueprint': pct(load_json('exp1_decoy', 'correct', 'exp1_correct_recreation_acc.json')['mean_acc']),
+                'noise 0.2': gen_noise['0.2']}
+print(default_runs)
+assert (min(default_runs.values()), max(default_runs.values())) == (59.6, 66.7)   # "spanned 59.6% to 66.7% for four runs"
 '''),
 ('md', '''
 ## 4. Experiment 10: latent-dimension sensitivity (Figure S14C to S14E)
@@ -418,16 +429,18 @@ In this script the column named `recreation_mean_acc` is computed by `evaluate_t
 sw = pd.read_csv(os.path.join(R, 'exp10_latent_sweep_summary.csv')).set_index('dim')
 sw['generation (%)'] = (100 * sw['autoregressive_mean_acc']).round(1)
 sw['accuracy with real cells at every bin (%)'] = (100 * sw['recreation_mean_acc']).round(2)
-sw['KL(z1) per latent dimension (nats)'] = (sw['final_kl_z1'] / sw['latent_dim']).round(2)
+# The logged KL(z1) is log q - log p at the sampled latent state with the -eps^2/2 term of log q left out,
+# which adds 0.5 nats per latent dimension in expectation; it is removed here, as in Figure S14
+sw['KL(z1), offset removed (nats)'] = (sw['final_kl_z1'] - 0.5 * sw['latent_dim']).round(1) + 0.0
 print(sw[['latent_dim', 'n_params', 'accuracy with real cells at every bin (%)', 'generation (%)', 'final_kl_z1',
-          'KL(z1) per latent dimension (nats)']].round(1).to_string())
+          'KL(z1), offset removed (nats)']].round(1).to_string())
 
 assert list(sw['latent_dim']) == [128, 256, 512, 1024]
 assert list(sw['generation (%)']) == [24.4, 37.7, 61.0, 63.6]                     # rises with width and levels off from 256
 assert sw['generation (%)'].is_monotonic_increasing and sw.loc[512, 'generation (%)'] - sw.loc[256, 'generation (%)'] < 3
 assert (sw['recreation_mean_acc'] > 0.999).all()                                  # insensitive to width
-assert (sw['KL(z1) per latent dimension (nats)'].between(0.49, 0.52)).all()       # about 0.5 nats per dimension
 assert [round(v, 1) for v in sw['final_kl_z1']] == [64.0, 130.1, 259.3, 519.6]
+assert list(sw['KL(z1), offset removed (nats)']) == [0.0, 2.1, 3.3, 7.6]          # "from 0.0 nats at a width of 64 to 7.6 nats at 512"
 
 kl = pd.read_csv(os.path.join(R, 'exp10_latent_sweep_kl_logs.csv'))
 assert set(kl.groupby('dim')['epoch'].nunique()) == {30}                          # 30 epochs at every width
@@ -448,9 +461,11 @@ kld = pd.read_csv(os.path.join(R, 'exp3_kl_divergence_diagnostic.csv'))
 assert len(kld) == 30
 print(kld[['epoch', 'train_kl_z1', 'val_kl_z1', 'train_kl_z2', 'val_kl_z2', 'train_recon', 'train_nll']].iloc[[0, 1, 9, 19, 29]].round(2).to_string(index=False))
 
-# KL(z1) remains far from zero throughout training: it never falls below 256 nats (512 latent dimensions, about 0.5 nats each)
-print('\\nminimum KL(z1): training', round(kld['train_kl_z1'].min(), 1), ', validation', round(kld['val_kl_z1'].min(), 1))
-assert kld['train_kl_z1'].min() > 250 and kld['val_kl_z1'].min() > 250
+# KL(z1) with the offset of 0.5 nats per latent dimension (512 dimensions, 256 nats) removed
+kl1 = kld[['train_kl_z1', 'val_kl_z1']] - 0.5 * 512
+print('\\nKL(z1), offset removed: minimum', kl1.min().round(1).to_dict(), '; epoch 30', kl1.iloc[-1].round(1).to_dict())
+assert (kl1 > 0).all().all()                                                     # "stayed above zero throughout training"
+assert kl1.iloc[-1].round(1).to_dict() == {'train_kl_z1': 2.2, 'val_kl_z1': 4.7}   # "2.2 nats on the training data and 4.7 nats on the validation data"
 '''),
 ('code', "figures.figure_model_sensitivity()   # Figure S14, drawn from the tables above\ndisplay(Image(os.path.join(R, 'figures', 'figS_model_sensitivity.png'), width=900))"),
 ]

@@ -9,11 +9,15 @@ conditions (GeneSys-generated, raw scRNA-seq) from the on-disk centrality CSVs
 and compares against the Figure 4A numbers of notebook 13.
 
 Figure 4A values (notebook 13):
-  LIMA (GeneSys):   degree 314, out 375, in 327, betweenness 335, eigen 432
-  LIMA (scRNAseq):  degree 365, out 444, in 330, betweenness 447, eigen 536
+  LIMA (GeneSys):   degree 314, out 375, in 327, betweenness 248, eigen 432
+  LIMA (scRNAseq):  degree 365, out 444, in 330, betweenness 256, eigen 536
   DE   (GeneSys):   myAUC 316, avg_diff 295
   DE   (scRNAseq):  myAUC 318, avg_diff 287
   Permutation:      743.4 (mean of 1000)
+
+Betweenness: until 2026-10-23 the signed LIMA coefficients were passed to NetworkX as edge
+lengths (335 and 447 in the first versions of Figure 4); each edge now has the length
+-log(r / (m + 1)), r being the rank of its absolute coefficient among the m retained edges.
 
 DE order: the DE ranks of the marker tables are 1 for the strongest marker of a cluster, so the
 TFs are ordered by ascending mean rank (strongest markers first). Notebook 13 sorted them in
@@ -67,8 +71,8 @@ SUBPANELS = [
 PUBLISHED = {
     # order: degree, out-degree, in-degree, betweenness, eigenvector. Out-degree is the number of
     # targets a TF regulates and in-degree the number of regulators acting on it (Figure 4B).
-    ('LIMA', 'genesys'): [314, 375, 327, 335, 432],
-    ('LIMA', 'scrnaseq'): [365, 444, 330, 447, 536],
+    ('LIMA', 'genesys'): [314, 375, 327, 248, 432],
+    ('LIMA', 'scrnaseq'): [365, 444, 330, 256, 536],
     ('DE', 'genesys'): [316, 295],
     ('DE', 'scrnaseq'): [318, 287],
     'permutation': 743.4,

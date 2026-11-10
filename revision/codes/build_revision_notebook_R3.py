@@ -202,15 +202,16 @@ assert (src.loc[lima.index, CONDS].values == lima.values).all()
 
 lima_mean = lima.mean().round().astype(int)
 print('mean R50 over the five centrality metrics'); print(lima_mean.rename(NICE).to_string())
-assert lima_mean.to_dict() == {'genesys': 357, 'scrnaseq': 424, 'pseudobulk': 427, 'scvi': 418}
+assert lima_mean.to_dict() == {'genesys': 339, 'scrnaseq': 386, 'pseudobulk': 383, 'scvi': 412}
 
 order = list(lima.mean().sort_values().index)
 print('\\norder, best first:', [NICE[c] for c in order])
-assert order == ['genesys', 'scvi', 'scrnaseq', 'pseudobulk']
-# "scVI-denoised expression, unregularized scRNA-seq data and pseudobulk averages performed similarly to one another"
-others_mean = lima.mean().drop('genesys')
-print('spread of the other three means:', round(others_mean.max() - others_mean.min(), 1), '; distance of GeneSys from the nearest:', round(others_mean.min() - lima.mean()['genesys'], 1))
-assert others_mean.max() - others_mean.min() < 10 and others_mean.min() - lima.mean()['genesys'] > 60
+assert order == ['genesys', 'pseudobulk', 'scrnaseq', 'scvi']
+# "unregularized scRNA-seq data and pseudobulk averages performed similarly to each other and scVI-denoised
+# expression gave the highest mean R50 of the four"
+m = lima.mean()
+print('scRNA-seq against pseudobulk:', round(m['scrnaseq'] - m['pseudobulk'], 1), '; GeneSys ahead of the nearest by:', round(m.drop('genesys').min() - m['genesys'], 1))
+assert abs(m['scrnaseq'] - m['pseudobulk']) < 5 and order[-1] == 'scvi'
 
 best = lima.idxmin(axis=1)
 print('\\nbest scenario per metric'); print(best.to_string())
@@ -220,15 +221,15 @@ assert (best == 'genesys').sum() == 4                                 # "the bes
 assert (lima['genesys'] < lima['scrnaseq']).all()
 '''),
 ('md', '''
-**Reproduction check.** The scRNA-seq LIMA tables of Figure 4 come from the author's scRNA-seq notebook 12. Running the same scenario through `exp14_condition_pipeline.py` (55 batches from the full atlas) gives the values below. The batches are drawn at random and the notebook sets no seed, so the draw cannot be replayed; the pipeline also takes a fixed 200 rows per cell type where the notebook takes the 169 to 226 that fall in each batch.
+**Reproduction check.** The scRNA-seq LIMA tables of Figure 4 come from the author's scRNA-seq notebook 12. Running the same scenario through `exp14_condition_pipeline.py` (55 batches from the full atlas) gives the values below. The batches are drawn at random and the notebook sets no seed, so the draw cannot be replayed; the pipeline also takes a fixed 200 rows per cell type where the notebook takes the 169 to 226 that fall in each batch. The pipeline itself is seeded, but two runs of the same command (2026-10-01 and 2026-10-26) gave degree, out-degree, in-degree and eigenvector R50 values that differ by 3 to 14 ranks, so these values agree with Figure 4 to within that run-to-run spread, not exactly.
 '''),
 ('code', '''
 gate = pd.read_csv(os.path.join(P, 'exp13_r50_raw_gate.csv'))
 gate = gate[(gate['panel'] == 'All') & (gate['method'] == 'LIMA')].set_index('strategy')['R50'].loc[lima.index]
 chk = pd.DataFrame({'pipeline (55 batches)': gate.astype(int), 'Figure 4 (notebook 12)': lima['scrnaseq'].astype(int)})
 print(chk.to_string())
-assert list(chk['pipeline (55 batches)']) == [369, 413, 337, 385, 540]
-assert list(chk['Figure 4 (notebook 12)']) == [365, 444, 330, 447, 536]
+assert list(chk['pipeline (55 batches)']) == [366, 425, 323, 273, 531]
+assert list(chk['Figure 4 (notebook 12)']) == [365, 444, 330, 256, 536]
 '''),
 ('md', '''
 ### 4.2 Differential expression
@@ -367,7 +368,7 @@ cmp = pd.DataFrame({'LIMA': lima['genesys'].astype(int), 'GRNBoost2': gb})
 print(cmp.to_string())
 
 assert gb.to_dict() == {'degree_centrality': 560, 'out_centrality': 561, 'in_centrality': 629,
-                        'betweenness_centrality': 526, 'eigenvector_centrality': 771}
+                        'betweenness_centrality': 453, 'eigenvector_centrality': 771}
 stored_gb = tab[tab['method'] == 'GRNBoost2'].set_index('strategy')['R50']
 assert (stored_gb.loc[gb.index].values == gb.values).all()
 

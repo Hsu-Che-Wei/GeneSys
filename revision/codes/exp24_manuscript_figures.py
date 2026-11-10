@@ -11,6 +11,12 @@ existing result files. Nothing is recomputed here.
   fig5_benchmark_conditions Figure 5. TF-prioritization benchmark across the
                             four data scenarios (GeneSys, scRNA-seq, pseudobulk,
                             scVI), drawn in the style of Figure 4A-B.
+  fig6_centrality           Figure 6. Betweenness, in-degree and out-degree centrality
+                            of SHR and WER per cell type and transition, from the
+                            notebook 13 input tables (supp_data/notebook13_inputs).
+  figS12_tf_lists           Figure S12. Top 10 of the TF prioritization lists of
+                            notebook 13 per tissue and cell type, and the centralities
+                            of the endodermis top 10.
   figS5EF_extrapolation     Figure S5E-F. Recreation from zero-padded input (exp7);
                             joined to the Illustrator panels A-D of Figure S5 by
                             exp41_supplementary_composites.py.
@@ -248,7 +254,7 @@ def figure4_benchmark():
 
     # A: method families at the system-wide level
     _fig4_families(axA, t, perm, 'R50')
-    axA.set_xlim(250, 800)
+    axA.set_xlim(200, 800)
     axA.set_xticks(range(300, 800, 100))
     handles = [Patch(facecolor=COND_SHADE[c], label=COND_LABEL[c]) for c in ('genesys', 'scrnaseq')]
     axA.legend(handles=handles, loc='lower left', bbox_to_anchor=(0.0, 1.01), ncol=2,
@@ -268,7 +274,7 @@ def figure4_benchmark():
     axB.set_yticks(yb)
     axB.set_yticklabels(labels, fontsize=6)
     axB.set_ylim(-0.6, len(labels) - 0.4)
-    axB.set_xlim(250, 800)
+    axB.set_xlim(200, 800)
     axB.set_xticks(range(300, 800, 100))
     axB.set_xlabel('R50', fontweight='bold')
     axB.tick_params(axis='y', length=0)
@@ -336,7 +342,7 @@ def figure4_expanded():
     axE.set_yticklabels([r[0] for r in rows])
     axE.set_ylim(-0.6, len(rows) - 0.4)
     xmax = max(830, int(np.nanmax(df['R50'])) + 40)
-    axE.set_xlim(250, xmax)
+    axE.set_xlim(200, xmax)
     axE.set_xticks([t for t in range(300, xmax, 100)])
     axE.set_xlabel('R50', fontweight='bold')
     axE.tick_params(axis='y', length=0)
@@ -359,7 +365,7 @@ def figure4_expanded():
     axF.set_yticks(yf)
     axF.set_yticklabels(labels, fontsize=6)
     axF.set_ylim(-0.6, len(labels) - 0.4)
-    axF.set_xlim(250, xmax)
+    axF.set_xlim(200, xmax)
     axF.set_xticks([t for t in range(300, xmax, 100)])
     axF.set_xlabel('R50', fontweight='bold')
     axF.tick_params(axis='y', length=0)
@@ -650,7 +656,7 @@ def figure_genomewide():
     axA.set_yticklabels([labels[m] for m, _ in rows])
     axA.set_ylim(-0.6, len(rows) - 0.3)
     xmaxA = max(860, int(np.nanmax(bench['R50'])) + 40)
-    axA.set_xlim(280, xmaxA)
+    axA.set_xlim(200, xmaxA)
     axA.set_xticks([t for t in range(300, xmaxA, 100)])
     axA.set_xlabel('R50 (lower is better)')
     axA.tick_params(axis='y', length=0)
@@ -762,6 +768,12 @@ SIGMA_COLOR = {'0.0': '#BDBDBD', '0.1': '#8C8C8C', '0.2': MODEL, '0.4': ALT}
 
 def figure_model_sensitivity():
     noise = {s: _json('exp4_noise', f'sigma_{s}', f'exp4_{s}_recreation_acc_v2.json') for s in SIGMAS}
+    # generation from real cells at t0-t2 (exp4 '_recreation_acc.json', protocol field: seed t0-t2,
+    # t3-t10 autoregressively)
+    noise_gen = {s: _json('exp4_noise', f'sigma_{s}', f'exp4_{s}_recreation_acc.json') for s in SIGMAS}
+    # The logged KL(z1) is log q - log p evaluated with q's -eps^2/2 term left out
+    # (exp3_kl_divergence_from_scratch.py, genesys_model.py), which adds 1/2 nat per latent
+    # dimension in expectation; it is removed here
     summ = pd.read_csv(os.path.join(RES, 'exp10_latent_sweep_summary.csv')).sort_values('dim')
     kl = pd.read_csv(os.path.join(RES, 'exp10_latent_sweep_kl_logs.csv'))
     diag = pd.read_csv(os.path.join(RES, 'exp3_kl_divergence_diagnostic.csv'))
@@ -771,19 +783,24 @@ def figure_model_sensitivity():
     axA, axB, axC, axD, axE, axF, axG, axH, axI = (fig.add_subplot(gs[i // 3, i % 3])
                                                     for i in range(9))
 
-    # A, B: recreation accuracy at four noise levels
+    # A: recreation and generation accuracy at four noise levels; B: recreation per time bin
     m = [noise[s]['mean_acc'] * 100 for s in SIGMAS]
-    axA.bar(range(4), m, 0.6, color=[SIGMA_COLOR[s] for s in SIGMAS])
-    for xi, v in enumerate(m):
-        axA.annotate(f'{v:.1f}', (xi, v), xytext=(0, 1.5), textcoords='offset points',
-                     ha='center', va='bottom', fontsize=5.5, color='0.3')
+    g = [noise_gen[s]['mean_acc'] * 100 for s in SIGMAS]
+    wA = 0.36
+    axA.bar(np.arange(4) - wA / 2 - 0.01, m, wA, color=NULLBAR, label='Recreation')
+    axA.bar(np.arange(4) + wA / 2 + 0.01, g, wA, color=MODEL, label='Generation')
+    for xi, v in zip(np.arange(4) + wA / 2 + 0.01, g):
+        axA.annotate(f'{v:.1f}', (xi, v), xytext=(0, 2.5), textcoords='offset points',
+                     ha='center', va='bottom', fontsize=5.5, color=MODEL)
     axA.axhline(10, color=GREY, linestyle='--', linewidth=0.8)
     axA.set_xticks(range(4))
     axA.set_xticklabels([f'{s}\n(default)' if s == '0.2' else s for s in SIGMAS])
     axA.set_xlabel('Noise level (σ)')
-    axA.set_ylabel('Mean recreation accuracy (%)')
-    axA.set_ylim(0, 108)
+    axA.set_ylabel('Mean accuracy (%)')
+    axA.set_ylim(0, 136)
     axA.set_yticks([0, 20, 40, 60, 80, 100])
+    axA.legend(loc='upper left', bbox_to_anchor=(-0.02, 1.04), ncol=2, handlelength=1.0,
+               columnspacing=0.8, handletextpad=0.3, fontsize=6)
     for s in SIGMAS:
         bx, by = _per_bin(noise[s])
         axB.plot(bx, by, '-', marker='o', markersize=2.4, color=SIGMA_COLOR[s],
@@ -821,49 +838,49 @@ def figure_model_sensitivity():
     kl_col = 'kl_z1' if 'kl_z1' in kl.columns else kl.columns[-1]
     for d in sorted(kl['dim'].unique()):
         sub = kl[kl['dim'] == d].sort_values('epoch')
-        axD.plot(sub['epoch'], sub[kl_col], color=dim_colors.get(int(d), 'black'),
+        axD.plot(sub['epoch'], sub[kl_col] - 0.5 * 2 * d, color=dim_colors.get(int(d), 'black'),
                  label=f'width {int(d)}')
+    axD.axhline(0, color=GREY, linestyle=':', linewidth=0.8)
     axD.set_xlabel('Training epoch')
     axD.set_ylabel('KL(z$_1$) (nats)')
-    axD.set_ylim(0, 600)
+    axD.set_ylim(-2, 17)
     axD.set_xlim(0, 31)
-    axD.legend(loc='center right', bbox_to_anchor=(1.0, 0.62), handlelength=1.5,
-               labelspacing=0.2, fontsize=6)
+    axD.legend(loc='upper left', bbox_to_anchor=(-0.02, 1.08), ncol=2, handlelength=1.2,
+               labelspacing=0.2, columnspacing=0.8, fontsize=5.5)
 
-    # E: KL(z1) per latent dimension at the end of training
-    per_dim = summ['final_kl_z1'].values / summ['latent_dim'].values
-    axE.plot(summ['latent_dim'], per_dim, 'o-', color=MODEL, markersize=3.5)
-    for xd, v in zip(summ['latent_dim'], per_dim):
-        axE.annotate(f'{v:.2f}', (xd, v), textcoords='offset points', xytext=(0, -9),
-                     ha='center', va='top', fontsize=5.5, color=MODEL)
-    axE.axhline(0, color=GREY, linestyle='--', linewidth=0.8)
-    axE.annotate('posterior collapse', (0.5, 0), xycoords=('axes fraction', 'data'),
-                 textcoords='offset points', xytext=(0, 3), ha='center', va='bottom',
-                 fontsize=5.5, color=GREY)
+    # E: KL(z1) and KL(z2) at the end of training at each width
+    kz1 = summ['final_kl_z1'].values - 0.5 * summ['latent_dim'].values
+    kz2 = summ['final_kl_z2'].values
+    axE.plot(summ['latent_dim'], kz1, 'o-', color=MODEL, markersize=3.5, label='KL(z$_1$)')
+    axE.plot(summ['latent_dim'], kz2, 's--', color=ALT, markersize=3.2, label='KL(z$_2$)')
+    axE.axhline(0, color=GREY, linestyle=':', linewidth=0.8)
+    axE.legend(loc='upper left', handlelength=1.5, labelspacing=0.2, fontsize=6)
     axE.set_xscale('log', base=2)
     axE.set_xticks(summ['latent_dim'].values)
     axE.set_xticklabels([str(int(v)) for v in summ['latent_dim'].values])
     axE.minorticks_off()
     axE.set_xlim(summ['latent_dim'].min() / 1.5, summ['latent_dim'].max() * 1.5)
     axE.set_xlabel('TD-VAE latent dimension')
-    axE.set_ylabel('KL(z$_1$) per latent\ndimension (nats)')
-    axE.set_ylim(-0.07, 0.72)
+    axE.set_ylabel('KL at the end of\ntraining (nats)')
+    axE.set_ylim(-2, 14)
 
     # F to I: the four loss components of one model trained from scratch at the default width
     comps = [(axF, 'train_kl_z1', 'val_kl_z1', 'KL(z$_1$) (nats)'),
              (axG, 'train_kl_z2', 'val_kl_z2', 'KL(z$_2$) (nats)'),
              (axH, 'train_recon', 'val_recon', 'Reconstruction loss (nats)'),
              (axI, 'train_nll', None, 'Classifier NLL (nats)')]
+    zdim = 2 * 256      # default width 256, latent dimension 512
     for ax, tr, va, lab in comps:
-        ax.plot(diag['epoch'], diag[tr], '-', color=MODEL, label='Training')
+        off = 0.5 * zdim if tr == 'train_kl_z1' else 0.0
+        ax.plot(diag['epoch'], diag[tr] - off, '-', color=MODEL, label='Training')
         if va:
-            ax.plot(diag['epoch'], diag[va], '--', color=ALT, label='Validation')
+            ax.plot(diag['epoch'], diag[va] - off, '--', color=ALT, label='Validation')
         ax.set_xlabel('Training epoch')
         ax.set_ylabel(lab)
         ax.set_xlim(0, diag['epoch'].max() + 1)
-    axF.set_ylim(0, 320)
+    axF.set_ylim(-2, 30)
     axF.axhline(0, color=GREY, linestyle=':', linewidth=0.8)
-    axF.legend(loc='lower right', handlelength=1.5, labelspacing=0.2, fontsize=6)
+    axF.legend(loc='upper right', handlelength=1.5, labelspacing=0.2, fontsize=6)
 
     letters(fig, [axA, axB, axC], ['A', 'B', 'C'])
     letters(fig, [axD, axE, axF], ['D', 'E', 'F'])
@@ -982,10 +999,266 @@ def figure_lima_sensitivity():
     save(fig, 'figS_lima_sensitivity')
 
 
+# ══════════════════════════════════════════════════════════════════════════
+# Figure S2: training histories (exp44), every training run counted as 100 epochs
+# ══════════════════════════════════════════════════════════════════════════
+LOSS_COLOR = '#D62728'
+ACC_COLOR = '#1F77B4'
+
+
+def training_epochs(name):
+    """The training record of one model on the epoch axis of Figure S2 and the Methods.
+
+    Every run counts as 100 epochs. The one longer run (mouse run 2, 400 epochs) saved its last
+    checkpoint at its epoch 81 and the next run started from that checkpoint, so its first 100
+    epochs give the same weights; its later 300 epochs are dropped, as notebook 6 did for the
+    published panel (cells 126 and 127). Epochs are then numbered from 0 in training order.
+    Returns the record and the epoch at which the weights used in this work were saved."""
+    summ = json.load(open(os.path.join(RES, 'exp44_training_history.json')))[name]
+    h = pd.read_csv(os.path.join(RES, f'exp44_training_history_{name}.csv'))
+    for r in summ['runs']:
+        run = h[h['run'] == r['run']]
+        assert (run.loc[run['checkpoint_saved'], 'run_epoch'] < 100).all(), r   # a run may save nothing
+    h = h[h['run_epoch'] < 100].sort_values('epoch').reset_index(drop=True)
+    h['epoch_s2'] = np.arange(len(h))
+    final = int(h.loc[h['epoch'] == summ['selected_checkpoint_epoch'], 'epoch_s2'].iloc[0])
+    return h, final
+
+
+def figure_training_history():
+    fig, axes = plt.subplots(2, 1, figsize=(W2COL - 1.2, 5.4))
+    fig.subplots_adjust(hspace=0.5)
+    for ax, name, title in zip(axes, ('root', 'mouse'), ('Arabidopsis root atlas', 'Mouse embryo atlas')):
+        h, final = training_epochs(name)
+        # epoch 0 lies far above both scales and is not drawn, as in the published panels; epochs
+        # without a printed record (six mouse epochs) or with an overflowed loss (one) are skipped
+        h = h[h['epoch_s2'] > 0]
+        loss = h[np.isfinite(h['train_loss'].astype(float))]
+        acc = h.dropna(subset=['val_acc'])
+        ax.plot(loss['epoch_s2'], loss['train_loss'], '-', color=LOSS_COLOR, lw=0.6)
+        lo, hi = loss['train_loss'].min(), loss['train_loss'].max()
+        pad = 0.08 * (hi - lo)
+        ax.set_ylim(lo - pad, hi + pad)
+        ax.set_xlim(0, h['epoch_s2'].max() + 1)
+        ax.set_xlabel('Epoch')
+        ax.set_ylabel('Total training loss\n(classifier + TD-VAE)', color=LOSS_COLOR)
+        ax.tick_params(axis='y', colors=LOSS_COLOR)
+        ax2 = ax.twinx()
+        ax2.plot(acc['epoch_s2'], acc['val_acc'], '-', color=ACC_COLOR, lw=0.6)
+        a_lo = acc['val_acc'].min()
+        ax2.set_ylim(a_lo - 0.1 * (1 - a_lo), 1 + 0.06 * (1 - a_lo))
+        ax2.set_ylabel('Validation accuracy\n(classifier)', color=ACC_COLOR)
+        ax2.tick_params(axis='y', colors=ACC_COLOR)
+        ax2.spines['right'].set_visible(True)
+        ax.axvline(final, color='black', lw=0.8, ls='--', zorder=3)
+        ax.annotate(f'final model (epoch {final})', (final, 1.0), xycoords=('data', 'axes fraction'),
+                    xytext=(-3, 3), textcoords='offset points', fontsize=6, ha='right', va='bottom')
+        ax.set_title(title, fontsize=7, loc='left', pad=12)
+    letters(fig, list(axes), ['A', 'B'], align_top=False)
+    save(fig, 'figS_training_history')
+
+
+# ══════════════════════════════════════════════════════════════════════════
+# Figures 6 and S12: LIMA centralities of single TFs and the combined-score lists of notebook 13
+# ══════════════════════════════════════════════════════════════════════════
+# Rows top to bottom (stele, ground tissue, epidermis, root cap) and their notebook 13 prefixes
+HEAT_ROWS = [('Xylem', 'xyl'), ('Phloem', 'phl'), ('Procambium', 'pro'), ('Pericycle', 'per'),
+             ('Endodermis', 'end'), ('Cortex', 'cor'), ('Trichoblast', 'tri'),
+             ('Atrichoblast', 'atri'), ('LRC', 'lrc'), ('Columella', 'col')]
+TRANSITIONS = ['t0-t1', 't1-t3', 't3-t5', 't5-t7', 't7-t9']
+# Panels of each TF: betweenness, in-degree (regulators of the TF), out-degree (its targets)
+HEAT_METRICS = [('betweenness_centrality', 'betweenness\ncentrality'),
+                ('in_centrality', 'in-degree\ncentrality'),
+                ('out_centrality', 'out-degree\ncentrality')]
+# Colour scales of notebook 13: zero has its own colour, values above zero run from the second
+# colour at 0.001 to the third at 1 (20,000 levels, so that values just above 0.001 do not fall
+# into the zero bin of a 256-level map)
+from matplotlib.colors import LinearSegmentedColormap
+CMAP_BTW = LinearSegmentedColormap.from_list('btw', [(0, 'navy'), (0.001, '#FFF68F'), (1, 'red')], N=20000)
+CMAP_DEG = LinearSegmentedColormap.from_list('deg', [(0, 'gainsboro'), (0.001, 'grey'), (1, 'black')], N=20000)
+# Gene names that Excel converted to dates in the TF annotation file (as in build_table_s3.py)
+NAME_FIXES = {'AT2G03710': 'SEP4'}
+
+
+def _nb13_inputs():
+    """Folder in which notebook 13 reads the notebook 12 tables and writes its TF lists."""
+    return os.path.join(os.path.dirname(_nb13_outputs()), 'notebook13_inputs', 'genesys')
+
+
+def _centrality_matrix(dat, tf, metric):
+    """Cell types (rows of HEAT_ROWS) by transitions for one TF, as notebook 13 plots them."""
+    row = dat.loc[tf]
+    return np.array([[float(row[f'{p}_{metric}_{k}']) for k in range(1, 6)] for _, p in HEAT_ROWS])
+
+
+def _heat(ax, m, cmap, xlabels=True, fontsize=6):
+    ax.pcolormesh(m[::-1], cmap=cmap, vmin=0, vmax=1, edgecolors='white', linewidth=0.5)
+    ax.set_xlim(0, m.shape[1])
+    ax.set_ylim(0, m.shape[0])
+    ax.set_yticks([])
+    for s in ax.spines.values():
+        s.set_visible(False)
+    if xlabels:
+        ax.set_xticks(np.arange(m.shape[1]) + 0.5)
+        # small panels (Figure S12B) have no room for slanted labels
+        rot = 60 if fontsize >= 6 else 90
+        ax.set_xticklabels(TRANSITIONS, rotation=rot, ha='right', rotation_mode='anchor',
+                           fontsize=fontsize)
+        ax.tick_params(axis='x', length=0, pad=1)
+    else:
+        ax.set_xticks([])
+
+
+def _heat_colorbars(fig, rect_btw, rect_deg):
+    from matplotlib.cm import ScalarMappable
+    for rect, cmap in ((rect_btw, CMAP_BTW), (rect_deg, CMAP_DEG)):
+        cax = fig.add_axes(rect)
+        cb = fig.colorbar(ScalarMappable(cmap=cmap, norm=plt.Normalize(0, 1)), cax=cax,
+                          ticks=[0, 0.5, 1])
+        cb.ax.set_yticklabels(['0', '0.5', '1'])
+        cb.outline.set_visible(False)
+        cb.ax.tick_params(labelsize=6, length=2, width=0.5)
+        # zero has its own colour, which takes only 0.1% of the bar; mark it as a band at 0
+        cax.axhspan(-0.03, 0.025, color=cmap(0.0), lw=0, clip_on=False)
+
+
+def _tf_table():
+    dat = pd.read_csv(os.path.join(_nb13_inputs(), 'TF_GRN_centrality_all_transition_zscore3.csv'))
+    return dat.set_index('TF')
+
+
+def figure6_centrality():
+    """Figure 6: betweenness, in-degree and out-degree of SHR and WER in the LIMA networks of
+    every cell type and transition (GeneSys-generated data, notebook 13)."""
+    dat = _tf_table()
+    genes = [('SHR', 'AT4G37650'), ('WER', 'AT5G14750')]
+    fig = plt.figure(figsize=(W2COL, 2.75))
+    outer = fig.add_gridspec(1, 2, left=0.01, right=0.84, bottom=0.17, top=0.8, wspace=0.5)
+    blocks = []
+    for g, (gene, gid) in enumerate(genes):
+        inner = outer[g].subgridspec(1, 3, wspace=0.06)
+        axes = [fig.add_subplot(inner[k]) for k in range(3)]
+        for ax, (metric, title), cmap in zip(axes, HEAT_METRICS, (CMAP_BTW, CMAP_DEG, CMAP_DEG)):
+            _heat(ax, _centrality_matrix(dat, gene, metric), cmap)
+            ax.set_title(title, fontsize=7, pad=3)
+        axes[-1].yaxis.tick_right()
+        axes[-1].set_yticks(np.arange(len(HEAT_ROWS)) + 0.5)
+        axes[-1].set_yticklabels([r for r, _ in HEAT_ROWS][::-1], fontsize=7)
+        axes[-1].tick_params(axis='y', length=0, pad=2)
+        mid = (axes[0].get_position().x0 + axes[-1].get_position().x1) / 2
+        fig.text(mid, 0.93, f'{gene} ({gid})', ha='center', va='bottom', fontsize=8)
+        fig.text(mid, 0.015, 'State transitions', ha='center', va='bottom', fontsize=7)
+        blocks.append(axes[0])
+    _heat_colorbars(fig, [0.955, 0.56, 0.012, 0.22], [0.955, 0.2, 0.012, 0.22])
+    fig.canvas.draw()
+    for ax, lab in zip(blocks, 'AB'):
+        fig.text(ax.get_position().x0 - 0.005, 0.93, lab, fontsize=10, fontweight='bold',
+                 ha='left', va='bottom')
+    save(fig, 'fig6_centrality')
+
+
+# Figure S12A: lists of notebook 13, in the layout of the published figure (tissues on the first
+# row, the cell types of each tissue below it)
+S12_LISTS = [
+    # (file name, panel title, grid row, grid column)
+    ('Stele', 'Stele (vascular tissue)', 0, 0), ('Ground_Tissue', 'Ground tissue', 0, 1),
+    ('Epidermis', 'Epidermis', 0, 2), ('Root_Cap', 'Root cap', 0, 3),
+    ('Pericycle', 'Pericycle', 1, 0), ('Cortex', 'Cortex', 1, 1),
+    ('Atrichoblast', 'Atrichoblast', 1, 2), ('LRC', 'Lateral root cap', 1, 3),
+    ('Phloem', 'Phloem', 2, 0), ('Endodermis', 'Endodermis', 2, 1),
+    ('Trichoblast', 'Trichoblast', 2, 2), ('Columella', 'Columella', 2, 3),
+    ('Xylem', 'Xylem', 3, 0), ('Procambium', 'Procambium', 4, 0),
+]
+S12_SCORE = {'Stele': 'stele', 'Ground_Tissue': 'ground', 'Epidermis': 'epi', 'Root_Cap': 'rc',
+             'Pericycle': 'per', 'Cortex': 'cor', 'Atrichoblast': 'atri', 'LRC': 'lrc',
+             'Phloem': 'phl', 'Endodermis': 'end', 'Trichoblast': 'tri', 'Columella': 'col',
+             'Xylem': 'xyl', 'Procambium': 'pro'}
+
+
+def _tf_list(name):
+    df = pd.read_csv(os.path.join(_nb13_inputs(), f'{name}_TF_centrality_all_transition_zscore3.csv'))
+    df = df.rename(columns={df.columns[0]: 'TF'})
+    for gid, gname in NAME_FIXES.items():
+        df.loc[df['GeneID'] == gid, 'GeneName'] = gname
+    return df
+
+
+def figureS12_tf_lists():
+    """Figure S12: the ten TFs with the highest combined centrality score (betweenness +
+    in-degree + out-degree over all transitions) of each tissue and cell type (A), and the
+    three centralities of the endodermis top ten (B)."""
+    fig = plt.figure(figsize=(W2COL, 8.6))
+    gs = fig.add_gridspec(5, 4, left=0.1, right=0.985, bottom=0.03, top=0.975,
+                          hspace=0.62, wspace=0.95, height_ratios=[1, 1, 1, 1, 1])
+    axes = {}
+    for name, title, r, c in S12_LISTS:
+        ax = fig.add_subplot(gs[r, c])
+        top = _tf_list(name).head(10)
+        score = top[S12_SCORE[name]].values
+        y = np.arange(len(top))[::-1]
+        ax.scatter(score, y, s=9, color='black', linewidths=0, zorder=3)
+        ax.set_yticks(y)
+        ax.set_yticklabels(top['GeneName'].astype(str), fontsize=6)
+        ax.set_ylim(-0.7, len(top) - 0.3)
+        span = score.max() - score.min()
+        ax.set_xlim(score.min() - 0.08 * span, score.max() + 0.08 * span)
+        ax.tick_params(axis='y', length=2, pad=1)
+        ax.set_xlabel('Combined centrality score', fontsize=6, fontweight='bold', labelpad=1.5)
+        ax.set_title(title, fontsize=8, loc='left', pad=3)
+        axes[name] = ax
+    fig.canvas.draw()
+    # arrows from each tissue to its cell types
+    for c, name in enumerate(['Stele', 'Ground_Tissue', 'Epidermis', 'Root_Cap']):
+        lo = axes[name].get_tightbbox(fig.canvas.get_renderer()).transformed(fig.transFigure.inverted())
+        hi = axes[S12_LISTS[4 + c][0]].get_position()
+        x = (axes[name].get_position().x0 + axes[name].get_position().x1) / 2
+        fig.add_artist(matplotlib.patches.FancyArrowPatch(
+            (x, lo.y0 - 0.003), (x, hi.y1 + 0.022), transform=fig.transFigure,
+            arrowstyle='simple,head_width=6,head_length=5,tail_width=2.5', color='0.4', lw=0))
+
+    # B: endodermis top ten, one small heatmap per TF and centrality
+    dat = _tf_table()
+    genes = _tf_list('Endodermis').head(10)['TF'].tolist()
+    b_area = gs[3:, 1:].get_position(fig)
+    x0, x1 = b_area.x0 - 0.02, b_area.x1 - 0.1
+    row_h = (b_area.y1 - b_area.y0) / 3
+    cell_w = (x1 - x0) / len(genes)
+    b_axes = []
+    for m, ((metric, title), cmap) in enumerate(zip(HEAT_METRICS, (CMAP_BTW, CMAP_DEG, CMAP_DEG))):
+        ytop = b_area.y1 - m * row_h
+        h = row_h * 0.56
+        for k, gene in enumerate(genes):
+            ax = fig.add_axes([x0 + k * cell_w + 0.004, ytop - 0.034 - h, cell_w - 0.008, h])
+            _heat(ax, _centrality_matrix(dat, gene, metric), cmap, fontsize=4.5)
+            ax.set_title(gene, fontsize=5.5, fontweight='bold', pad=1.5)
+            if k == len(genes) - 1:
+                ax.yaxis.tick_right()
+                ax.set_yticks(np.arange(len(HEAT_ROWS)) + 0.5)
+                ax.set_yticklabels([r for r, _ in HEAT_ROWS][::-1], fontsize=4.5)
+                ax.tick_params(axis='y', length=0, pad=1)
+            b_axes.append(ax)
+        fig.text(x0 + 0.004, ytop - 0.006, title.replace('\n', ' '), fontsize=7, va='top')
+    _heat_colorbars(fig, [0.965, b_area.y1 - row_h * 0.95, 0.01, row_h * 0.6],
+                    [0.965, b_area.y0 + row_h * 0.35, 0.01, row_h * 0.6])
+    fig.text((x0 + x1) / 2, 0.003, 'State transitions', ha='center', va='bottom', fontsize=7)
+    # dashed lines from the endodermis list to panel B
+    e = axes['Endodermis'].get_tightbbox(fig.canvas.get_renderer()).transformed(fig.transFigure.inverted())
+    ep = axes['Endodermis'].get_position()
+    for xa, xb in ((ep.x0, x0), (ep.x1, x1)):
+        fig.add_artist(Line2D([xa, xb], [e.y0 - 0.003, b_area.y1 + 0.004], transform=fig.transFigure,
+                              color='black', lw=0.8, ls=(0, (2, 2))))
+    fig.text(0.008, 0.978, 'A', fontsize=10, fontweight='bold', ha='left', va='bottom')
+    fig.text(x0 - 0.035, b_area.y1 - 0.004, 'B', fontsize=10, fontweight='bold', ha='left', va='top')
+    save(fig, 'figS12_tf_lists')
+
+
 if __name__ == '__main__':
     print(f'Font: {FONT}')
     print('Figure 4 (benchmark of notebook 13)'); figure4_benchmark()
     print('Figure 5 (benchmark conditions)'); figure4_expanded()
+    print('Figure 6 (SHR and WER centralities)'); figure6_centrality()
+    print('Figure S12 (TF prioritization lists)'); figureS12_tf_lists()
+    print('Figure S2 (training histories)'); figure_training_history()
     print('Figure S5E-F (zero-padded recreation)'); figure_extrapolation_panels()
     print('Figure S6 (blueprint controls)'); figure_blueprint_controls()
     print('Figure S11 (genome-wide recall)'); figure_genomewide()

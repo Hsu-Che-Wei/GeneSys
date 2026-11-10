@@ -1,28 +1,30 @@
 #!/usr/bin/env python3
-"""Regenerate the network analysis of one notebook 12 with out-degree and in-degree named by
-their regulatory meaning.
+"""Regenerate the network analysis of one notebook 12.
 
 The notebook computes the LIMA of a transition, saves it (np.save), reloads it (np.load) and
 then builds the TF network and the centrality table. W[i, j] of a LIMA is the effect of gene i
 at the earlier state on gene j at the later state. network() stores the edge of entry adj[i, j]
-as (j, i), from the target back to its regulator, and read the out-degree of that graph as the
-out-degree of the TF. The targets of a TF are the incoming edges of that graph, so the two
-assignments are exchanged: out-degree is now the number of targets a TF regulates and in-degree
-the number of regulators acting on it.
+as (j, i), from the target back to its regulator. Two changes are applied to network():
 
-The graph itself is left as it is. Its edge weights are the signed LIMA coefficients, and
-networkx computes weighted betweenness with Dijkstra's algorithm, which is not invariant to
-reversing the edges when weights are negative. Drawing the edges the other way would therefore
-change the betweenness values (and with them the combined centrality score), which is a change
-of results and not of names. With the graph unchanged every other column of the table is
-reproduced exactly.
+1. Out-degree and in-degree are named by their regulatory meaning. The targets of a TF are the
+   incoming edges of the stored graph, so out-degree is the number of targets a TF regulates and
+   in-degree the number of regulators acting on it (2 October 2026).
+2. Betweenness is computed on edge lengths. networkx reads the weight given to
+   betweenness_centrality as the length of an edge in the shortest-path search. The notebook
+   passed the signed coefficients, which are not lengths (negative values, negative cycles).
+   Each edge now also carries the length -log(r / (m + 1)), r being the rank of |coefficient|
+   among the m retained edges of the network (weakest = 1), so that paths through strong
+   associations are short, and betweenness uses that length (23 October 2026). With positive
+   lengths, node betweenness does not depend on the direction in which edges are stored.
+
+The graph, the edge weights used for drawing and every other centrality are left as they are.
 
 Only the cells from the np.load of the saved LIMA to the end of the notebook are executed
 again, with the gene list and the cell type list they need. The LIMA itself is not recomputed.
 The outputs of the executed cells replace the stored ones, the cells before np.load keep
 theirs, and the notebook writes its centrality table as before.
 
-Usage (one CPU job per notebook, about 90 GB of memory):
+Usage (one CPU job per notebook, about 110 GB of memory):
   sbatch experiments/slurm/run_cpu.sh experiments/regenerate_notebook12.py <notebook.ipynb>
 """
 import os, re, sys, json, copy
@@ -44,11 +46,28 @@ NEW = ("    # The edge of entry adj[i, j] (effect of gene i on gene j) is stored
        "    out_centrality = nx.in_degree_centrality(G)\n"
        "    # Calculate incoming centrality (number of regulators acting on the TF)\n"
        "    in_centrality = nx.out_degree_centrality(G)\n")
+EDGE_OLD = ("    # Add edges to the graph with weights\n"
+            "    for i in range(num_nodes):\n"
+            "        for j in range(num_nodes):\n"
+            "            weight = adj[i, j]\n"
+            "            if weight != 0:\n"
+            "                G.add_edge(j, i, weight=weight)\n")
+EDGE_NEW = ("    # Add edges to the graph with weights. For betweenness, each edge also has the length\n"
+            "    # -log(r / (m + 1)), r being the rank of |coefficient| among the m retained edges\n"
+            "    # (weakest = 1), so that paths through strong associations are short.\n"
+            "    src, dst = np.nonzero(adj)\n"
+            "    length = -np.log(rankdata(np.abs(adj[src, dst])) / (len(src) + 1))\n"
+            "    for i, j, d in zip(src, dst, length):\n"
+            "        G.add_edge(j, i, weight=adj[i, j], length=d)\n")
+BTW_OLD = "    betweenness_centrality = nx.betweenness_centrality(G, weight='weight')\n"
+BTW_NEW = "    betweenness_centrality = nx.betweenness_centrality(G, weight='length')\n"
 SETUP = f'''import os
 os.chdir({DATA_DIR!r})
 import numpy as np
 import pandas as pd
 import networkx as nx
+from scipy.stats import rankdata
+print('networkx', nx.__version__)
 import matplotlib.pyplot as plt
 import seaborn as sns
 import warnings
@@ -73,8 +92,17 @@ def main(path):
     genes = next(i for i, s in enumerate(src) if "gene_list = pd.read_csv('./gene_list_1108.csv')" in s)
     cts = next(re.search(r"^cts = \[.*\]$", s, flags=re.M).group(0) for s in src
                if re.search(r"^cts = \[.*\]$", s, flags=re.M))
-    assert nb.cells[net].source.count(OLD) == 1 or nb.cells[net].source.count(NEW) == 1
-    nb.cells[net].source = nb.cells[net].source.replace(OLD, NEW)
+    for old, new in ((OLD, NEW), (BTW_OLD, BTW_NEW)):
+        assert nb.cells[net].source.count(old) == 1 or nb.cells[net].source.count(new) == 1
+        nb.cells[net].source = nb.cells[net].source.replace(old, new)
+    # the undirected graph above has its own edge loop; only the directed one gets lengths
+    body = nb.cells[net].source
+    k = body.index('nx.MultiDiGraph()')
+    head, tail = body[:k], body[k:]
+    assert tail.count(EDGE_OLD) == 1 or tail.count(EDGE_NEW) == 1
+    nb.cells[net].source = head + tail.replace(EDGE_OLD, EDGE_NEW)
+    if 'from scipy.stats import rankdata' not in nb.cells[net].source:
+        nb.cells[net].source = 'from scipy.stats import rankdata\n\n' + nb.cells[net].source
 
     run = nbformat.v4.new_notebook()
     run.metadata['kernelspec'] = {'display_name': 'Python 3', 'language': 'python', 'name': 'python3'}

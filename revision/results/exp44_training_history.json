@@ -1,0 +1,234 @@
+{
+ "root": {
+  "notebook": "2-Genesys_model_training_Root-20240308.ipynb",
+  "runs": [
+   {
+    "run": 1,
+    "cell": 7,
+    "checkpoint": "first",
+    "first_epoch": 0,
+    "last_epoch": 99,
+    "epochs": 100,
+    "epochs_printed": 100,
+    "missing_run_epochs": [],
+    "loss_overflow_run_epochs": [],
+    "execution_count": 7
+   },
+   {
+    "run": 2,
+    "cell": 19,
+    "checkpoint": "continue",
+    "first_epoch": 100,
+    "last_epoch": 199,
+    "epochs": 100,
+    "epochs_printed": 100,
+    "missing_run_epochs": [],
+    "loss_overflow_run_epochs": [],
+    "execution_count": 10
+   },
+   {
+    "run": 3,
+    "cell": 31,
+    "checkpoint": "continue2",
+    "first_epoch": 200,
+    "last_epoch": 299,
+    "epochs": 100,
+    "epochs_printed": 100,
+    "missing_run_epochs": [],
+    "loss_overflow_run_epochs": [],
+    "execution_count": 10
+   },
+   {
+    "run": 4,
+    "cell": 43,
+    "checkpoint": "continue3",
+    "first_epoch": 300,
+    "last_epoch": 399,
+    "epochs": 100,
+    "epochs_printed": 100,
+    "missing_run_epochs": [],
+    "loss_overflow_run_epochs": [],
+    "execution_count": 10
+   },
+   {
+    "run": 5,
+    "cell": 55,
+    "checkpoint": "continue4",
+    "first_epoch": 400,
+    "last_epoch": 499,
+    "epochs": 100,
+    "epochs_printed": 100,
+    "missing_run_epochs": [],
+    "loss_overflow_run_epochs": [],
+    "execution_count": 21
+   },
+   {
+    "run": 6,
+    "cell": 67,
+    "checkpoint": "continue5",
+    "first_epoch": 500,
+    "last_epoch": 599,
+    "epochs": 100,
+    "epochs_printed": 100,
+    "missing_run_epochs": [],
+    "loss_overflow_run_epochs": [],
+    "execution_count": 32
+   }
+  ],
+  "epochs_trained": 600,
+  "selected_checkpoint": "continue4",
+  "selected_checkpoint_epoch": 445,
+  "missing_epochs": [],
+  "loss_overflow_epochs": []
+ },
+ "mouse": {
+  "notebook": "6-Genesys_model_training_Mouse_Embryo-20240302.ipynb",
+  "runs": [
+   {
+    "run": 1,
+    "cell": 12,
+    "checkpoint": "first",
+    "first_epoch": 0,
+    "last_epoch": 99,
+    "epochs": 100,
+    "epochs_printed": 100,
+    "missing_run_epochs": [],
+    "loss_overflow_run_epochs": [],
+    "execution_count": 12
+   },
+   {
+    "run": 2,
+    "cell": 25,
+    "checkpoint": "continue",
+    "first_epoch": 100,
+    "last_epoch": 499,
+    "epochs": 400,
+    "epochs_printed": 400,
+    "missing_run_epochs": [],
+    "loss_overflow_run_epochs": [
+     3,
+     375
+    ],
+    "execution_count": 16
+   },
+   {
+    "run": 3,
+    "cell": 37,
+    "checkpoint": "continue2",
+    "first_epoch": 500,
+    "last_epoch": 599,
+    "epochs": 100,
+    "epochs_printed": 100,
+    "missing_run_epochs": [],
+    "loss_overflow_run_epochs": [],
+    "execution_count": 27
+   },
+   {
+    "run": 4,
+    "cell": 49,
+    "checkpoint": "continue3",
+    "first_epoch": 600,
+    "last_epoch": 699,
+    "epochs": 100,
+    "epochs_printed": 100,
+    "missing_run_epochs": [],
+    "loss_overflow_run_epochs": [],
+    "execution_count": 38
+   },
+   {
+    "run": 5,
+    "cell": 61,
+    "checkpoint": "continue4",
+    "first_epoch": 700,
+    "last_epoch": 799,
+    "epochs": 100,
+    "epochs_printed": 100,
+    "missing_run_epochs": [],
+    "loss_overflow_run_epochs": [],
+    "execution_count": 49
+   },
+   {
+    "run": 6,
+    "cell": 73,
+    "checkpoint": "continue5",
+    "first_epoch": 800,
+    "last_epoch": 899,
+    "epochs": 100,
+    "epochs_printed": 100,
+    "missing_run_epochs": [],
+    "loss_overflow_run_epochs": [],
+    "execution_count": 60
+   },
+   {
+    "run": 7,
+    "cell": 85,
+    "checkpoint": "continue6",
+    "first_epoch": 900,
+    "last_epoch": 999,
+    "epochs": 100,
+    "epochs_printed": 94,
+    "missing_run_epochs": [
+     94,
+     95,
+     96,
+     97,
+     98,
+     99
+    ],
+    "loss_overflow_run_epochs": [],
+    "execution_count": null
+   },
+   {
+    "run": 8,
+    "cell": 97,
+    "checkpoint": "continue7",
+    "first_epoch": 1000,
+    "last_epoch": 1099,
+    "epochs": 100,
+    "epochs_printed": 100,
+    "missing_run_epochs": [],
+    "loss_overflow_run_epochs": [],
+    "execution_count": 93
+   },
+   {
+    "run": 9,
+    "cell": 109,
+    "checkpoint": "continue8",
+    "first_epoch": 1100,
+    "last_epoch": 1199,
+    "epochs": 100,
+    "epochs_printed": 100,
+    "missing_run_epochs": [],
+    "loss_overflow_run_epochs": [],
+    "execution_count": 104
+   },
+   {
+    "run": 10,
+    "cell": 121,
+    "checkpoint": "continue9",
+    "first_epoch": 1200,
+    "last_epoch": 1299,
+    "epochs": 100,
+    "epochs_printed": 100,
+    "missing_run_epochs": [],
+    "loss_overflow_run_epochs": [],
+    "execution_count": 115
+   }
+  ],
+  "epochs_trained": 1300,
+  "selected_checkpoint": "continue8",
+  "selected_checkpoint_epoch": 1179,
+  "missing_epochs": [
+   994,
+   995,
+   996,
+   997,
+   998,
+   999
+  ],
+  "loss_overflow_epochs": [
+   103,
+   475
+  ]
+ }
+}

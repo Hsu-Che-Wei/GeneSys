@@ -35,6 +35,7 @@ import numpy as np
 import pandas as pd
 import torch
 import networkx as nx
+from scipy.stats import rankdata
 
 sys.path.insert(0, os.path.dirname(__file__))
 from utils import load_root_data, load_lineage, NUM2NAME, RESULTS_DIR
@@ -170,20 +171,24 @@ def network_centralities(adj_w, adj_mask, tf_idx, tf_names):
     except Exception:
         eigenvector = {i: 0.0 for i in range(n)}
 
+    # For betweenness each edge also has the length -log(r / (m + 1)), r being the rank of
+    # |coefficient| among the m retained edges (weakest = 1), so that paths through strong
+    # associations are short, as in notebook 12.
+    length = -np.log(rankdata(np.abs(adj[src, dst])) / (len(src) + 1))
     G_d = nx.MultiDiGraph()
     for i, name in enumerate(names):
         G_d.add_node(i, name=name)
-    for i, j in zip(src, dst):
-        G_d.add_edge(j, i, weight=adj[i, j])
+    for i, j, d in zip(src, dst, length):
+        G_d.add_edge(j, i, weight=adj[i, j], length=d)
     degree = nx.degree_centrality(G_d)
     # The edge of entry adj[i, j] (effect of gene i on gene j) is stored as (j, i), from the target
     # back to its regulator, as in notebook 12. The targets of a TF are therefore its incoming
-    # edges in G_d and its regulators its outgoing edges. The graph is kept as it is because the
-    # weighted betweenness below is not invariant to reversing edges with signed weights.
+    # edges in G_d and its regulators its outgoing edges. With positive edge lengths, node
+    # betweenness does not depend on the direction in which the edges are stored.
     out_c = nx.in_degree_centrality(G_d)       # number of targets the TF regulates
     in_c = nx.out_degree_centrality(G_d)       # number of regulators acting on the TF
     try:
-        betweenness = nx.betweenness_centrality(G_d, weight='weight')
+        betweenness = nx.betweenness_centrality(G_d, weight='length')
     except Exception:
         betweenness = {i: 0.0 for i in range(n)}
 
