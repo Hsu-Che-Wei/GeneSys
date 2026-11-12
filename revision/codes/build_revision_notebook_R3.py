@@ -221,7 +221,7 @@ assert (best == 'genesys').sum() == 4                                 # "the bes
 assert (lima['genesys'] < lima['scrnaseq']).all()
 '''),
 ('md', '''
-**Reproduction check.** The scRNA-seq LIMA tables of Figure 4 come from the author's scRNA-seq notebook 12. Running the same scenario through `exp14_condition_pipeline.py` (55 batches from the full atlas) gives the values below. The batches are drawn at random and the notebook sets no seed, so the draw cannot be replayed; the pipeline also takes a fixed 200 rows per cell type where the notebook takes the 169 to 226 that fall in each batch. The pipeline itself is seeded, but two runs of the same command (2026-10-01 and 2026-10-26) gave degree, out-degree, in-degree and eigenvector R50 values that differ by 3 to 14 ranks, so these values agree with Figure 4 to within that run-to-run spread, not exactly.
+**Reproduction check.** The scRNA-seq LIMA tables of Figure 4 come from the author's scRNA-seq notebook 12. Running the same scenario through `exp14_condition_pipeline.py` (55 batches from the full atlas) gives the values below. The batches are drawn at random and the notebook sets no seed, so the draw cannot be replayed; the pipeline also takes a fixed 200 rows per cell type where the notebook takes the 169 to 226 that fall in each batch. The pipeline itself is seeded, but three runs of the same command with the same seed (2026-10-26, and twice on 2026-11-10) gave R50 values whose range is 1 to 19 ranks depending on the criterion. The cause is the least-squares step: a batch of 200 rows drawn with replacement contains repeated cells (161 distinct cells in the batch tested), and `torch.linalg.lstsq` does not return the same solution for such a batch twice, even in one process with the same number of threads (`check_lstsq_determinism.py`). The pipeline values of the first run differ from Figure 4 by 1 to 19 ranks, of the same order as the run-to-run range and as expected from a different draw of batches.
 '''),
 ('code', '''
 gate = pd.read_csv(os.path.join(P, 'exp13_r50_raw_gate.csv'))
@@ -230,6 +230,22 @@ chk = pd.DataFrame({'pipeline (55 batches)': gate.astype(int), 'Figure 4 (notebo
 print(chk.to_string())
 assert list(chk['pipeline (55 batches)']) == [366, 425, 323, 273, 531]
 assert list(chk['Figure 4 (notebook 12)']) == [365, 444, 330, 256, 536]
+
+# Run-to-run range: the same command and seed run three times
+runs = {}
+for name, f in [('run 1 (10-26)', 'exp13_r50_raw_gate.csv'), ('run 2 (11-10)', 'exp13_r50_raw_gate_run3.csv'),
+                ('run 3 (11-10)', 'exp13_r50_raw_gate_run4.csv')]:
+    g = pd.read_csv(os.path.join(P, f))
+    runs[name] = g[(g['panel'] == 'All') & (g['method'] == 'LIMA')].set_index('strategy')['R50'].loc[lima.index].astype(int)
+runs = pd.DataFrame(runs)
+runs['range'] = runs.max(axis=1) - runs.min(axis=1)
+runs['GeneSys margin (Figure 4)'] = (lima['scrnaseq'] - lima['genesys']).astype(int)
+print(runs.to_string())
+assert list(runs['range']) == [16, 17, 6, 19, 1]                    # "1 to 19 ranks"
+assert (abs(chk['pipeline (55 batches)'] - chk['Figure 4 (notebook 12)'])).between(1, 19).all()
+# The two close LIMA margins (in-degree 3, betweenness 8) are within the run-to-run range of their criterion
+assert runs.loc['in_centrality', 'GeneSys margin (Figure 4)'] <= runs.loc['in_centrality', 'range']
+assert runs.loc['betweenness_centrality', 'GeneSys margin (Figure 4)'] <= runs.loc['betweenness_centrality', 'range']
 '''),
 ('md', '''
 ### 4.2 Differential expression
